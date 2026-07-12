@@ -256,7 +256,11 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     labelImportance: 5,
     fadeYears: 3,
     predecessorIds: ['russian-empire'],
-    successorIds: ['russia', 'ukraine', 'kazakhstan'],
+    successorIds: [
+      'russia', 'ukraine', 'belarus', 'moldova', 'estonia', 'latvia', 'lithuania',
+      'georgia', 'armenia', 'azerbaijan',
+      'kazakhstan', 'uzbekistan', 'turkmenistan', 'kyrgyzstan', 'tajikistan',
+    ],
     description:
       'The world’s first socialist federal state, successor to the Russian Empire and a 20th-century superpower of fifteen republics across Eurasia. It annexed the Baltic states, eastern Poland and Bessarabia in 1939–40, emerged from the Second World War with Kaliningrad, Tuva, Transcarpathia and southern Sakhalin added, led the Warsaw Pact from 1955, and dissolved in December 1991.',
     sources: [

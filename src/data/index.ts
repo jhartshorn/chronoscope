@@ -2,6 +2,8 @@ import type { HistoricalEntity, HistoricalEvent } from '../types';
 import { ENTITIES as CORE_ENTITIES } from './entities';
 import { EVENTS } from './events';
 import { BRITAIN_ENTITIES } from './regions/britain';
+import { BRITAIN2_ENTITIES } from './regions/britain2';
+import { IRELAND_ENTITIES } from './regions/ireland';
 import { ANTIQUITY_ENTITIES } from './regions/antiquity';
 import { MEDIEVAL_ENTITIES } from './regions/medieval';
 import { ASIA_ENTITIES } from './regions/asia';
@@ -21,6 +23,7 @@ import { PEOPLES_ENTITIES } from './regions/peoples';
 import { COLONIAL_ENTITIES } from './regions/colonial';
 import { MODERN2_ENTITIES } from './regions/modern2';
 import { MODERN_STATES_ENTITIES } from './regions/modernstates';
+import { MODERN3_ENTITIES } from './regions/modern3';
 import { ROME_PERIPHERY_ENTITIES } from './regions/romeperiphery';
 
 /**
@@ -32,6 +35,8 @@ import { ROME_PERIPHERY_ENTITIES } from './regions/romeperiphery';
 export const ENTITIES: HistoricalEntity[] = [
   ...CORE_ENTITIES,
   ...BRITAIN_ENTITIES,
+  ...BRITAIN2_ENTITIES,
+  ...IRELAND_ENTITIES,
   ...ANTIQUITY_ENTITIES,
   ...MEDIEVAL_ENTITIES,
   ...ASIA_ENTITIES,
@@ -51,6 +56,7 @@ export const ENTITIES: HistoricalEntity[] = [
   ...COLONIAL_ENTITIES,
   ...MODERN2_ENTITIES,
   ...MODERN_STATES_ENTITIES,
+  ...MODERN3_ENTITIES,
   ...ROME_PERIPHERY_ENTITIES,
 ];
 

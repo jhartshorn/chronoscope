@@ -48,9 +48,13 @@ export const MODERN2_ENTITIES: HistoricalEntity[] = [
     colour: '#5a9a6a',
     labelImportance: 3,
     predecessorIds: ['british-empire'],
-    description: 'The Islamic Republic of Pakistan, created at the 1947 partition of British India. Contemporary boundary from Natural Earth.',
+    description: 'The Islamic Republic of Pakistan, created at the 1947 partition of British India as two wings a thousand miles apart. The eastern wing seceded as Bangladesh in December 1971. Contemporary boundary from Natural Earth.',
     sources: [src('Natural Earth (public domain)')],
-    snapshots: [snap(ce(2026).year, NE('Pakistan'), 'high', 'Contemporary borders (Natural Earth); some frontiers are disputed.')],
+    snapshots: [
+      snap(1947.6, { naturalEarthCountries: ['Pakistan', 'Bangladesh'] }, 'high', 'West and East Pakistan at the 1947 partition (Natural Earth union with Bangladesh).'),
+      snap(1971.85, { naturalEarthCountries: ['Pakistan', 'Bangladesh'] }, 'high', 'Until the secession of East Pakistan as Bangladesh (December 1971).'),
+      snap(1972, NE('Pakistan'), 'high', 'Contemporary borders (Natural Earth); some frontiers are disputed.'),
+    ],
   },
   {
     id: 'turkey',

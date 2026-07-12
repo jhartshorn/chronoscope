@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ENTITIES, EVENTS, ENTITY_BY_ID, search } from './index';
-import { resolveGeometry } from '../map/basemap';
+import { resolveGeometry, listNaturalEarthCountries } from '../map/basemap';
 import { activeEntitiesAt, snapshotPair } from '../history/engine';
 import { hd } from '../history/date';
 import { ce, bce } from './helpers';
@@ -87,6 +87,34 @@ describe('dataset integrity', () => {
       'habsburg monarchy',
       'russian empire',
       'soviet union',
+      // British Isles detail (3000 BCE – 1900 CE)
+      'neolithic britain',
+      'caledonians',
+      'brigantes',
+      'iceni',
+      'catuvellauni',
+      'silures',
+      'roman britain',
+      'dumnonia',
+      'rheged',
+      'gododdin',
+      'elmet',
+      'kingdom of powys',
+      'deheubarth',
+      'kingdom of sussex',
+      'kingdom of essex',
+      'the danelaw',
+      'kingdom of the isles',
+      'earldom of orkney',
+      'gaelic ireland',
+      'ulaid',
+      'kingdom of connacht',
+      'kingdom of mide',
+      'kingdom of leinster',
+      'kingdom of munster',
+      'kingdom of dublin',
+      'lordship of ireland',
+      'kingdom of ireland',
     ];
     for (const r of required) {
       expect(names.some((n) => n.includes(r))).toBe(true);
@@ -205,6 +233,45 @@ describe('dataset integrity', () => {
     expect(covers('british-empire', ce(1805), -75, 40)).toBe(false);
   });
 
+  it('models fine-grained territorial change in the British Isles', () => {
+    // Roman Britain: London from the start; Edinburgh only during the brief
+    // Antonine advance, not under Hadrian's frontier.
+    expect(covers('roman-britain', ce(50), -0.1, 51.5)).toBe(true); // London
+    expect(covers('roman-britain', ce(50), -3.19, 55.95)).toBe(false); // Edinburgh
+    expect(covers('roman-britain', ce(130), -3.19, 55.95)).toBe(false);
+    expect(covers('roman-britain', ce(146), -3.19, 55.95)).toBe(true); // Antonine Wall era
+    expect(covers('roman-britain', ce(300), -3.19, 55.95)).toBe(false);
+
+    // The Danelaw: York throughout, but Winchester never; East Anglia only
+    // before the West Saxon reconquest.
+    expect(covers('danelaw', ce(890), -1.08, 53.96)).toBe(true); // York
+    expect(covers('danelaw', ce(890), -1.31, 51.06)).toBe(false); // Winchester
+    expect(covers('danelaw', ce(890), 1.3, 52.63)).toBe(true); // Norwich
+    expect(covers('danelaw', ce(945), 1.3, 52.63)).toBe(false);
+
+    // Kingdom of England: Cumbria (Carlisle) only after 1092; Wales (Cardiff)
+    // only after the Edwardian conquest.
+    expect(covers('kingdom-of-england', ce(1000), -2.94, 54.9)).toBe(false); // Carlisle
+    expect(covers('kingdom-of-england', ce(1150), -2.94, 54.9)).toBe(true);
+    expect(covers('kingdom-of-england', ce(1000), -3.18, 51.48)).toBe(false); // Cardiff
+    expect(covers('kingdom-of-england', ce(1550), -3.18, 51.48)).toBe(true);
+    expect(covers('kingdom-of-england', ce(1000), -0.1, 51.5)).toBe(true); // London, always
+
+    // Alba/Scotland: the Outer Hebrides only after the Treaty of Perth
+    // (1266), Shetland only after the 1468–72 annexation.
+    expect(covers('kingdom-of-alba', ce(1100), -6.39, 58.2)).toBe(false); // Stornoway
+    expect(covers('kingdom-of-alba', ce(1290), -6.39, 58.2)).toBe(true);
+    expect(covers('kingdom-of-alba', ce(1300), -1.15, 60.15)).toBe(false); // Lerwick
+    expect(covers('kingdom-of-alba', ce(1500), -1.15, 60.15)).toBe(true);
+    expect(covers('kingdom-of-alba', ce(1100), -3.19, 55.95)).toBe(true); // Edinburgh (Lothian, from 1018)
+
+    // Lordship of Ireland: Cork under the 13th-century lordship, but outside
+    // the 15th-century Pale; Dublin always.
+    expect(covers('lordship-of-ireland', ce(1260), -8.47, 51.9)).toBe(true); // Cork
+    expect(covers('lordship-of-ireland', ce(1440), -8.47, 51.9)).toBe(false);
+    expect(covers('lordship-of-ireland', ce(1440), -6.26, 53.35)).toBe(true); // Dublin
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
@@ -296,6 +363,9 @@ describe('dataset integrity', () => {
       if (e.category !== 'modern-state') continue;
       for (const s of e.snapshots) {
         if ('naturalEarthCountry' in s.geometry) covered.add(s.geometry.naturalEarthCountry);
+        if ('naturalEarthCountries' in s.geometry) {
+          for (const c of s.geometry.naturalEarthCountries) covered.add(c);
+        }
       }
     }
     covered.add('__Singapore__'); // hand-drawn (absent from the 110m basemap)
@@ -316,6 +386,51 @@ describe('dataset integrity', () => {
     ];
     const missing = required.filter((c) => !covered.has(c));
     expect(missing).toEqual([]);
+  });
+
+  it('covers every sovereign state in the Natural Earth basemap', () => {
+    // Deliberately unfilled: dependent territories and disputed land.
+    // Northern Cyprus appears only within pre-1974 Cyprus and Somaliland
+    // within Somalia; Western Sahara is disputed territory.
+    const NOT_SOVEREIGN = new Set([
+      'Antarctica', 'Fr. S. Antarctic Lands', 'Falkland Is.', 'Greenland',
+      'New Caledonia', 'Puerto Rico', 'W. Sahara', 'N. Cyprus',
+    ]);
+    const covered = new Set<string>();
+    for (const e of ENTITIES) {
+      if (e.category !== 'modern-state') continue;
+      for (const s of e.snapshots) {
+        if ('naturalEarthCountry' in s.geometry) covered.add(s.geometry.naturalEarthCountry);
+        if ('naturalEarthCountries' in s.geometry) {
+          for (const c of s.geometry.naturalEarthCountries) covered.add(c);
+        }
+      }
+    }
+    const missing = listNaturalEarthCountries().filter(
+      (c) => !covered.has(c) && !NOT_SOVEREIGN.has(c),
+    );
+    expect(missing).toEqual([]);
+  });
+
+  it('modern states extend backwards with period-correct borders', () => {
+    // Pakistan includes East Bengal (Dhaka) until Bangladesh secedes in 1971.
+    expect(covers('pakistan', ce(1960), 90.4, 23.8)).toBe(true);
+    expect(covers('pakistan', ce(1980), 90.4, 23.8)).toBe(false);
+    // Sudan includes the south (Juba) until the 2011 secession.
+    expect(covers('sudan', ce(1990), 31.6, 4.85)).toBe(true);
+    expect(covers('sudan', ce(2015), 31.6, 4.85)).toBe(false);
+    // Ethiopia includes Eritrea (Asmara) until 1993; then Eritrea stands alone.
+    expect(covers('ethiopia', ce(1980), 38.9, 15.3)).toBe(true);
+    expect(covers('ethiopia', ce(2000), 38.9, 15.3)).toBe(false);
+    expect(covers('eritrea', ce(2000), 38.9, 15.3)).toBe(true);
+    // Cyprus covers the whole island until the 1974 partition.
+    expect(covers('cyprus', ce(1965), 33.6, 35.25)).toBe(true);
+    expect(covers('cyprus', ce(2000), 33.6, 35.25)).toBe(false);
+    // Yugoslavia holds Zagreb until 1991, then shrinks to Serbia and Montenegro.
+    expect(covers('yugoslavia', ce(1980), 15.98, 45.81)).toBe(true);
+    expect(covers('yugoslavia', ce(2000), 15.98, 45.81)).toBe(false);
+    expect(covers('yugoslavia', ce(2000), 20.46, 44.8)).toBe(true);
+    expect(covers('croatia', ce(2000), 15.98, 45.81)).toBe(true);
   });
 
   it('predecessor/successor ids resolve to real entities', () => {

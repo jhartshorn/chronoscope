@@ -1,4 +1,4 @@
-import type { HistoricalEntity, EntityCategory, TerritorySnapshot } from '../../types';
+import type { HistoricalEntity, EntityCategory, TerritorySnapshot, Confidence } from '../../types';
 import type { Ring } from '../helpers';
 import { ce, mpoly, poly, snap, src } from '../helpers';
 
@@ -35,7 +35,7 @@ const MONGOLIA_1912: Ring = [
  * simplification: the single contemporary snapshot uses today's borders).
  */
 
-interface MS {
+export interface MS {
   id: string;
   name: string;
   ne: string; // Natural Earth country name
@@ -46,18 +46,19 @@ interface MS {
   desc?: string;
   label?: 1 | 2 | 3 | 4 | 5;
   category?: EntityCategory;
+  conf?: Confidence;
   /** Overrides the default single contemporary snapshot. */
   snaps?: TerritorySnapshot[];
 }
 
-function build(m: MS): HistoricalEntity {
+export function buildModernState(m: MS): HistoricalEntity {
   return {
     id: m.id,
     name: m.name,
     category: m.category ?? 'modern-state',
     start: ce(m.start),
     end: ce(2026),
-    confidence: 'high',
+    confidence: m.conf ?? 'high',
     colour: m.colour,
     labelImportance: m.label ?? 3,
     ...(m.alt ? { alternativeNames: m.alt } : {}),
@@ -160,7 +161,15 @@ const TABLE: MS[] = [
   // ---- Africa
   { id: 'algeria', name: 'Algeria', ne: 'Algeria', start: 1962, colour: '#5a9a6a', label: 4, pred: ['french-colonial-empire', 'ottoman-empire'] },
   { id: 'dr-congo', name: 'Democratic Republic of the Congo', ne: 'Dem. Rep. Congo', start: 1960, colour: '#6a9a4a', label: 4, alt: ['DR Congo', 'Congo-Kinshasa'], pred: ['belgian-empire', 'kongo'] },
-  { id: 'sudan', name: 'Sudan', ne: 'Sudan', start: 1956, colour: '#b0803a', label: 3, pred: ['british-empire'] },
+  {
+    id: 'sudan', name: 'Sudan', ne: 'Sudan', start: 1956, colour: '#b0803a', label: 3, pred: ['british-empire'],
+    desc: 'Sudan, independent from Anglo-Egyptian rule in 1956. It held the borders of the old condominium until South Sudan seceded in July 2011. Contemporary boundary from Natural Earth.',
+    snaps: [
+      snap(1956, { naturalEarthCountries: ['Sudan', 'S. Sudan'] }, 'high', 'Sudan at independence (1956), within the borders of the Anglo-Egyptian condominium — including the south.'),
+      snap(2011.45, { naturalEarthCountries: ['Sudan', 'S. Sudan'] }, 'high', 'Unified Sudan, until the secession of South Sudan (9 July 2011).'),
+      snap(2011.55, { naturalEarthCountry: 'Sudan' }, 'high', 'After the secession of South Sudan (Natural Earth).'),
+    ],
+  },
   { id: 'south-sudan', name: 'South Sudan', ne: 'S. Sudan', start: 2011, colour: '#8a9a4a', label: 2, pred: ['sudan'] },
   { id: 'libya', name: 'Libya', ne: 'Libya', start: 1951, colour: '#a8843a', label: 3, pred: ['ottoman-empire'] },
   { id: 'chad', name: 'Chad', ne: 'Chad', start: 1960, colour: '#a89a5a', label: 2, pred: ['french-colonial-empire', 'kanem-bornu'] },
@@ -168,14 +177,28 @@ const TABLE: MS[] = [
   { id: 'mali', name: 'Mali', ne: 'Mali', start: 1960, colour: '#c9a23a', label: 3, pred: ['french-colonial-empire', 'mali-empire'] },
   { id: 'mauritania', name: 'Mauritania', ne: 'Mauritania', start: 1960, colour: '#b09a5a', label: 2, pred: ['french-colonial-empire'] },
   { id: 'angola', name: 'Angola', ne: 'Angola', start: 1975, colour: '#8a9a4a', label: 3, pred: ['portuguese-empire', 'kongo'] },
-  { id: 'ethiopia', name: 'Ethiopia', ne: 'Ethiopia', start: 1975, colour: '#a86a3a', label: 4, pred: ['solomonic-ethiopia'] },
+  {
+    id: 'ethiopia', name: 'Ethiopia', ne: 'Ethiopia', start: 1975, colour: '#a86a3a', label: 4, pred: ['solomonic-ethiopia'],
+    desc: 'The modern Ethiopian republic, successor to the Solomonic empire abolished in 1974–75. It included Eritrea (federated 1952, annexed 1962) until Eritrean independence in 1993. Contemporary boundary from Natural Earth.',
+    snaps: [
+      snap(1975, { naturalEarthCountries: ['Ethiopia', 'Eritrea'] }, 'high', 'Ethiopia including Eritrea, annexed in 1962.'),
+      snap(1993.3, { naturalEarthCountries: ['Ethiopia', 'Eritrea'] }, 'high', 'Until Eritrean independence (May 1993), after a thirty-year war.'),
+      snap(1993.45, { naturalEarthCountry: 'Ethiopia' }, 'high', 'Landlocked Ethiopia after the separation of Eritrea (Natural Earth).'),
+    ],
+  },
   { id: 'tanzania', name: 'Tanzania', ne: 'Tanzania', start: 1964, colour: '#5a9a6a', label: 3, pred: ['british-empire'] },
   { id: 'kenya', name: 'Kenya', ne: 'Kenya', start: 1963, colour: '#6a9a5a', label: 3, pred: ['british-empire'] },
   { id: 'mozambique', name: 'Mozambique', ne: 'Mozambique', start: 1975, colour: '#5a9a7a', label: 3, pred: ['portuguese-empire'] },
   { id: 'zambia', name: 'Zambia', ne: 'Zambia', start: 1964, colour: '#8a9a4a', label: 2, pred: ['british-empire'] },
   { id: 'namibia', name: 'Namibia', ne: 'Namibia', start: 1990, colour: '#b0904a', label: 2 },
   { id: 'botswana', name: 'Botswana', ne: 'Botswana', start: 1966, colour: '#a8945a', label: 2 },
-  { id: 'somalia', name: 'Somalia', ne: 'Somalia', start: 1960, colour: '#5a8a9a', label: 2 },
+  {
+    id: 'somalia', name: 'Somalia', ne: 'Somalia', start: 1960, colour: '#5a8a9a', label: 2,
+    desc: 'Somalia, formed in 1960 from the union of British and Italian Somaliland. Shown within its internationally recognised borders, including Somaliland (the former British part), which has been de facto independent since 1991 but is unrecognised.',
+    snaps: [
+      snap(ce(2026).year, { naturalEarthCountries: ['Somalia', 'Somaliland'] }, 'medium', 'Somalia within its recognised borders — the union of the Natural Earth Somalia and Somaliland polygons.'),
+    ],
+  },
   { id: 'madagascar', name: 'Madagascar', ne: 'Madagascar', start: 1960, colour: '#5a9a8a', label: 3 },
   { id: 'central-african-republic', name: 'Central African Republic', ne: 'Central African Rep.', start: 1960, colour: '#8a8b5a', label: 2, alt: ['CAR'] },
 
@@ -188,7 +211,7 @@ const TABLE: MS[] = [
 ];
 
 export const MODERN_STATES_ENTITIES: HistoricalEntity[] = [
-  ...TABLE.map(build),
+  ...TABLE.map(buildModernState),
   // Singapore is absent from the 110m Natural Earth basemap (too small), so it
   // gets a small hand-drawn polygon rather than a country reference.
   {

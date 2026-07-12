@@ -99,6 +99,44 @@ const GREAT_BRITAIN: Ring = [
   [-5, 58.5], [-5.8, 57.3], [-4.6, 56.6], [-5.6, 55.4], [-4.8, 54.9], [-3.6, 54.6],
   [-4.2, 53.4], [-4.8, 52.9], [-4.3, 52.2], [-5.3, 51.6], [-4, 51.3], [-5.2, 50],
 ];
+/**
+ * The Kingdom of England, c. 950: to the Tweed in the north-east but without
+ * British-held Cumbria; Wales beyond the Dee–Wye border strip is separate.
+ */
+const ENGLAND_950: Ring = [
+  [-5.8, 49.95], [-5.1, 50.05], [-4.2, 50.35], [-3.5, 50.55], [-2.5, 50.5],
+  [-1.3, 50.6], [0.2, 50.75], [1.35, 51.1], [1.45, 51.4], [1.3, 51.8],
+  [1.75, 52.5], [1.7, 52.9], [0.9, 53.0], [0.35, 53.2], [0.0, 53.65],
+  [-0.1, 54.1], [-0.6, 54.5], [-1.2, 54.65], [-1.4, 55.0], [-2.0, 55.77],
+  [-2.5, 55.35], [-2.9, 55.15], [-2.6, 54.9], [-2.7, 54.4], [-3.05, 54.05],
+  [-3.0, 53.7], [-3.1, 53.4], [-3.2, 53.3], [-3.05, 52.9], [-3.15, 52.5],
+  [-3.0, 52.1], [-2.75, 51.9], [-2.65, 51.65], [-3.0, 51.3], [-3.8, 51.2],
+  [-4.55, 51.0], [-5.1, 50.55], [-5.55, 50.15], [-5.8, 49.95],
+];
+/** England after 1092: Cumbria annexed, the Tweed–Solway border in place. */
+const ENGLAND_1100: Ring = [
+  [-5.8, 49.95], [-5.1, 50.05], [-4.2, 50.35], [-3.5, 50.55], [-2.5, 50.5],
+  [-1.3, 50.6], [0.2, 50.75], [1.35, 51.1], [1.45, 51.4], [1.3, 51.8],
+  [1.75, 52.5], [1.7, 52.9], [0.9, 53.0], [0.35, 53.2], [0.0, 53.65],
+  [-0.1, 54.1], [-0.6, 54.5], [-1.2, 54.65], [-1.4, 55.0], [-2.0, 55.77],
+  [-2.5, 55.35], [-2.9, 55.15], [-3.05, 54.98], [-3.5, 54.9], [-3.65, 54.5],
+  [-3.3, 54.25], [-3.05, 54.05], [-3.0, 53.7], [-3.1, 53.4], [-3.2, 53.3],
+  [-3.05, 52.9], [-3.15, 52.5], [-3.0, 52.1], [-2.75, 51.9], [-2.65, 51.65],
+  [-3.0, 51.3], [-3.8, 51.2], [-4.55, 51.0], [-5.1, 50.55], [-5.55, 50.15],
+  [-5.8, 49.95],
+];
+/** England and Wales together (after the 1282–83 conquest of Gwynedd). */
+const ENGLAND_AND_WALES: Ring = [
+  [-5.8, 49.95], [-5.1, 50.05], [-4.2, 50.35], [-3.5, 50.55], [-2.5, 50.5],
+  [-1.3, 50.6], [0.2, 50.75], [1.35, 51.1], [1.45, 51.4], [1.3, 51.8],
+  [1.75, 52.5], [1.7, 52.9], [0.9, 53.0], [0.35, 53.2], [0.0, 53.65],
+  [-0.1, 54.1], [-0.6, 54.5], [-1.2, 54.65], [-1.4, 55.0], [-2.0, 55.77],
+  [-2.5, 55.35], [-2.9, 55.15], [-3.05, 54.98], [-3.5, 54.9], [-3.65, 54.5],
+  [-3.3, 54.25], [-3.05, 54.05], [-3.0, 53.7], [-3.1, 53.4], [-3.8, 53.35],
+  [-4.75, 53.4], [-4.75, 52.8], [-4.35, 52.55], [-4.15, 52.5], [-5.35, 51.9],
+  [-5.1, 51.6], [-4.35, 51.6], [-4.0, 51.55], [-3.2, 51.45], [-3.0, 51.3],
+  [-3.8, 51.2], [-4.55, 51.0], [-5.1, 50.55], [-5.55, 50.15], [-5.8, 49.95],
+];
 /** The island of Ireland, coarse. */
 const IRELAND_ISLAND: Ring = [
   [-10, 51.5], [-8, 51.6], [-6.2, 52.2], [-6, 53.3], [-6.1, 54.1], [-5.5, 54.5],
@@ -632,17 +670,19 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#9a4a5a',
     labelImportance: 4,
-    predecessorIds: ['wessex', 'mercia'],
+    predecessorIds: ['wessex', 'mercia', 'northumbria', 'danelaw'],
     successorIds: ['united-kingdom'],
     description:
-      'The Kingdom of England, forged in 927 when Æthelstan of Wessex united the Anglo-Saxon kingdoms. The Norman Conquest of 1066 changed its ruling dynasty rather than ending the kingdom. It later absorbed Wales and, through the 1707 Act of Union with Scotland, became part of the Kingdom of Great Britain.',
+      'The Kingdom of England, forged in 927 when Æthelstan of Wessex united the Anglo-Saxon kingdoms. The Norman Conquest of 1066 changed its ruling dynasty rather than ending the kingdom. Cumbria was annexed in 1092, Wales conquered in 1282–83 (and formally annexed 1536–43); the 1707 Act of Union with Scotland merged it into the Kingdom of Great Britain.',
     sources: [
       src('Stenton 1971, Anglo-Saxon England'),
       src('Bartlett 2000, England under the Norman and Angevin Kings'),
     ],
     snapshots: [
-      snap(ce(950).year, poly([[-5.5, 50], [-3, 51], [1, 51], [1.5, 52.5], [0, 53.5], [-1.5, 55], [-2.3, 55.6], [-3, 54.5], [-3, 52], [-5, 51.5], [-5.5, 50]]), 'high', 'The newly-unified English kingdom under the House of Wessex, c. 950.'),
-      snap(ce(1600).year, poly([[-5.7, 50], [-3, 51], [1.5, 51], [1.7, 52.8], [0, 53.8], [-2, 55], [-4, 55.5], [-5.3, 53.5], [-5.7, 51.5], [-5.7, 50]]), 'high', 'England and Wales, c. 1600.'),
+      snap(ce(950).year, poly(ENGLAND_950), 'medium', 'The newly-unified kingdom under the House of Wessex: to the Tweed in the north-east (York intermittently under Viking kings until 954), but Cumbria is British and Wales separate. Lothian passed to the Scots c. 973–1018.'),
+      snap(ce(1100).year, poly(ENGLAND_1100), 'high', 'Norman England: Cumbria and Carlisle annexed from the Scots (1092), the border nearing its lasting Tweed–Solway line. The Welsh marches are contested and not drawn.'),
+      snap(ce(1300).year, poly(ENGLAND_AND_WALES), 'high', 'England with Wales after Edward I’s conquest of Gwynedd (1282–83) and the Statute of Rhuddlan (1284). Berwick changed hands repeatedly in the Scottish wars.'),
+      snap(ce(1600).year, poly(ENGLAND_AND_WALES), 'high', 'England and Wales after the Acts of Union of 1536–43; the Scottish border long settled on the Tweed–Solway line.'),
     ],
   },
 
@@ -1005,15 +1045,15 @@ export const ENTITIES: HistoricalEntity[] = [
   {
     id: 'egypt-modern',
     name: 'Egypt',
-    alternativeNames: ['Arab Republic of Egypt'],
+    alternativeNames: ['Arab Republic of Egypt', 'Kingdom of Egypt'],
     category: 'modern-state',
-    start: ce(1953),
+    start: ce(1922),
     end: ce(2026),
     confidence: 'high',
     colour: '#c9a13f',
     labelImportance: 3,
     predecessorIds: ['ottoman-empire'],
-    description: 'The modern Arab Republic of Egypt. Contemporary boundary from Natural Earth.',
+    description: 'The modern Egyptian state, independent from Britain in 1922 (as a kingdom; a republic from 1953), within borders essentially unchanged since. Contemporary boundary from Natural Earth.',
     sources: [src('Natural Earth (public domain)')],
     snapshots: [snap(ce(2026).year, { naturalEarthCountry: 'Egypt' }, 'high', 'Contemporary borders (Natural Earth).')],
   },
