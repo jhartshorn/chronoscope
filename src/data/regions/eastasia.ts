@@ -1,0 +1,202 @@
+import type { HistoricalEntity } from '../../types';
+import { bce, ce, poly, snap, src } from '../helpers';
+
+/** Earlier Chinese dynasties, Korea, Japan and the Tibetan Empire. */
+export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
+  {
+    id: 'shang-dynasty',
+    name: 'Shang Dynasty',
+    category: 'kingdom',
+    start: bce(1600),
+    end: bce(1046),
+    confidence: 'medium',
+    colour: '#b0803a',
+    labelImportance: 3,
+    successorIds: ['zhou-dynasty'],
+    description:
+      'The earliest Chinese dynasty attested by contemporary writing (oracle-bone inscriptions), ruling the Yellow River heartland with a bronze-working, city-building civilisation.',
+    sources: [src('Bagley 1999, in The Cambridge History of Ancient China')],
+    snapshots: [
+      snap(bce(1200).year, poly([[112, 33], [117, 34], [120, 36], [118, 38], [113, 38], [110, 35], [112, 33]]), 'medium', 'Shang heartland on the middle-lower Yellow River, approximate.'),
+    ],
+  },
+  {
+    id: 'zhou-dynasty',
+    name: 'Zhou Dynasty',
+    category: 'kingdom',
+    start: bce(1046),
+    end: bce(256),
+    confidence: 'medium',
+    colour: '#c0903a',
+    labelImportance: 4,
+    predecessorIds: ['shang-dynasty'],
+    successorIds: ['qin-dynasty'],
+    description:
+      'The longest-lasting Chinese dynasty, which introduced the “Mandate of Heaven” and, in its long decline (the Spring and Autumn and Warring States periods), hosted the golden age of Chinese philosophy — Confucius, Laozi and the rest.',
+    sources: [src('Li Feng 2013, Early China: A Social and Cultural History')],
+    snapshots: [
+      snap(bce(800).year, poly([[106, 32], [114, 34], [120, 36], [119, 39], [112, 39], [107, 36], [105, 34], [106, 32]]), 'medium', 'Zhou realm and its many vassal states, approximate.'),
+    ],
+  },
+  {
+    id: 'qin-dynasty',
+    name: 'Qin Dynasty',
+    category: 'empire',
+    start: bce(221),
+    end: bce(206),
+    confidence: 'medium',
+    colour: '#a86a3a',
+    labelImportance: 4,
+    predecessorIds: ['zhou-dynasty'],
+    successorIds: ['han-china'],
+    description:
+      'The first unified Chinese empire, forged by Qin Shi Huang, who standardised script, weights, measures and coinage, linked the northern walls, and gave China its enduring imperial template — and its name.',
+    sources: [src('Lewis 2007, The Early Chinese Empires: Qin and Han')],
+    snapshots: [
+      snap(bce(210).year, poly([[104, 24], [110, 22], [118, 26], [122, 33], [121, 39], [113, 41], [106, 39], [103, 34], [102, 28], [104, 24]]), 'medium', 'The unified Qin empire, approximate.'),
+    ],
+  },
+  {
+    id: 'sui-dynasty',
+    name: 'Sui Dynasty',
+    category: 'empire',
+    start: ce(581),
+    end: ce(618),
+    confidence: 'medium',
+    colour: '#b8823a',
+    labelImportance: 3,
+    successorIds: ['tang-dynasty'],
+    description:
+      'A short but pivotal dynasty that reunified China after centuries of division and built the Grand Canal, laying the foundations for the Tang golden age.',
+    sources: [src('Wright 1978, The Sui Dynasty')],
+    snapshots: [
+      snap(ce(610).year, poly([[103, 22], [110, 21], [118, 24], [122, 33], [121, 40], [113, 41], [106, 39], [103, 34], [102, 28], [103, 22]]), 'medium', 'Reunified China under the Sui, approximate.'),
+    ],
+  },
+  {
+    id: 'yuan-dynasty',
+    name: 'Yuan Dynasty',
+    category: 'empire',
+    start: ce(1271),
+    end: ce(1368),
+    confidence: 'high',
+    colour: '#9a6db0',
+    labelImportance: 4,
+    predecessorIds: ['song-dynasty', 'mongol-empire'],
+    successorIds: ['ming-dynasty'],
+    description:
+      'The Mongol dynasty of China founded by Kublai Khan, ruling all of China and beyond as the south-eastern portion of the Mongol world, the era of Marco Polo’s reported travels.',
+    sources: [src('Rossabi 1988, Khubilai Khan: His Life and Times')],
+    snapshots: [
+      snap(ce(1300).year, poly([[85, 28], [95, 40], [105, 44], [120, 45], [126, 42], [122, 32], [116, 22], [108, 20], [98, 24], [88, 26], [85, 28]]), 'high', 'Yuan China including Mongolia and Tibet, approximate.'),
+    ],
+  },
+  {
+    id: 'three-kingdoms-korea',
+    name: 'Three Kingdoms of Korea',
+    alternativeNames: ['Goguryeo, Baekje and Silla'],
+    category: 'kingdom',
+    start: bce(57),
+    end: ce(668),
+    confidence: 'low',
+    colour: '#5a8a6a',
+    labelImportance: 3,
+    successorIds: ['goryeo'],
+    description:
+      'The era when the Korean peninsula and parts of Manchuria were divided among Goguryeo in the north, Baekje in the south-west and Silla in the south-east, until Silla’s unification of most of the peninsula in 668.',
+    sources: [src('Seth 2010, A History of Korea')],
+    snapshots: [
+      snap(ce(500).year, poly([[124, 34], [128, 33], [131, 36], [130, 40], [127, 43], [123, 41], [122, 38], [124, 34]]), 'low', 'The Korean peninsula and southern Manchuria, approximate.'),
+    ],
+  },
+  {
+    id: 'goryeo',
+    name: 'Goryeo',
+    category: 'kingdom',
+    start: ce(918),
+    end: ce(1392),
+    confidence: 'medium',
+    colour: '#5a9a7a',
+    labelImportance: 3,
+    predecessorIds: ['three-kingdoms-korea'],
+    successorIds: ['joseon'],
+    description:
+      'The medieval Korean dynasty that gave the country its Western name, celebrated for its celadon ceramics and the printing of the Buddhist Tripitaka Koreana, which survived Mongol domination.',
+    sources: [src('Seth 2010, A History of Korea')],
+    snapshots: [
+      snap(ce(1100).year, poly([[124.5, 34.5], [128, 34], [131, 37], [130, 41], [126, 43], [124, 40], [124.5, 34.5]]), 'medium', 'Goryeo on the Korean peninsula, approximate.'),
+    ],
+  },
+  {
+    id: 'joseon',
+    name: 'Joseon',
+    alternativeNames: ['Joseon Dynasty'],
+    category: 'kingdom',
+    start: ce(1392),
+    end: ce(1897),
+    confidence: 'high',
+    colour: '#4a8a7a',
+    labelImportance: 3,
+    predecessorIds: ['goryeo'],
+    successorIds: ['south-korea'],
+    description:
+      'The long-lived Korean dynasty that shaped much of modern Korean identity — the Hangul alphabet, Neo-Confucian statecraft and a distinctive court culture — until the late-19th-century transition to the Korean Empire.',
+    sources: [src('Seth 2010, A History of Korea')],
+    snapshots: [
+      snap(ce(1500).year, poly([[124.5, 34], [128.5, 34.5], [131, 37], [130.5, 41], [127, 43], [124.5, 40], [124.5, 34]]), 'high', 'Joseon Korea, approximate.'),
+    ],
+  },
+  {
+    id: 'yamato',
+    name: 'Yamato state',
+    alternativeNames: ['Yamato Japan'],
+    category: 'kingdom',
+    start: ce(250),
+    end: ce(710),
+    confidence: 'low',
+    colour: '#b0567a',
+    labelImportance: 3,
+    successorIds: ['japan'],
+    description:
+      'The early Japanese state centred on the Nara/Kansai region, which unified the archipelago’s chiefdoms under an imperial line, adopted Buddhism and Chinese-style institutions, and originated Japan’s enduring imperial dynasty.',
+    sources: [src('Brown (ed.) 1993, The Cambridge History of Japan, Vol. 1')],
+    snapshots: [
+      snap(ce(600).year, poly([[130, 31], [134, 33], [138, 35], [141, 38], [140, 36], [136, 34], [132, 31.5], [130, 31]]), 'low', 'Yamato Japan across the western and central archipelago, approximate.'),
+    ],
+  },
+  {
+    id: 'tokugawa',
+    name: 'Tokugawa Shogunate',
+    alternativeNames: ['Edo Japan', 'Tokugawa Bakufu'],
+    category: 'kingdom',
+    start: ce(1603),
+    end: ce(1868),
+    confidence: 'high',
+    colour: '#b0466a',
+    labelImportance: 4,
+    predecessorIds: ['yamato'],
+    successorIds: ['japan'],
+    description:
+      'The military government of the Tokugawa shoguns that unified Japan and imposed more than two centuries of peace and near-isolation (sakoku), ending with the Meiji Restoration of 1868.',
+    sources: [src('Totman 1993, Early Modern Japan')],
+    snapshots: [
+      snap(ce(1700).year, poly([[129.5, 31], [135, 33.5], [140, 36], [141.5, 41], [143, 44], [141, 39], [137, 35], [132, 32], [129.5, 31]]), 'high', 'Tokugawa Japan, approximate.'),
+    ],
+  },
+  {
+    id: 'tibetan-empire',
+    name: 'Tibetan Empire',
+    category: 'empire',
+    start: ce(618),
+    end: ce(842),
+    confidence: 'low',
+    colour: '#a87a5a',
+    labelImportance: 3,
+    description:
+      'A powerful Central Asian empire of the Tibetan Plateau that rivalled Tang China and the Abbasids, briefly seizing the Tang capital and controlling much of the Silk Road, and adopting Buddhism.',
+    sources: [src('Beckwith 1987, The Tibetan Empire in Central Asia')],
+    snapshots: [
+      snap(ce(790).year, poly([[79, 28], [86, 30], [94, 33], [101, 36], [100, 30], [95, 27], [88, 27], [82, 28], [79, 28]]), 'low', 'Tibetan Plateau and Silk Road reach at its height, approximate.'),
+    ],
+  },
+];
