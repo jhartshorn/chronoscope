@@ -908,6 +908,26 @@ describe('dataset integrity', () => {
     expect(covers('second-bulgarian-empire', ce(1371), 21.43, 42.0)).toBe(false);
   });
 
+  it('models the Kingdom of Croatia\'s Adriatic expansion under Petar Krešimir IV', () => {
+    expect(ENTITY_BY_ID.get('kingdom-of-croatia')!.snapshots.length).toBeGreaterThanOrEqual(3);
+    // Zagreb: core territory throughout.
+    expect(covers('kingdom-of-croatia', ce(925), 15.98, 45.82)).toBe(true);
+    expect(covers('kingdom-of-croatia', ce(1102), 15.98, 45.82)).toBe(true);
+    // Šibenik: outside the 925 founding core, gained on the Dalmatian coast by 1069.
+    expect(covers('kingdom-of-croatia', ce(925), 15.89, 43.73)).toBe(false);
+    expect(covers('kingdom-of-croatia', ce(1069), 15.89, 43.73)).toBe(true);
+  });
+
+  it('models the Kingdom of Bosnia\'s expansion to Hum/Herzegovina under Stephen II', () => {
+    expect(ENTITY_BY_ID.get('kingdom-of-bosnia')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // Sarajevo: core Bosna valley territory throughout.
+    expect(covers('kingdom-of-bosnia', ce(1154), 18.43, 43.87)).toBe(true);
+    expect(covers('kingdom-of-bosnia', ce(1391), 18.43, 43.87)).toBe(true);
+    // Stolac (Hum/Herzegovina): outside the 1154 founding core, annexed by 1322.
+    expect(covers('kingdom-of-bosnia', ce(1154), 17.96, 43.09)).toBe(false);
+    expect(covers('kingdom-of-bosnia', ce(1322), 17.96, 43.09)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
