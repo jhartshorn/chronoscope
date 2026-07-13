@@ -490,6 +490,20 @@ describe('dataset integrity', () => {
     expect(covers('maya', ce(1524), -89.88, 16.93)).toBe(true); // Tayasal
   });
 
+  it('models the Mali Empire\'s rise under Sundiata/Musa and its Songhai-driven decline', () => {
+    expect(ENTITY_BY_ID.get('mali-empire')!.snapshots.length).toBeGreaterThanOrEqual(4);
+    // Timbuktu and the Atlantic coast only from Mansa Musa's peak; both are
+    // lost again as Songhai eclipses Mali in the Niger Bend.
+    expect(covers('mali-empire', ce(1260), -3.0, 16.77)).toBe(false); // Timbuktu
+    expect(covers('mali-empire', ce(1337), -3.0, 16.77)).toBe(true);
+    expect(covers('mali-empire', ce(1450), -3.0, 16.77)).toBe(false);
+    expect(covers('mali-empire', ce(1337), -17.0, 14.5)).toBe(true); // Atlantic coast (Senegal)
+    expect(covers('mali-empire', ce(1500), -17.0, 14.5)).toBe(false);
+    // The Manden heartland (Niani) stays Malian right through the decline.
+    expect(covers('mali-empire', ce(1235), -9.05, 11.35)).toBe(true); // Niani
+    expect(covers('mali-empire', ce(1600), -9.05, 11.35)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

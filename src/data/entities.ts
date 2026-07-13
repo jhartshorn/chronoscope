@@ -740,13 +740,39 @@ export const ENTITIES: HistoricalEntity[] = [
     colour: '#c9a227',
     labelImportance: 4,
     description:
-      'A West African empire of the Sahel, enriched by trans-Saharan trade in gold and salt, famed for Mansa Musa and the scholarship of Timbuktu.',
+      'A West African empire of the Sahel, enriched by trans-Saharan trade in gold and salt, founded by Sundiata Keita’s victory over the Sosso and famed above all for Mansa Musa’s wealth and the scholarship of Timbuktu. Losses to the Tuareg and a rebellious Songhai from the 1430s reduced it, over two centuries, from the dominant power of West Africa to a rump state in its Manden heartland.',
     sources: [
       src('Levtzion 1973, Ancient Ghana and Mali'),
       src('Niane 1984, UNESCO General History of Africa, Vol. IV'),
+      src('Conrad 2010, Empires of Medieval West Africa: Ghana, Mali, and Songhay'),
     ],
     snapshots: [
-      snap(ce(1337).year, poly([[-16, 11], [-8, 10], [-2, 12], [2, 16], [-2, 18], [-8, 17], [-12, 16], [-16, 14], [-16, 11]]), 'medium', 'Approximate extent under Mansa Musa; Sahel borders are diffuse.'),
+      snap(ce(1235).year, poly([
+        [-10.0, 10.5], [-8.0, 10.3], [-7.5, 11.5], [-8.5, 12.5], [-10.0, 12.0], [-10.0, 10.5],
+      ]), 'medium', 'Sundiata Keita’s founding realm after defeating Sumanguru Kanté at Kirina: the Manden heartland on the upper Niger.'),
+      snap(ce(1260).year, poly([
+        [-12.0, 10.0], [-8.5, 9.8], [-6.0, 11.0], [-6.0, 14.0], [-8.0, 16.5], [-10.5, 16.0], [-12.5, 14.0], [-12.0, 10.0],
+      ]), 'medium', 'Sundiata and his successors absorb the old Ghana Empire’s former territory, including Kumbi Saleh.'),
+      snap(ce(1337).year, poly([
+        [-17.4, 14.7], [-16.0, 15.5], [-13.0, 17.0], [-10.0, 20.0], [-5.0, 22.5], [-2.0, 23.0],
+        [0.5, 20.0], [1.5, 16.5], [0.0, 14.5], [-2.0, 12.0], [-6.0, 10.0], [-9.0, 9.5], [-12.0, 9.8],
+        [-15.0, 11.5], [-17.4, 13.0], [-17.4, 14.7],
+      ]), 'medium', 'Mansa Musa’s reign at its height: the Atlantic coast, Timbuktu and Gao, and the Taghaza salt mines deep in the Sahara, on the eve of his legendary 1324 pilgrimage to Mecca.'),
+      snap(ce(1400).year, poly([
+        [-16.5, 13.5], [-15.0, 15.0], [-12.0, 16.5], [-9.0, 18.5], [-5.0, 20.5], [-2.5, 21.0],
+        [0.0, 18.0], [1.0, 15.5], [-0.5, 13.5], [-3.0, 11.0], [-6.5, 9.7], [-9.5, 9.5], [-12.5, 10.0],
+        [-15.5, 12.0], [-16.5, 13.5],
+      ]), 'medium', 'Succession disputes after Mansa Musa’s death (1337) and Mossi raids slowly loosen the empire’s grip on its fringes.'),
+      snap(ce(1450).year, poly([
+        [-14.5, 12.5], [-13.0, 14.0], [-10.5, 15.5], [-8.0, 16.0], [-6.5, 15.0],
+        [-6.0, 12.5], [-7.0, 10.0], [-9.5, 9.3], [-12.0, 9.8], [-14.5, 11.0], [-14.5, 12.5],
+      ]), 'medium', 'The Tuareg seize Timbuktu (1433) and a resurgent Songhai breaks away in the east: Mali loses the whole Niger Bend.'),
+      snap(ce(1500).year, poly([
+        [-12.5, 10.0], [-11.5, 12.0], [-9.5, 13.0], [-8.0, 12.0], [-7.5, 10.5], [-8.5, 9.3], [-10.5, 9.0], [-12.5, 10.0],
+      ]), 'high', 'Sunni Ali’s Songhai Empire (from 1464) eclipses Mali entirely in the Niger valley, leaving only the western Manden lands.'),
+      snap(ce(1600).year, poly([
+        [-11.0, 10.2], [-10.0, 11.5], [-8.5, 11.8], [-8.0, 10.5], [-9.0, 9.5], [-10.5, 9.5], [-11.0, 10.2],
+      ]), 'high', 'A minor rump kingdom in the Manden heartland, its wider empire long gone, in the century before its final dissolution.'),
     ],
   },
   // ---------------------------------------------------- medieval Europe
