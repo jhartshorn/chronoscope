@@ -795,6 +795,20 @@ describe('dataset integrity', () => {
     expect(covers('habsburg-monarchy', ce(1908), 18.41, 43.86)).toBe(true);
   });
 
+  it('fills Sri Lanka\'s 800-year gap with Polonnaruwa and Kandy', () => {
+    // Polonnaruwa: the north (Jaffna area) only after the 1070 reunification,
+    // lost again after Kalinga Magha's 1215 invasion.
+    expect(covers('polonnaruwa-kingdom', ce(1055), 80.0, 9.5)).toBe(false); // Jaffna area
+    expect(covers('polonnaruwa-kingdom', ce(1070), 80.0, 9.5)).toBe(true);
+    expect(covers('polonnaruwa-kingdom', ce(1215), 80.0, 9.5)).toBe(false);
+    // Kandy: the coastal lowlands (Colombo-ish) only in its earliest, widest
+    // snapshot, lost once Dutch control of the coast confines it inland.
+    expect(covers('kingdom-of-kandy', ce(1592), 81.4, 7.9)).toBe(true); // near east coast
+    expect(covers('kingdom-of-kandy', ce(1660), 81.5, 8.3)).toBe(false); // further out, now Dutch
+    // Kandy city itself is held throughout.
+    expect(covers('kingdom-of-kandy', ce(1803), 80.63, 7.29)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
