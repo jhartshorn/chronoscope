@@ -111,7 +111,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'A Mesoamerican culture centred on Tula in central Mexico, remembered by the later Aztecs as a legendary golden age of artisans and warriors whose legacy they claimed.',
     sources: [src('Healan 2012, in Journal of Archaeological Research 20')],
     snapshots: [
-      snap(ce(1050).year, poly([[-100, 19.5], [-98.5, 19.5], [-98.5, 21], [-100, 21], [-100, 19.5]]), 'low', 'Central Mexican highlands around Tula, approximate.'),
+      snap(ce(900).year, poly([[-99.4, 19.8], [-99.0, 19.8], [-99.0, 20.2], [-99.4, 20.2], [-99.4, 19.8]]), 'low', 'Early founding settlement at Tula.'),
+      snap(ce(1050).year, poly([[-100, 19.5], [-98.5, 19.5], [-98.5, 21], [-100, 21], [-100, 19.5]]), 'low', 'Peak reach across the central Mexican highlands around Tula, approximate.'),
+      snap(ce(1150).year, poly([[-99.8, 19.6], [-98.7, 19.6], [-98.7, 20.6], [-99.8, 20.6], [-99.8, 19.6]]), 'medium', 'Contracting amid civil conflict and drought shortly before Tula’s sack (c. 1168).'),
     ],
   },
   {
@@ -127,7 +129,10 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'A Mesoamerican people of the Oaxaca highlands, renowned metalworkers and manuscript painters whose codices are among the few surviving pre-Columbian books; they later occupied Monte Albán.',
     sources: [src('Pohl 2003, in The Postclassic Mesoamerican World')],
     snapshots: [
-      snap(ce(1300).year, poly([[-98, 16], [-96.5, 16.2], [-96.5, 18], [-98, 18], [-98.2, 17], [-98, 16]]), 'low', 'Mixteca of western Oaxaca, approximate.'),
+      snap(ce(900).year, poly([[-97.7, 17.0], [-97.2, 17.0], [-97.2, 17.5], [-97.7, 17.5], [-97.7, 17.0]]), 'low', 'Early Mixteca Alta core around Tilantongo.'),
+      snap(ce(1100).year, poly([[-98.3, 15.8], [-97.5, 16.0], [-96.3, 16.0], [-96.3, 17.8], [-98.0, 18.0], [-98.3, 15.8]]), 'medium', 'Eight Deer Jaguar Claw’s conquests (r. c. 1063–1115) unite much of the Mixteca and reach the Pacific coast at Tututepec.'),
+      snap(ce(1300).year, poly([[-98, 16], [-96.5, 16.2], [-96.5, 18], [-98, 18], [-98.2, 17], [-98, 16]]), 'low', 'Stable Postclassic extent across the Mixteca of western Oaxaca, approximate.'),
+      snap(ce(1461).year, poly([[-98.2, 16.5], [-97.6, 16.6], [-97.6, 17.9], [-98.2, 17.8], [-98.2, 16.5]]), 'medium', 'Aztec conquests (Coixtlahuaca falls in 1458) strip the eastern Mixteca.'),
     ],
   },
   {

@@ -578,6 +578,26 @@ describe('dataset integrity', () => {
     expect(covers('tiwanaku', ce(1000), -68.8, -22.5)).toBe(false);
   });
 
+  it('raises resolution on the Mesoamerican precursor civilisations', () => {
+    // Teotihuacan: the abrupt 6th-century collapse shrinks it back to a
+    // sliver after its 450 CE peak.
+    expect(ENTITY_BY_ID.get('teotihuacan')!.snapshots.length).toBeGreaterThanOrEqual(4);
+    expect(covers('teotihuacan', ce(450), -98.85, 19.7)).toBe(true); // Teotihuacan pyramids
+    expect(covers('teotihuacan', ce(600), -99.3, 19.95)).toBe(false); // outer valley, now lost
+
+    // Mixtec: Tututepec (Pacific coast) only from Eight Deer's c. 1100
+    // conquests; Coixtlahuaca (east) lost again after the 1458 Aztec conquest.
+    expect(covers('mixtec', ce(900), -97.6, 16.15)).toBe(false); // Tututepec
+    expect(covers('mixtec', ce(1100), -97.6, 16.15)).toBe(true);
+    expect(covers('mixtec', ce(1300), -97.2, 17.7)).toBe(true); // Coixtlahuaca area
+    expect(covers('mixtec', ce(1461), -97.2, 17.7)).toBe(false);
+
+    // Zapotec: the Tehuantepec isthmus only from the 1487 Cosijoeza-era
+    // resistance to the Aztecs.
+    expect(covers('zapotec', ce(1200), -94.8, 16.3)).toBe(false); // Tehuantepec
+    expect(covers('zapotec', ce(1487), -94.8, 16.3)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

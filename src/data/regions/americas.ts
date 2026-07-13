@@ -16,7 +16,9 @@ export const AMERICAS_ENTITIES: HistoricalEntity[] = [
       'The earliest major Mesoamerican civilisation, of the Gulf coast lowlands, known for colossal stone heads and an influence on later Maya and Aztec cultures often described as “mother culture”.',
     sources: [src('Diehl 2004, The Olmecs: America’s First Civilization')],
     snapshots: [
-      snap(bce(900).year, poly([[-95, 17], [-93, 17.5], [-94, 19], [-96, 18.5], [-95, 17]]), 'low', 'Gulf-coast Olmec heartland, approximate.'),
+      snap(bce(1200).year, poly([[-95.2, 17.4], [-94.3, 17.5], [-94.2, 18.1], [-95.1, 18.0], [-95.2, 17.4]]), 'low', 'Early San Lorenzo phase, in the western Gulf lowlands.'),
+      snap(bce(900).year, poly([[-95, 17], [-93, 17.5], [-94, 19], [-96, 18.5], [-95, 17]]), 'low', 'La Venta phase peak across the Gulf-coast heartland, approximate.'),
+      snap(bce(500).year, poly([[-95.5, 18.0], [-94.5, 18.2], [-94.3, 18.8], [-95.3, 18.7], [-95.5, 18.0]]), 'low', 'The later Tres Zapotes phase, contracted eastward before final decline.'),
     ],
   },
   {
@@ -32,7 +34,10 @@ export const AMERICAS_ENTITIES: HistoricalEntity[] = [
       'An urban civilisation and territorial polity centred on one of the largest cities of the ancient world, in the Valley of Mexico, whose pyramids and planned grid dominated Mesoamerica for centuries. Its rulers and language remain uncertain.',
     sources: [src('Cowgill 2015, Ancient Teotihuacan')],
     snapshots: [
-      snap(ce(450).year, poly([[-99.5, 19], [-98, 19], [-98, 20.3], [-99.6, 20], [-99.5, 19]]), 'low', 'Teotihuacan and its core valley, approximate.'),
+      snap(bce(100).year, poly([[-99.0, 19.55], [-98.7, 19.55], [-98.7, 19.85], [-99.0, 19.85], [-99.0, 19.55]]), 'low', 'Early founding settlement.'),
+      snap(ce(200).year, poly([[-99.3, 19.3], [-98.3, 19.3], [-98.3, 20.0], [-99.4, 20.0], [-99.3, 19.3]]), 'low', 'Rapid urban growth across the Teotihuacan valley.'),
+      snap(ce(450).year, poly([[-99.5, 19], [-98, 19], [-98, 20.3], [-99.6, 20], [-99.5, 19]]), 'low', 'Peak population (perhaps 125,000) and territorial control of the Valley of Mexico, approximate.'),
+      snap(ce(600).year, poly([[-99.0, 19.6], [-98.7, 19.6], [-98.7, 19.9], [-99.0, 19.9], [-99.0, 19.6]]), 'medium', 'The monumental core is burned and the city abruptly depopulates, c. 550–650 — one of Mesoamerica’s great unsolved collapses.'),
     ],
   },
   {
@@ -49,7 +54,12 @@ export const AMERICAS_ENTITIES: HistoricalEntity[] = [
       'A Mesoamerican civilisation of the Oaxaca valleys, centred on the hilltop city of Monte Albán, with one of the earliest writing systems in the Americas.',
     sources: [src('Marcus & Flannery 1996, Zapotec Civilization')],
     snapshots: [
-      snap(ce(500).year, poly([[-97, 16], [-95, 16], [-95, 18], [-97, 17.5], [-97, 16]]), 'low', 'Oaxaca valleys, approximate.'),
+      snap(bce(500).year, poly([[-96.9, 16.8], [-96.6, 16.8], [-96.5, 17.2], [-96.9, 17.2], [-96.9, 16.8]]), 'low', 'Founding of the hilltop capital, Monte Albán.'),
+      snap(bce(100).year, poly([[-97.2, 16.3], [-96.2, 16.3], [-96.2, 17.3], [-97.2, 17.3], [-97.2, 16.3]]), 'low', 'Growth across the wider Oaxaca valley system.'),
+      snap(ce(500).year, poly([[-97, 16], [-95, 16], [-95, 18], [-97, 17.5], [-97, 16]]), 'low', 'Classic-period peak across the Oaxaca valleys, approximate.'),
+      snap(ce(800).year, poly([[-97, 16.2], [-95.5, 16.2], [-95.5, 17.8], [-97, 17.5], [-97, 16.2]]), 'low', 'Monte Albán is abandoned as a political capital (c. 750–800); power devolves toward smaller centres.'),
+      snap(ce(1200).year, poly([[-96.9, 16.5], [-96.0, 16.5], [-96.0, 17.3], [-96.9, 17.3], [-96.9, 16.5]]), 'low', 'Fragmented into competing city-states (Zaachila, Mitla, Yagul) in the Oaxaca valley core.'),
+      snap(ce(1487).year, poly([[-97.0, 16.0], [-95.5, 16.0], [-94.7, 16.3], [-95.0, 17.5], [-96.5, 17.8], [-97.0, 17.0], [-97.0, 16.0]]), 'medium', 'Zapotec lords under Cosijoeza extend to the Tehuantepec isthmus while resisting Aztec expansion, notably at the siege of Guiengola.'),
     ],
   },
   {
