@@ -128,10 +128,14 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     labelImportance: 3,
     successorIds: ['habsburg-monarchy'],
     description:
-      'A major Christian kingdom of the Carpathian Basin from the coronation of Stephen I, later joined to the Habsburg lands and, after 1867, a co-equal partner in Austria-Hungary.',
+      'A major Christian kingdom of the Carpathian Basin from the coronation of Stephen I in 1000. The catastrophic 1526 defeat at Mohács against the Ottomans split it three ways — Habsburg-ruled "Royal Hungary" in the north and west, direct Ottoman rule in the centre, and the Ottoman vassal Principality of Transylvania in the east — until the Habsburg reconquest completed by the 1699 Treaty of Karlowitz reunited the kingdom, which later became a co-equal partner in Austria-Hungary after the 1867 Ausgleich.',
     sources: [src('Engel 2001, The Realm of St Stephen: A History of Medieval Hungary')],
     snapshots: [
-      snap(ce(1200).year, poly([[16, 46], [19, 48.5], [22, 49], [26, 47.5], [23, 45], [18, 45], [16, 46]]), 'medium', 'Medieval Kingdom of Hungary in the Carpathian Basin, approximate.'),
+      snap(ce(1000).year, poly([[16.5, 46.2], [18.5, 48], [21, 48.3], [24, 47], [21.5, 45.3], [17.5, 45.3], [16.5, 46.2]]), 'medium', 'Stephen I’s founding coronation realm in the Carpathian Basin, approximate.'),
+      snap(ce(1200).year, poly([[16, 46], [19, 48.5], [22, 49], [26, 47.5], [23, 45], [18, 45], [16, 46]]), 'medium', 'Stable medieval extent across the Carpathian Basin, approximate.'),
+      snap(ce(1490).year, poly([[14.5, 46], [15.5, 48.7], [19, 49.5], [22, 49.3], [26, 48], [23, 45], [18, 44.7], [14.5, 46]]), 'medium', 'Matthias Corvinus’s reign at its peak, briefly holding Vienna and parts of Austria and Moravia (1485–90).'),
+      snap(ce(1541).year, poly([[14.5, 46], [15.5, 48.7], [18.5, 49.3], [19, 48.5], [17.5, 47], [15.5, 46], [14.5, 46]]), 'high', 'Buda falls to the Ottomans (1541): "Royal Hungary" survives only as a Habsburg-ruled crescent in the north-west, while the centre comes under direct Ottoman rule and Transylvania becomes an Ottoman vassal.'),
+      snap(ce(1699).year, poly([[14.5, 46], [15.5, 48.7], [19, 49.5], [22, 49.3], [26, 48], [23, 45], [18, 44.7], [14.5, 46]]), 'high', 'The Treaty of Karlowitz completes the Habsburg reconquest, reuniting Hungary under one crown.'),
     ],
   },
   {

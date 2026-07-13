@@ -754,6 +754,17 @@ describe('dataset integrity', () => {
     expect(covers('golden-horde', ce(1502), 48.04, 46.35)).toBe(true);
   });
 
+  it('raises resolution on the Kingdom of Hungary through Mohács', () => {
+    // Buda (the centre) is lost to direct Ottoman rule after 1541 but
+    // regained once the Habsburgs complete their reconquest by 1699.
+    expect(covers('kingdom-of-hungary', ce(1490), 19.04, 47.5)).toBe(true); // Buda
+    expect(covers('kingdom-of-hungary', ce(1541), 19.04, 47.5)).toBe(false);
+    expect(covers('kingdom-of-hungary', ce(1699), 19.04, 47.5)).toBe(true);
+    // Pressburg (Royal Hungary's rump capital) is held throughout, even the
+    // narrow 1541 crescent.
+    expect(covers('kingdom-of-hungary', ce(1541), 17.11, 48.15)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
