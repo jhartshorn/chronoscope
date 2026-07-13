@@ -896,6 +896,18 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-prussia', ce(1866), 9.73, 52.37)).toBe(true);
   });
 
+  it('traces the Second Bulgarian Empire\'s rise to Klokotnitsa and contraction to Ottoman vassalage', () => {
+    expect(ENTITY_BY_ID.get('second-bulgarian-empire')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // Tarnovo, the capital, is core territory throughout.
+    expect(covers('second-bulgarian-empire', ce(1185), 25.63, 43.08)).toBe(true);
+    expect(covers('second-bulgarian-empire', ce(1230), 25.63, 43.08)).toBe(true);
+    expect(covers('second-bulgarian-empire', ce(1371), 25.63, 43.08)).toBe(true);
+    // Skopje: outside the founding core, briefly held at Ivan Asen II's 1230 peak, lost again by the rump 1371 state.
+    expect(covers('second-bulgarian-empire', ce(1185), 21.43, 42.0)).toBe(false);
+    expect(covers('second-bulgarian-empire', ce(1230), 21.43, 42.0)).toBe(true);
+    expect(covers('second-bulgarian-empire', ce(1371), 21.43, 42.0)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

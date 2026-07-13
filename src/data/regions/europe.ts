@@ -118,6 +118,33 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     ],
   },
   {
+    id: 'second-bulgarian-empire',
+    name: 'Second Bulgarian Empire',
+    alternativeNames: ['Tarnovo Tsardom'],
+    category: 'empire',
+    start: ce(1185),
+    end: ce(1396),
+    confidence: 'low',
+    colour: '#8a5a7a',
+    labelImportance: 2,
+    predecessorIds: ['first-bulgarian-empire'],
+    successorIds: ['ottoman-empire'],
+    description:
+      'Bulgarian statehood restored by the Asen brothers\' 1185 uprising against Byzantine rule, centred on the new capital Tarnovo. Kaloyan crushed the Latin Empire at Adrianople (1205), and Ivan Asen II\'s reign (1218–41) brought the empire to its greatest extent, from the Adriatic to the Black Sea. Boyar factionalism, Mongol overlordship from the 1240s, and Byzantine and Serbian resurgence steadily eroded it — the 1330 defeat at Velbazhd to Serbia was a turning point — and by the 1371 Battle of Maritsa the rump Tarnovo Tsardom, with the already-independent Vidin and Dobruja splitting away, was an Ottoman vassal. The Ottomans took Tarnovo in 1393 and Vidin in 1396, ending medieval Bulgarian statehood until 1878.',
+    sources: [
+      src('Fine 1994, The Late Medieval Balkans'),
+      src('Bakalov & Kumanov (eds.) 2003, Electronic Encyclopedia of Bulgarian History'),
+    ],
+    snapshots: [
+      snap(ce(1185).year, poly([[23, 43.6], [25.5, 44], [27, 43.6], [26.5, 42.7], [24, 42.6], [22.8, 43.1], [23, 43.6]]), 'low', 'The Asen brothers\' uprising (1185) restores Bulgarian rule north of the Balkan Mountains, around the new capital Tarnovo.'),
+      snap(ce(1205).year, poly([[22.5, 43.8], [25.5, 44.3], [27.5, 43.6], [27, 41.3], [24.3, 41], [22, 42], [22.5, 43.8]]), 'low', 'Kaloyan annihilates the Latin Empire\'s army at Adrianople (1205), extending Bulgarian rule deep into Thrace and Macedonia.'),
+      snap(ce(1230).year, poly([[19, 43], [22, 45], [26, 44.6], [28, 43.5], [27.3, 41.2], [24, 39.8], [20.8, 39.5], [19, 41], [19, 43]]), 'low', 'Peak extent under Ivan Asen II after the 1230 Battle of Klokotnitsa: from the Adriatic to the Black Sea and the Danube to the Aegean, approximate.'),
+      snap(ce(1257).year, poly([[21.5, 43.7], [24, 44.7], [26.5, 44.3], [27.7, 43], [26.8, 41.5], [24, 41.2], [21.8, 42], [21.5, 43.7]]), 'low', 'After Ivan Asen II\'s death (1241): a resurgent Empire of Nicaea reclaims Thrace and Macedonia, and Mongol raids from the 1240s force tribute to the Golden Horde.'),
+      snap(ce(1330).year, poly([[22.5, 43.9], [24.5, 44.6], [26.5, 44.2], [27.5, 42.8], [26, 41.8], [23.7, 41.8], [22.5, 42.8], [22.5, 43.9]]), 'medium', 'Defeat by Serbia at Velbazhd (1330) marks Bulgaria\'s eclipse as the leading Balkan power.'),
+      snap(ce(1371).year, poly([[23, 43.8], [24.7, 44.2], [26.2, 43.6], [26, 42.4], [24, 42.2], [23, 43], [23, 43.8]]), 'high', 'After the Ottoman victory at the Battle of Maritsa (1371): the rump Tarnovo Tsardom, an Ottoman vassal, with Vidin and Dobruja already split off as separate principalities (not shown).'),
+    ],
+  },
+  {
     id: 'kingdom-of-hungary',
     name: 'Kingdom of Hungary',
     category: 'kingdom',
