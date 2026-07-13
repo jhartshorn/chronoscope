@@ -79,10 +79,13 @@ export const AMERICAS_ENTITIES: HistoricalEntity[] = [
     colour: '#b08a4a',
     labelImportance: 2,
     description:
-      'A major Andean state around Lake Titicaca, whose monumental capital and agricultural terracing sustained a wide highland sphere of influence long before the Inca.',
+      'A major Andean state around Lake Titicaca, whose monumental capital and agricultural terracing sustained a wide highland sphere of influence long before the Inca. Colonies reached the Pacific coast and the Atacama and Cochabamba lowlands at its height, before a prolonged drought is thought to have driven its collapse around 1000.',
     sources: [src('Janusek 2008, Ancient Tiwanaku')],
     snapshots: [
-      snap(ce(800).year, poly([[-70, -15], [-67, -15], [-66, -18], [-69, -18], [-70, -15]]), 'low', 'Lake Titicaca basin heartland, approximate.'),
+      snap(ce(300).year, poly([[-69.3, -15.8], [-68.5, -15.8], [-68.4, -16.3], [-69.2, -16.3], [-69.3, -15.8]]), 'low', 'Early core on the southern shore of Lake Titicaca.'),
+      snap(ce(600).year, poly([[-70, -15], [-67, -15], [-66, -18], [-69, -18], [-70, -15]]), 'low', 'Growing regional centre across the wider Titicaca basin, approximate.'),
+      snap(ce(900).year, poly([[-71.0, -16.5], [-69.5, -14.5], [-67.0, -14.8], [-65.5, -17.0], [-66.5, -19.5], [-68.5, -23.0], [-70.0, -21.0], [-70.5, -18.0], [-71.0, -16.5]]), 'low', 'Peak reach: colonies extend to the Pacific coast (Moquegua), the Cochabamba lowlands and San Pedro de Atacama.'),
+      snap(ce(1000).year, poly([[-70, -15], [-67, -15], [-66, -18], [-69, -18], [-70, -15]]), 'low', 'Contracted back to the Titicaca basin heartland as prolonged drought drives collapse and abandonment.'),
     ],
   },
   {

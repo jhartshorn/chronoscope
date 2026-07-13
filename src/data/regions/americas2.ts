@@ -17,7 +17,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'The oldest known centre of civilisation in the Americas, on the central coast of Peru, contemporary with early Egypt and Sumer, with monumental platform mounds and sunken plazas but no pottery or (known) writing.',
     sources: [src('Shady & Leyva 2003, La Ciudad Sagrada de Caral-Supe')],
     snapshots: [
-      snap(bce(2600).year, poly([[-78, -10], [-77, -10.2], [-77, -11.5], [-78, -11.3], [-78, -10]]), 'low', 'Norte Chico region of the central Peruvian coast, approximate.'),
+      snap(bce(3200).year, poly([[-77.8, -10.2], [-77.2, -10.3], [-77.2, -10.9], [-77.8, -10.8], [-77.8, -10.2]]), 'low', 'Early rise around the city of Caral itself, in the Supe valley.'),
+      snap(bce(2600).year, poly([[-78, -10], [-77, -10.2], [-77, -11.5], [-78, -11.3], [-78, -10]]), 'low', 'Peak spread across the Norte Chico valleys of the central Peruvian coast, approximate.'),
+      snap(bce(2000).year, poly([[-78, -10.5], [-77.3, -10.6], [-77.3, -11.2], [-78, -11.1], [-78, -10.5]]), 'low', 'Contracting in the centuries before the region’s cities were abandoned.'),
     ],
   },
   {
@@ -33,7 +35,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'A culture of the north coast of Peru known for its adobe pyramids (huacas), sophisticated irrigation and vivid ceramics depicting daily and ritual life.',
     sources: [src('Quilter 2002, in Journal of World Prehistory 16')],
     snapshots: [
-      snap(ce(500).year, poly([[-80, -6], [-78.5, -6.2], [-78.5, -9], [-80, -8.8], [-80.5, -7.5], [-80, -6]]), 'low', 'North coast of Peru, approximate.'),
+      snap(ce(200).year, poly([[-79.3, -7.9], [-78.9, -7.9], [-78.85, -8.4], [-79.25, -8.4], [-79.3, -7.9]]), 'low', 'Early rise in the Moche valley itself, near modern Trujillo.'),
+      snap(ce(500).year, poly([[-80, -6], [-78.5, -6.2], [-78.5, -9], [-80, -8.8], [-80.5, -7.5], [-80, -6]]), 'low', 'Peak spread along the north coast of Peru, approximate.'),
+      snap(ce(750).year, poly([[-79.5, -7.0], [-78.6, -7.2], [-78.6, -9.0], [-79.6, -8.8], [-79.9, -7.8], [-79.5, -7.0]]), 'low', 'Late-period regionalisation into separate valley lordships, shortly before Moche traditions give way to Sicán and Chimú.'),
     ],
   },
   {
@@ -49,7 +53,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'A culture of the arid south coast of Peru, famous for the enormous ground drawings (the Nazca Lines) and for its fine polychrome pottery and underground aqueducts.',
     sources: [src('Silverman & Proulx 2002, The Nasca')],
     snapshots: [
-      snap(ce(300).year, poly([[-75.5, -13.5], [-74.5, -13.7], [-74.5, -15], [-75.8, -15], [-75.8, -14], [-75.5, -13.5]]), 'low', 'South coast of Peru, approximate.'),
+      snap(bce(100).year, poly([[-75.3, -13.8], [-74.8, -13.9], [-74.8, -14.5], [-75.3, -14.5], [-75.3, -13.8]]), 'low', 'Early core in the Nazca valley itself.'),
+      snap(ce(300).year, poly([[-75.5, -13.5], [-74.5, -13.7], [-74.5, -15], [-75.8, -15], [-75.8, -14], [-75.5, -13.5]]), 'low', 'Peak spread across the south coast of Peru, approximate.'),
+      snap(ce(600).year, poly([[-75.3, -13.7], [-74.6, -13.8], [-74.6, -14.6], [-75.4, -14.7], [-75.3, -13.7]]), 'low', 'Contracting as the Wari expand into the region.'),
     ],
   },
   {
@@ -66,7 +72,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'An Andean empire of the Peruvian highlands, often seen as a forerunner of Inca statecraft, which spread a network of administrative centres and roads across much of Peru.',
     sources: [src('Schreiber 1992, Wari Imperialism in Middle Horizon Peru')],
     snapshots: [
-      snap(ce(800).year, poly([[-79, -8], [-75, -10], [-72, -14], [-74, -16], [-77, -14], [-79, -10], [-79, -8]]), 'low', 'Central Peruvian highlands and coast, approximate.'),
+      snap(ce(600).year, poly([[-74.6, -12.7], [-74.0, -12.7], [-73.9, -13.4], [-74.5, -13.5], [-74.6, -12.7]]), 'low', 'Founding core around the capital, near modern Ayacucho.'),
+      snap(ce(800).year, poly([[-79, -8], [-75, -10], [-72, -14], [-74, -16], [-77, -14], [-79, -10], [-79, -8]]), 'low', 'Peak reach across the central Peruvian highlands and coast, approximate.'),
+      snap(ce(950).year, poly([[-77.5, -9.5], [-75, -11], [-73.5, -14], [-75, -15], [-77, -13], [-77.5, -9.5]]), 'low', 'Contracting back toward the highland core as the empire fragments before its collapse.'),
     ],
   },
   {
@@ -84,7 +92,9 @@ export const AMERICAS2_ENTITIES: HistoricalEntity[] = [
       'The largest kingdom of the Andes before the Inca, on the north coast of Peru, ruled from the vast adobe city of Chan Chan until conquered and absorbed by the Inca.',
     sources: [src('Moore & Mackey 2008, in The Handbook of South American Archaeology')],
     snapshots: [
-      snap(ce(1400).year, poly([[-81, -5], [-78.5, -6], [-78, -9], [-79.5, -10], [-81, -8], [-81.5, -6], [-81, -5]]), 'low', 'North coast of Peru, approximate.'),
+      snap(ce(900).year, poly([[-79.3, -7.9], [-78.9, -7.9], [-78.85, -8.4], [-79.25, -8.4], [-79.3, -7.9]]), 'low', 'Founding core around Chan Chan, in the Moche valley.'),
+      snap(ce(1200).year, poly([[-80.0, -6.5], [-78.7, -7.0], [-78.5, -8.5], [-79.5, -9.3], [-80.3, -8.0], [-80.0, -6.5]]), 'low', 'Expansion along the coast in both directions from the capital.'),
+      snap(ce(1400).year, poly([[-81, -5], [-78.5, -6], [-78, -9], [-79.5, -10], [-81, -8], [-81.5, -6], [-81, -5]]), 'medium', 'Greatest extent along the north coast of Peru, shortly before Inca conquest (1470).'),
     ],
   },
   {

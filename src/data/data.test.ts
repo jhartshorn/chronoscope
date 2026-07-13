@@ -559,6 +559,25 @@ describe('dataset integrity', () => {
     expect(covers('zulu', ce(1828), 29.6, -29.0)).toBe(true);
   });
 
+  it('raises resolution on the Andean precursor civilisations', () => {
+    // Wari: the far south (near Nazca/Arequipa) only reached at the 800 CE
+    // peak, not the founding core or the post-collapse contraction.
+    expect(covers('wari', ce(600), -74.2, -15.0)).toBe(false);
+    expect(covers('wari', ce(800), -74.2, -15.0)).toBe(true);
+    expect(covers('wari', ce(950), -74.2, -15.0)).toBe(false);
+
+    // Chimú: Chan Chan (the capital) always covered; the wider coastal
+    // reach only from the 1200 expansion onward.
+    expect(covers('chimu', ce(900), -78.95, -7.95)).toBe(true); // Chan Chan itself
+    expect(covers('chimu', ce(900), -79.8, -6.7)).toBe(false); // northern reach
+    expect(covers('chimu', ce(1200), -79.8, -6.7)).toBe(true);
+
+    // Tiwanaku: San Pedro de Atacama (Chile) only at the 900 CE peak.
+    expect(covers('tiwanaku', ce(600), -68.8, -22.5)).toBe(false);
+    expect(covers('tiwanaku', ce(900), -68.8, -22.5)).toBe(true);
+    expect(covers('tiwanaku', ce(1000), -68.8, -22.5)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
