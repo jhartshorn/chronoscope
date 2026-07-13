@@ -388,6 +388,24 @@ describe('dataset integrity', () => {
     expect(covers('tsardom-of-russia', ce(1721), 24.1, 56.9)).toBe(true);
   });
 
+  it('models Poland and Lithuania before their 1569 union', () => {
+    // Poland: Kraków core throughout; Lwów only after Casimir the Great's
+    // 1349 conquest; Danzig only after the 1466 Peace of Thorn.
+    expect(covers('kingdom-of-poland', ce(966), 19.94, 50.06)).toBe(false); // Kraków, pre-1025
+    expect(covers('kingdom-of-poland', ce(1025), 19.94, 50.06)).toBe(true);
+    expect(covers('kingdom-of-poland', ce(1025), 24.03, 49.84)).toBe(false); // Lwów
+    expect(covers('kingdom-of-poland', ce(1370), 24.03, 49.84)).toBe(true);
+    expect(covers('kingdom-of-poland', ce(1370), 18.65, 54.35)).toBe(false); // Danzig
+    expect(covers('kingdom-of-poland', ce(1466), 18.65, 54.35)).toBe(true);
+
+    // Lithuania: Kyiv only during Vytautas's 1430 Black Sea peak, lost to
+    // Poland at the 1569 Union of Lublin; Vilnius (the core) always held.
+    expect(covers('grand-duchy-of-lithuania', ce(1341), 30.52, 50.45)).toBe(false); // Kyiv
+    expect(covers('grand-duchy-of-lithuania', ce(1430), 30.52, 50.45)).toBe(true);
+    expect(covers('grand-duchy-of-lithuania', ce(1569), 30.52, 50.45)).toBe(false);
+    expect(covers('grand-duchy-of-lithuania', ce(1569), 25.28, 54.68)).toBe(true); // Vilnius
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

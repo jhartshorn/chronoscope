@@ -201,6 +201,7 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#6a7ab0',
     labelImportance: 4,
+    predecessorIds: ['kingdom-of-poland', 'grand-duchy-of-lithuania'],
     description:
       'A vast dual state of Poland and Lithuania with an elective monarchy and a powerful noble parliament — one of Europe’s largest and most populous polities before its partition by neighbouring powers in the late 18th century.',
     sources: [src('Davies 2005, God’s Playground: A History of Poland')],
