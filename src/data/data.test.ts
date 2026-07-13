@@ -928,6 +928,23 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-bosnia', ce(1322), 17.96, 43.09)).toBe(true);
   });
 
+  it('traces the Crusader states from Hattin to the fall of Acre', () => {
+    expect(ENTITY_BY_ID.get('kingdom-of-jerusalem')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // Jerusalem: held from the founding through the 1131 peak, lost at Hattin (1187) and never recovered.
+    expect(covers('kingdom-of-jerusalem', ce(1099), 35.22, 31.77)).toBe(true);
+    expect(covers('kingdom-of-jerusalem', ce(1131), 35.22, 31.77)).toBe(true);
+    expect(covers('kingdom-of-jerusalem', ce(1187), 35.22, 31.77)).toBe(false);
+    expect(covers('kingdom-of-jerusalem', ce(1192), 35.22, 31.77)).toBe(false);
+    // Edessa: part of the 1131 peak "Outremer" band, lost to Zengi in 1144.
+    expect(covers('kingdom-of-jerusalem', ce(1099), 38.79, 37.15)).toBe(false);
+    expect(covers('kingdom-of-jerusalem', ce(1131), 38.79, 37.15)).toBe(true);
+    expect(covers('kingdom-of-jerusalem', ce(1144), 38.79, 37.15)).toBe(false);
+    // Acre: held at the peak, lost at Hattin, restored as the new capital by the Third Crusade.
+    expect(covers('kingdom-of-jerusalem', ce(1131), 35.09, 32.93)).toBe(true);
+    expect(covers('kingdom-of-jerusalem', ce(1187), 35.09, 32.93)).toBe(false);
+    expect(covers('kingdom-of-jerusalem', ce(1192), 35.09, 32.93)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

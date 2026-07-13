@@ -297,10 +297,30 @@ export const ROME_PERIPHERY_ENTITIES: HistoricalEntity[] = [
     predecessorIds: ['fatimid-caliphate', 'seljuk-empire'],
     successorIds: ['ayyubid', 'mamluk-sultanate'],
     description:
-      'The chief of the Crusader states established along the Levantine coast after the First Crusade (1099). Shown as a single band standing for the Latin East (with Antioch, Tripoli and Edessa), it was worn down by Saladin and finally extinguished at Acre in 1291.',
-    sources: [src('Riley-Smith 1987, The Crusades: A History')],
+      'The chief of the Crusader states established along the Levantine coast after the First Crusade (1099). Shown as a single band standing for the Latin East (with Antioch, Tripoli and Edessa at its 1131 peak), it survived Zengi\'s capture of Edessa (1144) before Saladin\'s catastrophic victory at Hattin (1187) reduced it to Tyre; the Third Crusade restored a coastal strip around the new capital, Acre. Mamluk conquest under Baibars and his successors then ground down the remaining coast until Acre itself fell in 1291.',
+    sources: [
+      src('Riley-Smith 1987, The Crusades: A History'),
+      src('Tyerman 2006, God\'s War: A New History of the Crusades'),
+    ],
     snapshots: [
-      snap(ce(1140).year, poly([[34.2, 31], [35.5, 32.7], [36.2, 33.7], [36, 34.3], [35, 33.5], [34.5, 32], [34.2, 31.2], [34.2, 31]]), 'medium', 'The Crusader Levantine coast, approximate (a band standing for the several Latin states).'),
+      snap(ce(1099).year, poly([[34.3, 31.0], [34.6, 31.8], [34.8, 32.05], [35.3, 32.05], [35.5, 31.8], [34.6, 31.0], [34.3, 31.0]]), 'medium', 'The First Crusade takes Jerusalem (1099): the founding kingdom, a modest inland-and-coastal core around Jerusalem and Jaffa.'),
+      snap(ce(1131).year, poly([
+        [34.3, 31.0], [34.6, 31.8], [34.85, 32.9], [35.2, 33.8], [35.9, 35.5], [37.5, 37.2],
+        [39.3, 37.2], [36.8, 35.5], [36.2, 33.8], [35.6, 32.9], [35.5, 31.8], [34.6, 31.0], [34.3, 31.0],
+      ]), 'low', 'Peak "Outremer": the Kingdom of Jerusalem strung together with the County of Tripoli, Principality of Antioch and County of Edessa in one schematic band, approximate.'),
+      snap(ce(1144).year, poly([
+        [34.3, 31.0], [34.6, 31.8], [34.85, 32.9], [35.2, 33.8], [35.9, 35.5],
+        [36.8, 35.5], [36.2, 33.8], [35.6, 32.9], [35.5, 31.8], [34.6, 31.0], [34.3, 31.0],
+      ]), 'medium', 'Zengi captures Edessa (1144), the first Crusader state to fall — the northernmost reach of the band is cut off.'),
+      snap(ce(1187).year, mpoly(
+        [[35.05, 33.15], [35.35, 33.45], [35.2, 33.05], [35.0, 33.1], [35.05, 33.15]],
+        [[35.4, 33.6], [36.0, 35.5], [36.8, 35.5], [36.2, 33.8], [35.7, 33.5], [35.4, 33.6]],
+      ), 'high', 'Saladin\'s victory at Hattin (1187): Jerusalem and Acre fall within months, leaving only Tyre in the south (with Tripoli and Antioch still holding on in the north).'),
+      snap(ce(1192).year, mpoly(
+        [[34.6, 32.0], [34.9, 32.95], [35.3, 33.35], [35.15, 33.0], [34.8, 32.1], [34.6, 32.0]],
+        [[35.4, 33.6], [36.0, 35.5], [36.8, 35.5], [36.2, 33.8], [35.7, 33.5], [35.4, 33.6]],
+      ), 'high', 'The Third Crusade\'s Treaty of Jaffa (1192) restores a coastal strip around the new capital, Acre — Jerusalem itself is not recovered.'),
+      snap(ce(1265).year, poly([[34.95, 32.85], [35.05, 33.35], [35.3, 33.3], [35.15, 32.95], [34.95, 32.85]]), 'high', 'Baibars\' Mamluk conquests strip away Caesarea, Arsuf and Jaffa: only the Acre–Tyre coastal pocket remains, on the eve of Acre\'s fall in 1291.'),
     ],
   },
 ];
