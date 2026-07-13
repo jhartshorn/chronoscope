@@ -620,6 +620,28 @@ describe('dataset integrity', () => {
     expect(covers('sioux-lakota', ce(1890), -103.6, 44.0)).toBe(false);
   });
 
+  it('raises resolution on Oceania: Lapita, Polynesians, Tonga, Hawaii, Māori', () => {
+    // Polynesians: Hawaiʻi only from the 800 CE voyaging wave.
+    expect(covers('polynesians', bce(900), -155.5, 19.6)).toBe(false); // Hawaiʻi (Big Island)
+    expect(covers('polynesians', ce(800), -155.5, 19.6)).toBe(true);
+
+    // Tongan Empire: Samoa only from the 1200 CE expansion, lost again after
+    // the post-1350 civil-war contraction.
+    expect(covers('tongan-empire', ce(950), -172.1, -13.8)).toBe(false); // Samoa
+    expect(covers('tongan-empire', ce(1200), -172.1, -13.8)).toBe(true);
+    expect(covers('tongan-empire', ce(1600), -172.1, -13.8)).toBe(false);
+
+    // Hawaiian Kingdom: Kauaʻi joins only in 1810, after Kamehameha's 1795
+    // conquest of the other islands.
+    expect(covers('hawaii-kingdom', ce(1795), -159.5, 22.0)).toBe(false); // Kauaʻi
+    expect(covers('hawaii-kingdom', ce(1810), -159.5, 22.0)).toBe(true);
+
+    // Māori: the South Island is part of the 1600-1860 full-occupation
+    // range, then mostly lost from the 1900 post-raupatu snapshot.
+    expect(covers('maori', ce(1600), 169.5, -45.3)).toBe(true); // South Island (near Dunedin)
+    expect(covers('maori', ce(1900), 169.5, -45.3)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
