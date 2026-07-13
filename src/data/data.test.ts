@@ -406,6 +406,29 @@ describe('dataset integrity', () => {
     expect(covers('grand-duchy-of-lithuania', ce(1569), 25.28, 54.68)).toBe(true); // Vilnius
   });
 
+  it('models the Khwarezmian Empire and the post-Timurid Uzbek khanates', () => {
+    // Khwarezmian Empire: Isfahan (central Iran) only at the 1215 peak, gone
+    // by the 1220 Mongol collapse.
+    expect(covers('khwarezmian-empire', ce(1190), 51.68, 32.65)).toBe(false); // Isfahan
+    expect(covers('khwarezmian-empire', ce(1215), 51.68, 32.65)).toBe(true);
+    expect(covers('khwarezmian-empire', ce(1220), 51.68, 32.65)).toBe(false);
+
+    // Bukhara: Samarkand is core throughout, but lost to direct Russian rule
+    // in 1868.
+    expect(covers('khanate-of-bukhara', ce(1600), 66.97, 39.65)).toBe(true); // Samarkand
+    expect(covers('khanate-of-bukhara', ce(1868), 66.97, 39.65)).toBe(false);
+
+    // Khiva: contracts to south of the Amu Darya after the 1873 protectorate.
+    expect(covers('khanate-of-khiva', ce(1800), 60.5, 43.3)).toBe(true);
+    expect(covers('khanate-of-khiva', ce(1873), 60.5, 43.3)).toBe(false);
+
+    // Kokand: Tashkent held only in its 1810-1865 window, lost when Russia
+    // takes the city in 1865.
+    expect(covers('khanate-of-kokand', ce(1709), 69.24, 41.3)).toBe(false); // Tashkent
+    expect(covers('khanate-of-kokand', ce(1810), 69.24, 41.3)).toBe(true);
+    expect(covers('khanate-of-kokand', ce(1865), 69.24, 41.3)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
