@@ -824,6 +824,29 @@ describe('dataset integrity', () => {
     expect(covers('ganden-phodrang', ce(1642), 88.88, 29.27)).toBe(true); // Shigatse
   });
 
+  it('adds pre-unification Italian states: Papal States, Naples, Savoy, Tuscany, Milan', () => {
+    // Papal States: Bologna (Romagna) only until the 1860 Risorgimento
+    // strips it, leaving just Rome/Lazio.
+    expect(covers('papal-states', ce(1600), 11.34, 44.49)).toBe(true); // Bologna
+    expect(covers('papal-states', ce(1860), 11.34, 44.49)).toBe(false);
+    expect(covers('papal-states', ce(1860), 12.5, 41.9)).toBe(true); // Rome, always
+
+    // Kingdom of Naples: Palermo (Sicily) only from the 1442 reunification.
+    expect(covers('kingdom-of-naples', ce(1282), 13.36, 38.12)).toBe(false);
+    expect(covers('kingdom-of-naples', ce(1442), 13.36, 38.12)).toBe(true);
+
+    // Sardinia-Piedmont: Cagliari (Sardinia) only from 1720; Genoa only
+    // from the 1815 Congress of Vienna.
+    expect(covers('sardinia-piedmont', ce(1416), 9.11, 39.22)).toBe(false); // Cagliari
+    expect(covers('sardinia-piedmont', ce(1720), 9.11, 39.22)).toBe(true);
+    expect(covers('sardinia-piedmont', ce(1720), 8.93, 44.41)).toBe(false); // Genoa
+    expect(covers('sardinia-piedmont', ce(1815), 8.93, 44.41)).toBe(true);
+
+    // Milan: Pavia held throughout its independent existence.
+    expect(covers('duchy-of-milan', ce(1395), 9.15, 45.18)).toBe(true);
+    expect(covers('duchy-of-milan', ce(1450), 9.15, 45.18)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

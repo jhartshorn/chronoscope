@@ -1071,7 +1071,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#5a9a6d',
     labelImportance: 3,
-    predecessorIds: ['roman-republic', 'roman-empire'],
+    predecessorIds: ['roman-republic', 'roman-empire', 'sardinia-piedmont', 'kingdom-of-naples', 'papal-states', 'grand-duchy-of-tuscany'],
     description:
       'The Italian nation-state, unified in 1861 through the Risorgimento. It then gained Venetia (1866) and Rome (1870), took the Alpine north-east and Trieste after the First World War (1919), and ceded Istria to Yugoslavia in 1947. Contemporary boundary from Natural Earth.',
     sources: [
