@@ -49,7 +49,7 @@ export const MEDIEVAL_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#6a7ab0',
     labelImportance: 3,
-    successorIds: ['mongol-empire', 'russia'],
+    successorIds: ['mongol-empire', 'golden-horde', 'novgorod-republic', 'grand-duchy-of-moscow'],
     description:
       'A realm — a loose federation of East Slavic principalities under the Grand Prince of Kyiv, not a tightly-organised confederation — that was a forerunner of the later Russian, Ukrainian and Belarusian states, shattered by the Mongol invasion of the 1240s.',
     sources: [src('Franklin & Shepard 1996, The Emergence of Rus 750–1200')],

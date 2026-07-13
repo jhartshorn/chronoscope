@@ -366,6 +366,28 @@ describe('dataset integrity', () => {
     expect(covers('kalmar-union', ce(1523), 18.07, 59.33)).toBe(false);
   });
 
+  it('models the rise of Muscovy from Novgorod and the Golden Horde to the Tsardom', () => {
+    // Novgorod's reach to the White Sea/Urals only from its 1300 expansion.
+    expect(covers('novgorod-republic', ce(1136), 40.5, 64.5)).toBe(false); // Arkhangelsk
+    expect(covers('novgorod-republic', ce(1300), 40.5, 64.5)).toBe(true);
+
+    // Moscow: Novgorod (the city) only after the 1478 annexation; Chernihiv
+    // only after the 1487-1503 Lithuanian wars.
+    expect(covers('grand-duchy-of-moscow', ce(1462), 31.27, 58.52)).toBe(false); // Novgorod city
+    expect(covers('grand-duchy-of-moscow', ce(1478), 31.27, 58.52)).toBe(true);
+    expect(covers('grand-duchy-of-moscow', ce(1462), 31.3, 51.5)).toBe(false); // Chernihiv
+    expect(covers('grand-duchy-of-moscow', ce(1503), 31.3, 51.5)).toBe(true);
+
+    // Tsardom of Russia: Kazan only after the 1552 conquest; the Pacific
+    // coast (Okhotsk) only after 1639; the Baltic (Riga) only from 1721.
+    expect(covers('tsardom-of-russia', ce(1547), 49.11, 55.79)).toBe(false); // Kazan
+    expect(covers('tsardom-of-russia', ce(1556), 49.11, 55.79)).toBe(true);
+    expect(covers('tsardom-of-russia', ce(1600), 143.2, 59.4)).toBe(false); // Okhotsk
+    expect(covers('tsardom-of-russia', ce(1655), 143.2, 59.4)).toBe(true);
+    expect(covers('tsardom-of-russia', ce(1655), 24.1, 56.9)).toBe(false); // Riga
+    expect(covers('tsardom-of-russia', ce(1721), 24.1, 56.9)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

@@ -235,12 +235,13 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#7a6a9a',
     labelImportance: 5,
-    predecessorIds: ['kievan-rus'],
+    predecessorIds: ['tsardom-of-russia'],
     successorIds: ['soviet-union'],
     description:
       'The empire proclaimed by Peter the Great, which expanded across northern Eurasia to become one of the largest states in history before the revolutions of 1917.',
     sources: [src('Lieven 2000, Empire: The Russian Empire and Its Rivals')],
     snapshots: [
+      snap(ce(1721).year, poly([[21.5, 57], [30, 65], [40, 60], [60, 68], [100, 72], [140, 70], [178, 66], [178, 60], [150, 55], [130, 48], [105, 50], [80, 50], [58, 46], [44, 50], [30, 50.3], [21.5, 57]]), 'high', 'Russian Empire at Peter the Great’s 1721 proclamation, approximate.'),
       snap(ce(1866).year, poly([[28, 50], [40, 60], [60, 68], [100, 72], [140, 70], [178, 66], [178, 60], [150, 55], [130, 48], [105, 50], [80, 50], [58, 46], [40, 44], [30, 46], [28, 50]]), 'high', 'Russian Empire across northern Eurasia, c. 1866 (after the sale of Alaska), approximate.'),
     ],
   },
