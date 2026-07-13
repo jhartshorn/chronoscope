@@ -166,14 +166,40 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     colour: '#4a7a9a',
     labelImportance: 3,
     description:
-      'A long-lived maritime republic centred on Venice, which dominated Mediterranean trade for centuries through a network of coastal and island possessions (the Stato da Màr) from the Adriatic to the Aegean.',
+      'A long-lived maritime republic centred on Venice, which dominated Mediterranean trade for centuries through a network of coastal and island possessions (the Stato da Màr) from the Adriatic to the Aegean, and from the early 1400s a mainland territory (the Terraferma) in north-east Italy. The Fourth Crusade (1204) brought a windfall of former Byzantine territory; Ottoman pressure from the 16th century steadily reversed it — Cyprus (1571), Crete (1669) and finally the Morea (1718) — before Napoleon ended the millennium-old republic outright in 1797.',
     sources: [src('Norwich 1982, A History of Venice')],
     snapshots: [
+      snap(ce(697).year, poly([[12.2, 45.35], [12.5, 45.35], [12.5, 45.5], [12.2, 45.5], [12.2, 45.35]]), 'low', 'The founding lagoon settlement, on the traditional date of the first Doge’s election.'),
+      snap(ce(1000).year, mpoly(
+        [[12.0, 45.2], [12.6, 45.5], [12.4, 45.6], [11.9, 45.4], [12.0, 45.2]],
+        [[14.0, 42.0], [19.5, 40.0], [20.0, 42.5], [15.0, 44.5], [14.0, 44.0], [14.0, 42.0]],
+      ), 'low', 'Doge Pietro II Orseolo’s Dalmatian conquests (c. 1000) establish Adriatic dominance, later marked each year by the "Marriage of the Sea".'),
+      snap(ce(1204).year, mpoly(
+        [[12.0, 45.2], [12.6, 45.5], [12.4, 45.6], [11.9, 45.4], [12.0, 45.2]],
+        [[13, 42], [19, 40], [20, 42], [15, 44], [13, 43], [13, 42]],
+        [[23, 35], [26, 35.2], [26, 36], [23.5, 36], [23, 35]],
+        [[23.0, 38.0], [24.2, 38.0], [24.0, 39.0], [22.8, 38.8], [23.0, 38.0]],
+      ), 'medium', 'The Fourth Crusade’s sack of Constantinople hands Venice Crete, Negroponte and a string of Aegean and Ionian island posts.'),
+      snap(ce(1420).year, mpoly(
+        [[10.5, 44.8], [13.5, 45.3], [14, 46.2], [12, 46.5], [10.6, 45.5], [10.5, 44.8]],
+        [[13, 42], [19, 40], [20, 42], [15, 44], [13, 43], [13, 42]],
+        [[23, 35], [26, 35.2], [26, 36], [23.5, 36], [23, 35]],
+        [[23.0, 38.0], [24.2, 38.0], [24.0, 39.0], [22.8, 38.8], [23.0, 38.0]],
+      ), 'medium', 'The conquest of the Terraferma (Padua, Verona, Vicenza, Brescia) adds a mainland Italian territory for the first time.'),
       snap(ce(1450).year, mpoly(
         [[10.5, 44.8], [13.5, 45.3], [14, 46.2], [12, 46.5], [10.6, 45.5], [10.5, 44.8]],
         [[13, 42], [19, 40], [20, 42], [15, 44], [13, 43], [13, 42]],
         [[23, 35], [26, 35.2], [26, 36], [23.5, 36], [23, 35]],
-      ), 'medium', 'Venetian mainland and maritime empire (Dalmatia, Ionian and Aegean posts), highly schematic.'),
+      ), 'medium', 'Peak extent: Terraferma, Dalmatia, and Ionian and Aegean posts, highly schematic.'),
+      snap(ce(1571).year, mpoly(
+        [[10.5, 44.8], [13.5, 45.3], [14, 46.2], [12, 46.5], [10.6, 45.5], [10.5, 44.8]],
+        [[13, 42], [19, 40.5], [20, 41.5], [15, 44], [13, 43], [13, 42]],
+        [[23, 35], [26, 35.2], [26, 36], [23.5, 36], [23, 35]],
+      ), 'high', 'Cyprus falls to the Ottomans (1570–71, the year of Lepanto): the long Ottoman-driven contraction of the Stato da Màr begins.'),
+      snap(ce(1797).year, mpoly(
+        [[10.5, 44.8], [13.5, 45.3], [14, 46.2], [12, 46.5], [10.6, 45.5], [10.5, 44.8]],
+        [[14, 42], [19, 40], [19.5, 42], [15, 44], [14, 43.5], [14, 42]],
+      ), 'high', 'After losing Crete (1669) and the Morea (1718), only the Terraferma, Dalmatia and the Ionian islands remain when Napoleon ends the Republic.'),
     ],
   },
   {

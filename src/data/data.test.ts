@@ -765,6 +765,19 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-hungary', ce(1541), 17.11, 48.15)).toBe(true);
   });
 
+  it('raises resolution on the Venetian Republic', () => {
+    expect(ENTITY_BY_ID.get('venetian-republic')!.snapshots.length).toBeGreaterThanOrEqual(6);
+    // Crete and the Terraferma only from the dates they were actually
+    // acquired; Crete is lost again by 1797 (fell to the Ottomans in 1669).
+    expect(covers('venetian-republic', ce(1000), 25.0, 35.4)).toBe(false); // Crete
+    expect(covers('venetian-republic', ce(1204), 25.0, 35.4)).toBe(true);
+    expect(covers('venetian-republic', ce(1797), 25.0, 35.4)).toBe(false);
+    expect(covers('venetian-republic', ce(1204), 11.87, 45.41)).toBe(false); // Padua (Terraferma)
+    expect(covers('venetian-republic', ce(1420), 11.87, 45.41)).toBe(true);
+    // The lagoon core (Venice itself) is held from the very founding.
+    expect(covers('venetian-republic', ce(697), 12.33, 45.44)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
