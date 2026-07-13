@@ -429,6 +429,20 @@ describe('dataset integrity', () => {
     expect(covers('khanate-of-kokand', ce(1865), 69.24, 41.3)).toBe(false);
   });
 
+  it('models pre-colonial Philippine polities', () => {
+    // Tondo's Manila Bay core throughout; Sulu holds North Borneo (Sabah)
+    // only from the 1704 Brunei cession.
+    expect(covers('kingdom-of-tondo', ce(900), 120.97, 14.62)).toBe(true); // Manila
+    expect(covers('sulu-sultanate', ce(1405), 117.5, 5.5)).toBe(false); // Sabah
+    expect(covers('sulu-sultanate', ce(1704), 117.5, 5.5)).toBe(true);
+    expect(covers('sulu-sultanate', ce(1704), 121.0, 6.05)).toBe(true); // Jolo, always
+
+    // Maguindanao only reaches Davao Gulf at Kudarat's mid-17th-century peak.
+    expect(covers('sultanate-of-maguindanao', ce(1520), 125.6, 7.0)).toBe(false); // Davao Gulf
+    expect(covers('sultanate-of-maguindanao', ce(1650), 125.6, 7.0)).toBe(true);
+    expect(covers('sultanate-of-maguindanao', ce(1888), 125.6, 7.0)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
