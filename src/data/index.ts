@@ -12,6 +12,7 @@ import { RUSSIA_ENTITIES } from './regions/russia';
 import { POLAND_LITHUANIA_ENTITIES } from './regions/polandlithuania';
 import { CENTRAL_ASIA_ENTITIES } from './regions/centralasia';
 import { PHILIPPINES_ENTITIES } from './regions/philippines';
+import { NORTH_AMERICA_ENTITIES } from './regions/northamerica';
 import { HRE_ENTITIES } from './regions/hre';
 import { ASIA_ENTITIES } from './regions/asia';
 import { AFRICA_ENTITIES } from './regions/africa';
@@ -52,6 +53,7 @@ export const ENTITIES: HistoricalEntity[] = [
   ...POLAND_LITHUANIA_ENTITIES,
   ...CENTRAL_ASIA_ENTITIES,
   ...PHILIPPINES_ENTITIES,
+  ...NORTH_AMERICA_ENTITIES,
   ...HRE_ENTITIES,
   ...ASIA_ENTITIES,
   ...AFRICA_ENTITIES,

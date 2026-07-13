@@ -598,6 +598,28 @@ describe('dataset integrity', () => {
     expect(covers('zapotec', ce(1487), -94.8, 16.3)).toBe(true);
   });
 
+  it('adds the Comanche, Apache and Sioux/Lakota', () => {
+    // Comanche: central Texas only from the c. 1800 peak; final 1875
+    // snapshot is confined to the Fort Sill reservation.
+    expect(covers('comanche-empire', ce(1750), -98.0, 31.5)).toBe(false); // central Texas
+    expect(covers('comanche-empire', ce(1800), -98.0, 31.5)).toBe(true);
+    expect(covers('comanche-empire', ce(1875), -98.0, 31.5)).toBe(false);
+    expect(covers('comanche-empire', ce(1875), -98.4, 34.65)).toBe(true); // Fort Sill
+
+    // Apache: pushed out of the southern Plains (Texas Panhandle) by the
+    // Comanche between 1500 and 1750.
+    expect(covers('apache', ce(1500), -101.5, 34.0)).toBe(true); // Texas Panhandle
+    expect(covers('apache', ce(1750), -101.5, 34.0)).toBe(false);
+
+    // Sioux/Lakota: the Black Hills only from the westward 1750+ push onto
+    // the Plains, still held in the Little Bighorn year (1876), lost by the
+    // final 1890 reservation-confinement snapshot.
+    expect(covers('sioux-lakota', ce(1650), -103.6, 44.0)).toBe(false); // Black Hills
+    expect(covers('sioux-lakota', ce(1850), -103.6, 44.0)).toBe(true);
+    expect(covers('sioux-lakota', ce(1876), -103.6, 44.0)).toBe(true);
+    expect(covers('sioux-lakota', ce(1890), -103.6, 44.0)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
