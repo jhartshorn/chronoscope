@@ -52,10 +52,14 @@ export const AFRICA_ENTITIES: HistoricalEntity[] = [
     labelImportance: 3,
     successorIds: ['mali-empire'],
     description:
-      'An early West African empire of the western Sahel that grew wealthy controlling the trans-Saharan gold and salt trade, a forerunner of the later Mali Empire.',
+      'An early West African empire of the western Sahel, centred on Kumbi Saleh, that grew wealthy controlling the trans-Saharan gold and salt trade — a forerunner of the later Mali Empire. Almoravid pressure on its northern trade terminus of Awdaghost from the 1050s–70s weakened it badly, and it fell into the orbit of the rival Sosso before Sundiata Keita’s Mali absorbed it outright.',
     sources: [src('Levtzion 1973, Ancient Ghana and Mali')],
     snapshots: [
-      snap(ce(1000).year, poly([[-12, 14], [-6, 15], [-2, 17], [-6, 18.5], [-12, 17.5], [-13, 15], [-12, 14]]), 'low', 'Western Sahel; borders in the desert are diffuse.'),
+      snap(ce(500).year, poly([[-9.0, 14.5], [-7.0, 14.5], [-6.5, 16.0], [-8.0, 17.0], [-9.5, 16.0], [-9.0, 14.5]]), 'low', 'Early core around Kumbi Saleh, approximate.'),
+      snap(ce(800).year, poly([[-11.0, 14.0], [-7.0, 14.0], [-6.0, 16.5], [-8.0, 18.0], [-10.5, 17.5], [-12.0, 16.0], [-11.0, 14.0]]), 'low', 'Growth north to the Saharan trade terminus of Awdaghost.'),
+      snap(ce(1000).year, poly([[-12, 14], [-6, 15], [-2, 17], [-6, 18.5], [-12, 17.5], [-13, 15], [-12, 14]]), 'low', 'Peak extent as described by al-Bakri (1068); borders in the desert are diffuse.'),
+      snap(ce(1076).year, poly([[-11.0, 13.5], [-6.5, 14.0], [-3.0, 15.5], [-6.0, 16.5], [-9.5, 16.0], [-11.0, 13.5]]), 'low', 'Contraction after decades of Almoravid pressure on Awdaghost, traditionally (if too simply) dated to a 1076 conquest.'),
+      snap(ce(1180).year, poly([[-9.5, 14.3], [-7.0, 14.3], [-6.5, 15.8], [-8.5, 16.3], [-9.8, 15.3], [-9.5, 14.3]]), 'medium', 'A diminished rump around Kumbi Saleh, tributary to the rising Sosso, shortly before Sundiata’s Mali absorbs it.'),
     ],
   },
   {
@@ -69,10 +73,13 @@ export const AFRICA_ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     predecessorIds: ['mali-empire'],
     description:
-      'One of the largest states in African history, which succeeded Mali as the dominant Sahelian power, ruling the Niger bend from Gao and Timbuktu until defeated by a Moroccan invasion in 1591.',
+      'One of the largest states in African history, which succeeded Mali as the dominant Sahelian power. Sunni Ali’s conquests (from 1464) took Timbuktu and Djenné; Askia Muhammad’s coup (1493) and subsequent reforms extended it over the Hausa states, the Air massif and the upper Niger goldfields. A Moroccan expeditionary force, armed with muskets and cannon it could not match, shattered the empire at the Battle of Tondibi (1591); a rump survived far downriver as the Dendi kingdom.',
     sources: [src('Hunwick 1999, Timbuktu and the Songhay Empire')],
     snapshots: [
-      snap(ce(1550).year, poly([[-8, 11], [2, 12], [6, 16], [3, 20], [-5, 18], [-9, 15], [-8, 11]]), 'low', 'Niger-bend empire at its height, approximate.'),
+      snap(ce(1464).year, poly([[-5.0, 14.0], [-1.0, 13.5], [1.5, 15.0], [1.0, 17.5], [-2.5, 18.0], [-5.5, 16.5], [-5.0, 14.0]]), 'low', 'Sunni Ali’s early conquests around the Niger bend, Gao and newly-taken Timbuktu.'),
+      snap(ce(1493).year, poly([[-9.0, 15.0], [-6.0, 17.5], [-3.0, 20.5], [2.0, 21.0], [6.0, 19.0], [8.0, 17.0], [7.0, 14.5], [3.0, 13.0], [-2.0, 12.0], [-6.0, 12.5], [-9.0, 15.0]]), 'medium', 'Askia Muhammad’s reforms and campaigns extend the empire over the Hausa states, the Air massif and the upper Niger goldfields.'),
+      snap(ce(1550).year, poly([[-9.0, 15.0], [-6.0, 17.5], [-3.0, 20.5], [2.0, 21.0], [6.0, 19.0], [8.0, 17.0], [7.0, 14.5], [3.0, 13.0], [-2.0, 12.0], [-6.0, 12.5], [-9.0, 15.0]]), 'low', 'Stable at its Askia-era extent, approximate.'),
+      snap(ce(1591).year, poly([[0.5, 12.5], [2.5, 12.3], [3.0, 14.0], [1.5, 14.5], [0.2, 13.5], [0.5, 12.5]]), 'medium', 'Shattered at Tondibi: the Sayfawa nobility flees far downriver to found the rump Dendi kingdom.'),
     ],
   },
   {

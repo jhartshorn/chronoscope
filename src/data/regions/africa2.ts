@@ -95,10 +95,40 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     colour: '#a8843a',
     labelImportance: 3,
     description:
-      'A long-lived empire of the Lake Chad basin, controlling trans-Saharan trade routes for over a millennium, one of Africa’s most durable states and an early adopter of Islam.',
+      'A long-lived empire of the Lake Chad basin, controlling trans-Saharan trade routes for over a millennium, one of Africa’s most durable states and an early adopter of Islam. Ruled from Njimi in Kanem (east of the lake) until Bulala invaders drove the Sayfawa dynasty west into Bornu in the 1390s; Idris Alooma’s reforms (r. c. 1564–96) restored the empire to its greatest reach. Nearly destroyed by the Sokoto Caliphate’s jihad (1808), it survived under a new Shehu dynasty before Rabih az-Zubayr’s invasion (1893) finally broke the old state on the eve of colonial partition.',
     sources: [src('Lange 1984, in General History of Africa, Vol. IV')],
     snapshots: [
-      snap(ce(1200).year, poly([[12, 12], [17, 13], [19, 16], [16, 18], [12, 16], [11, 13], [12, 12]]), 'low', 'Lake Chad basin, approximate.'),
+      snap(ce(700).year, poly([[14.5, 12.5], [16.5, 12.5], [17.0, 14.0], [15.5, 15.0], [14.0, 13.8], [14.5, 12.5]]), 'low', 'Early Kanem core east of Lake Chad, approximate.'),
+      snap(ce(1000).year, poly([[13.0, 11.5], [17.5, 11.5], [19.0, 14.0], [17.0, 17.0], [14.0, 16.5], [12.0, 14.0], [13.0, 11.5]]), 'low', 'Growing control of trans-Saharan trade routes.'),
+      snap(ce(1230).year, poly([[10.0, 11.0], [18.0, 10.5], [21.0, 13.0], [20.0, 17.5], [16.0, 22.0], [14.0, 26.5], [11.5, 25.0], [13.0, 19.0], [15.0, 16.0], [11.0, 13.5], [10.0, 11.0]]), 'low', 'Mai Dunama Dibalami’s peak: Kanem’s reach extends across the Sahara to the Fezzan.'),
+      snap(ce(1390).year, poly([[10.0, 11.5], [13.5, 11.3], [14.5, 13.0], [13.0, 14.5], [10.5, 13.5], [10.0, 11.5]]), 'medium', 'Bulala invaders take Njimi and all of Kanem; the Sayfawa dynasty relocates west of the lake to Bornu.'),
+      snap(ce(1580).year, poly([[7.5, 11.0], [13.5, 10.5], [17.5, 12.0], [20.0, 15.5], [17.0, 20.0], [13.5, 22.0], [11.0, 18.0], [13.0, 14.0], [9.5, 12.5], [7.5, 11.0]]), 'high', 'Idris Alooma reconquers Kanem and extends Bornu over the Hausa states and the Fezzan trade route — the empire’s greatest extent.'),
+      snap(ce(1800).year, poly([[8.0, 11.2], [13.5, 10.7], [17.0, 12.5], [18.5, 15.0], [15.5, 18.5], [12.0, 17.5], [13.0, 14.0], [9.5, 12.7], [8.0, 11.2]]), 'medium', 'Long-stable late Bornu, on the eve of the Sokoto jihad.'),
+      snap(ce(1846).year, poly([[11.5, 11.5], [14.5, 11.3], [16.0, 13.5], [14.5, 15.5], [12.0, 14.5], [11.0, 13.0], [11.5, 11.5]]), 'high', 'Muhammad al-Kanemi’s new Shehu dynasty holds a much-reduced core after the 1808 jihad nearly destroyed the state.'),
+      snap(ce(1893).year, poly([[12.5, 12.0], [14.0, 12.0], [14.3, 13.3], [13.0, 13.5], [12.3, 12.8], [12.5, 12.0]]), 'medium', 'Rabih az-Zubayr’s invasion devastates what remains of Bornu on the eve of colonial partition.'),
+    ],
+  },
+  {
+    id: 'sokoto-caliphate',
+    name: 'Sokoto Caliphate',
+    category: 'empire',
+    start: ce(1804),
+    end: ce(1903),
+    confidence: 'medium',
+    colour: '#8a9a4a',
+    labelImportance: 4,
+    successorIds: ['british-empire'],
+    description:
+      'Usman dan Fodio’s Fulani jihad (from 1804) overthrew the Hausa kings of what is now northern Nigeria and built one of the largest African states of the 19th century — a loose confederation of dozens of emirates owing allegiance to the Sultan of Sokoto as caliph, stretching at its height from the Sahel to the forest fringe. It fell to a British expeditionary force under Frederick Lugard, who took Kano and Sokoto itself in 1903.',
+    sources: [
+      src('Last 1967, The Sokoto Caliphate'),
+      src('Hiskett 1973, The Sword of Truth: The Life and Times of the Shehu Usuman dan Fodio'),
+    ],
+    snapshots: [
+      snap(ce(1804).year, poly([[4.5, 12.3], [6.0, 12.3], [6.2, 13.5], [4.8, 13.7], [4.3, 12.9], [4.5, 12.3]]), 'medium', 'Usman dan Fodio’s founding base at Gudu, just after declaring the jihad.'),
+      snap(ce(1812).year, poly([[3.0, 11.5], [6.5, 10.8], [9.0, 11.5], [9.0, 13.5], [7.0, 14.0], [4.5, 14.2], [2.8, 13.0], [3.0, 11.5]]), 'high', 'The Hausa wars (1804–08) conquer Kano, Katsina, Zaria and the other Hausa city-states.'),
+      snap(ce(1830).year, poly([[2.5, 8.0], [4.0, 8.3], [6.0, 9.0], [9.5, 9.5], [13.0, 8.5], [13.5, 10.5], [11.0, 13.0], [9.0, 13.8], [7.0, 14.2], [4.5, 14.3], [2.8, 13.2], [2.0, 10.0], [2.5, 8.0]]), 'medium', 'Muhammad Bello’s reign extends the caliphate south-east to Adamawa and south to Nupe and Ilorin — its greatest reach.'),
+      snap(ce(1900).year, poly([[2.5, 8.0], [4.0, 8.3], [6.0, 9.0], [9.5, 9.5], [13.0, 8.5], [13.5, 10.5], [11.0, 13.0], [9.0, 13.8], [7.0, 14.2], [4.5, 14.3], [2.8, 13.2], [2.0, 10.0], [2.5, 8.0]]), 'high', 'Stable at its 19th-century extent on the eve of the British conquest.'),
     ],
   },
   {

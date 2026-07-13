@@ -504,6 +504,35 @@ describe('dataset integrity', () => {
     expect(covers('mali-empire', ce(1600), -9.05, 11.35)).toBe(true);
   });
 
+  it('raises resolution on Ghana, Songhai and Kanem-Bornu, and adds Sokoto', () => {
+    // Ghana: Awdaghost only from its 800 CE northward growth, lost again
+    // after the Almoravid-era contraction.
+    expect(covers('ghana-empire', ce(500), -9.8, 17.0)).toBe(false); // Awdaghost
+    expect(covers('ghana-empire', ce(800), -9.8, 17.0)).toBe(true);
+    expect(covers('ghana-empire', ce(1180), -9.8, 17.0)).toBe(false);
+
+    // Songhai: the Hausa lands/Air only from Askia Muhammad's 1493 reforms;
+    // collapses to the Dendi rump after Tondibi (1591).
+    expect(covers('songhai-empire', ce(1464), 7.5, 16.5)).toBe(false); // Air massif
+    expect(covers('songhai-empire', ce(1493), 7.5, 16.5)).toBe(true);
+    expect(covers('songhai-empire', ce(1591), -3.0, 16.77)).toBe(false); // Timbuktu, lost
+
+    // Kanem-Bornu: the deep Fezzan (Libya) only at the 1230 peak; the Bilma
+    // oasis trade route reasserted by Idris Alooma (1580) is lost again by
+    // the reduced 19th-century rump.
+    expect(covers('kanem-bornu', ce(1230), 14.0, 26.5)).toBe(true); // Fezzan
+    expect(covers('kanem-bornu', ce(1390), 14.0, 26.5)).toBe(false);
+    expect(covers('kanem-bornu', ce(1580), 12.92, 18.69)).toBe(true); // Bilma
+    expect(covers('kanem-bornu', ce(1846), 12.92, 18.69)).toBe(false);
+
+    // Sokoto Caliphate: Kano only from the 1804-08 Hausa wars; Adamawa
+    // (south-east) only from Muhammad Bello's 1830-era peak.
+    expect(covers('sokoto-caliphate', ce(1804), 8.52, 12.0)).toBe(false); // Kano
+    expect(covers('sokoto-caliphate', ce(1812), 8.52, 12.0)).toBe(true);
+    expect(covers('sokoto-caliphate', ce(1812), 12.48, 9.2)).toBe(false); // Adamawa (Yola)
+    expect(covers('sokoto-caliphate', ce(1830), 12.48, 9.2)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
