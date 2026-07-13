@@ -151,11 +151,15 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
     colour: '#6a8a8a',
     labelImportance: 3,
     description:
-      'The first steppe empire to call its rulers “Turk”, a vast Central Asian khaganate spanning Mongolia to the Caspian that controlled the Silk Road and left the earliest Turkic inscriptions.',
+      'The first steppe empire to call its rulers “Turk”, a vast Central Asian khaganate spanning Mongolia to the Caspian that controlled the Silk Road and left the earliest Turkic inscriptions. Split into rival Eastern and Western khaganates from 581-603; Tang China conquered the Eastern khaganate in 630, before Ilterish Qaghan’s revolt restored a "Second" Turkic Khaganate in 682, which the Uyghurs overthrew in 744.',
     sources: [src('Golden 1992, An Introduction to the History of the Turkic Peoples')],
     successorIds: ['uyghur-khaganate'],
     snapshots: [
-      snap(ce(580).year, poly([[60, 40], [80, 48], [100, 50], [118, 48], [115, 42], [98, 40], [80, 40], [66, 40], [60, 40]]), 'low', 'Central Asian and Mongolian steppe, approximate.'),
+      snap(ce(552).year, poly([[95, 44], [108, 45], [112, 49], [102, 52], [93, 49], [95, 44]]), 'low', 'Bumin Qaghan’s founding realm after defeating the Rouran Khaganate.'),
+      snap(ce(580).year, poly([[60, 40], [80, 48], [100, 50], [118, 48], [115, 42], [98, 40], [80, 40], [66, 40], [60, 40]]), 'low', 'Peak extent from Manchuria to the Caspian, approximate.'),
+      snap(ce(630).year, poly([[60, 38], [70, 44], [80, 46], [85, 42], [78, 36], [68, 35], [60, 38]]), 'high', 'Tang China conquers the Eastern Khaganate (630); only the Western Turkic Khaganate remains independent.'),
+      snap(ce(682).year, poly([[68, 38], [85, 42], [100, 46], [112, 49], [105, 52], [90, 50], [75, 44], [68, 38]]), 'medium', 'Ilterish Qaghan’s revolt restores the "Second" Turkic Khaganate across Mongolia and Central Asia.'),
+      snap(ce(744).year, poly([[98, 45], [104, 45], [105, 48], [99, 48], [98, 45]]), 'medium', 'A final remnant around Ötüken, overthrown by the rising Uyghurs the same year.'),
     ],
   },
   {

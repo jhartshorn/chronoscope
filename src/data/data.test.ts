@@ -687,6 +687,22 @@ describe('dataset integrity', () => {
     expect(covers('uyghur-khaganate', ce(840), 102.83, 47.27)).toBe(false); // Ordu-Baliq
   });
 
+  it('raises resolution on the Xiongnu and Göktürk Khaganate', () => {
+    // Xiongnu: the Ordos region only before Han Wudi's counteroffensives
+    // strip it in 127 BCE; the whole steppe empire shrinks to a sliver by
+    // its 155 CE end.
+    expect(covers('xiongnu', bce(176), 108.5, 39.0)).toBe(true); // Ordos
+    expect(covers('xiongnu', bce(128), 108.5, 39.0)).toBe(false);
+    expect(covers('xiongnu', bce(176), 82.0, 45.0)).toBe(false); // far-west remnant area
+    expect(covers('xiongnu', ce(89), 82.0, 45.0)).toBe(true);
+
+    // Göktürk: the Mongolian heartland (Ötüken) is lost when Tang conquers
+    // the Eastern Khaganate (630), then regained under the Second Khaganate.
+    expect(covers('gokturk', ce(580), 102.5, 47.5)).toBe(true); // Ötüken
+    expect(covers('gokturk', ce(630), 102.5, 47.5)).toBe(false);
+    expect(covers('gokturk', ce(682), 102.5, 47.5)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

@@ -295,10 +295,15 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
     colour: '#6a8a7a',
     labelImportance: 3,
     description:
-      'A nomadic steppe empire (organised as a confederation of tribes) north of China whose pressure helped prompt the Great Wall and shaped Han foreign policy; sometimes linked, controversially, to the later Huns.',
+      'A nomadic steppe empire (organised as a confederation of tribes) north of China whose pressure helped prompt the Great Wall and shaped Han foreign policy; sometimes linked, controversially, to the later Huns. Modu Chanyu’s unification and conquests made it Han China’s superpower rival, forcing decades of tribute, before Han counteroffensives, then a civil-war split into Han-allied Southern and independent Northern Xiongnu, ground it down over three centuries.',
     sources: [src('Di Cosmo 2002, Ancient China and Its Enemies')],
     snapshots: [
-      snap(bce(150).year, poly([[88, 42], [102, 45], [116, 48], [118, 44], [110, 41], [98, 40], [90, 41], [88, 42]]), 'low', 'Mongolian steppe confederation, approximate.'),
+      snap(bce(209).year, poly([[98, 44], [108, 45], [112, 48], [104, 50], [96, 47], [98, 44]]), 'low', 'Modu Chanyu’s founding unification of the Mongolian steppe tribes.'),
+      snap(bce(176).year, poly([[85, 42], [100, 40], [110, 38], [120, 42], [122, 47], [112, 52], [100, 52], [90, 48], [85, 42]]), 'medium', 'Peak extent after defeating the Yuezhi, spanning Mongolia and much of Central Asia; Han China pays tribute under the "heqin" treaties.'),
+      snap(bce(128).year, poly([[88, 44], [102, 43], [114, 44], [118, 48], [108, 52], [96, 50], [88, 44]]), 'medium', 'Han Wudi’s counteroffensives (from 127 BCE) strip the Ordos and Gansu corridor.'),
+      snap(bce(51).year, poly([[90, 45], [100, 44], [110, 46], [112, 50], [100, 52], [90, 49], [90, 45]]), 'medium', 'After a civil war, Huhanye Chanyu submits to Han as a vassal (51 BCE), splitting off the Southern Xiongnu; the independent Northern Xiongnu remnant is shown.'),
+      snap(ce(89).year, poly([[80, 43], [86, 43], [88, 46], [82, 47], [80, 43]]), 'medium', 'A Han–Xianbei–Southern Xiongnu coalition crushes the Northern Xiongnu at Ikh Bayan, driving survivors far west.'),
+      snap(ce(155).year, poly([[81, 44], [85, 44], [86, 46], [82, 46], [81, 44]]), 'low', 'A final remnant, shortly before the Xianbei destroy it outright.'),
     ],
   },
   {
