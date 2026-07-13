@@ -218,7 +218,7 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#8a7ab0',
     labelImportance: 4,
-    predecessorIds: ['holy-roman-empire', 'kingdom-of-hungary'],
+    predecessorIds: ['duchy-of-austria', 'bohemia', 'kingdom-of-hungary', 'holy-roman-empire'],
     description:
       'The composite central-European monarchy of the House of Habsburg — Austria, Bohemia, Hungary and more — which endured as the Austrian Empire and then Austria-Hungary until its collapse in 1918.',
     sources: [src('Judson 2016, The Habsburg Empire: A New History')],

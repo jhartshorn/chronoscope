@@ -32,7 +32,7 @@ export const MEDIEVAL_ENTITIES: HistoricalEntity[] = [
     colour: '#9a7ab0',
     labelImportance: 4,
     predecessorIds: ['roman-empire'],
-    successorIds: ['holy-roman-empire', 'france'],
+    successorIds: ['holy-roman-empire', 'france', 'kingdom-of-burgundy-arles'],
     description:
       'The empire of Charlemagne and his heirs, uniting much of western and central Europe and reviving the imperial title in the West. Its partition seeded the later kingdoms of France and Germany and the Holy Roman Empire.',
     sources: [src('McKitterick 2008, Charlemagne: The Formation of a European Identity')],

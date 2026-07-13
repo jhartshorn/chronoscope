@@ -462,7 +462,7 @@ export const ENTITIES: HistoricalEntity[] = [
       snap(bce(146).year, mpoly(MED.ITALY, MED.SICILY, MED.SARDINIA_CORSICA, MED.HISPANIA_E, MED.GREECE, MED.AFRICA_PROC), 'medium', 'In 146 BCE both Carthage and Corinth are destroyed: Africa and Macedonia/Greece become provinces.'),
       snap(bce(100).year, mpoly(MED.ITALY, MED.SICILY, MED.SARDINIA_CORSICA, MED.HISPANIA_E, MED.GREECE, MED.AFRICA_PROC, MED.NARBONENSIS, MED.ANATOLIA_W), 'medium', 'By 100 BCE: southern Gaul (Narbonensis) and the province of Asia in western Anatolia are added.'),
       snap(bce(63).year, mpoly(MED.ITALY, MED.SICILY, MED.SARDINIA_CORSICA, MED.HISPANIA_E, MED.GREECE, MED.AFRICA_PROC, MED.NARBONENSIS, MED.ANATOLIA, MED.LEVANT), 'medium', 'Pompey’s eastern settlement (63 BCE) brings Syria and the rest of Anatolia under Roman control.'),
-      snap(bce(44).year, mpoly(MED.IBERIA, MED.GAUL, MED.ITALY, MED.SICILY, MED.SARDINIA_CORSICA, MED.NAFRICA, MED.GREECE, MED.BALKANS, MED.ANATOLIA, MED.LEVANT), 'medium', 'By Caesar’s death (44 BCE): the conquest of all Gaul completes Rome’s command of the western and central Mediterranean.'),
+      snap(bce(44).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.ITALY, MED.SICILY, MED.SARDINIA_CORSICA, MED.NAFRICA, MED.GREECE, MED.BALKANS, MED.ANATOLIA, MED.LEVANT), 'medium', 'By Caesar’s death (44 BCE): the conquest of all Gaul completes Rome’s command of the western and central Mediterranean.'),
     ],
   },
   {
@@ -484,14 +484,14 @@ export const ENTITIES: HistoricalEntity[] = [
       src('Goldsworthy 2009, How Rome Fell'),
     ],
     snapshots: [
-      snap(bce(27).year, mpoly(MED.IBERIA, MED.GAUL, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.GREECE, MED.ANATOLIA, MED.LEVANT), 'medium', 'The Augustan settlement, 27 BCE: the Mediterranean rim, but not yet Britain, Dacia or Mesopotamia.'),
-      snap(ce(68).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT), 'medium', 'By 68 CE, Roman Britain (conquered from 43 CE), Mauretania and Thrace have been added.'),
-      snap(ce(117).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA, MED.MESOPOTAMIA), 'medium', 'Maximum extent under Trajan, 117 CE — including Dacia, Arabia and the short-lived conquests of Armenia and Mesopotamia.'),
-      snap(ce(150).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA), 'medium', 'Under Hadrian and Antoninus Pius: Mesopotamia relinquished, Britain held to Hadrian’s Wall; the stable high-imperial frontier.'),
-      snap(ce(211).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA, MED.MESOPOTAMIA), 'medium', 'Under the Severans: Septimius Severus re-annexes Mesopotamia (198 CE) and pushes the African and British frontiers.'),
-      snap(ce(271).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'After the Crisis of the Third Century, Dacia and Mesopotamia are abandoned (271); the rest of the empire is restored.'),
-      snap(ce(395).year, mpoly(MED.IBERIA, MED.GAUL, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'The empire at the final division into western and eastern halves in 395 CE — still spanning the whole Mediterranean.'),
-      snap(ce(450).year, mpoly(MED.ITALY, MED.NARBONENSIS, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'By 450 CE Britain (410), most of Gaul and Hispania, and Vandal Africa are lost; the surviving core is essentially the eastern (Byzantine) empire plus Italy.'),
+      snap(bce(27).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.GREECE, MED.ANATOLIA, MED.LEVANT), 'medium', 'The Augustan settlement, 27 BCE: the Mediterranean rim, but not yet Britain, Dacia or Mesopotamia.'),
+      snap(ce(68).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT), 'medium', 'By 68 CE, Roman Britain (conquered from 43 CE), Mauretania and Thrace have been added.'),
+      snap(ce(117).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA, MED.MESOPOTAMIA), 'medium', 'Maximum extent under Trajan, 117 CE — including Dacia, Arabia and the short-lived conquests of Armenia and Mesopotamia.'),
+      snap(ce(150).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA), 'medium', 'Under Hadrian and Antoninus Pius: Mesopotamia relinquished, Britain held to Hadrian’s Wall; the stable high-imperial frontier.'),
+      snap(ce(211).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.DACIA, MED.ARABIA_PETRAEA, MED.MESOPOTAMIA), 'medium', 'Under the Severans: Septimius Severus re-annexes Mesopotamia (198 CE) and pushes the African and British frontiers.'),
+      snap(ce(271).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'After the Crisis of the Third Century, Dacia and Mesopotamia are abandoned (271); the rest of the empire is restored.'),
+      snap(ce(395).year, mpoly(MED.IBERIA, MED.GAUL, MED.NARBONENSIS, MED.BRITANNIA, MED.ITALY, MED.NAFRICA, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'The empire at the final division into western and eastern halves in 395 CE — still spanning the whole Mediterranean.'),
+      snap(ce(450).year, mpoly(MED.ITALY, MED.NARBONENSIS, MED.CYRENAICA, MED.EGYPT, MED.BALKANS, MED.THRACE, MED.GREECE, MED.ANATOLIA, MED.LEVANT, MED.ARABIA_PETRAEA), 'medium', 'By 450 CE Britain (410), most of Gaul and Hispania, and Vandal Africa are lost; the surviving core is essentially the eastern (Byzantine) empire plus Italy — Narbonensis (Provence) is the last Gallic foothold.'),
     ],
   },
   {
@@ -637,29 +637,8 @@ export const ENTITIES: HistoricalEntity[] = [
     ],
   },
   // ---------------------------------------------------- medieval Europe
-  {
-    id: 'holy-roman-empire',
-    name: 'Holy Roman Empire',
-    alternativeNames: ['Sacrum Romanum Imperium'],
-    category: 'empire',
-    start: ce(962),
-    end: ce(1806),
-    confidence: 'medium',
-    colour: '#8a7db0',
-    labelImportance: 4,
-    predecessorIds: ['roman-empire'],
-    successorIds: ['germany'],
-    description:
-      'A complex, decentralised polity of central Europe — hundreds of duchies, principalities, bishoprics and free cities under an elected emperor — from Otto I’s coronation in 962 until its dissolution in 1806. Its internal borders were famously fragmented; the outline shown is the empire’s broad outer bounds, not a unitary state.',
-    sources: [
-      src('Wilson 2016, Heart of Europe: A History of the Holy Roman Empire'),
-      src('Whaley 2012, Germany and the Holy Roman Empire'),
-    ],
-    snapshots: [
-      snap(ce(1000).year, poly([[4, 50], [7, 53], [11, 54], [14, 53], [16, 50], [15, 47], [12, 45], [9, 45], [6, 46], [4, 48], [4, 50]]), 'medium', 'Ottonian-era extent, approximate outer bounds.'),
-      snap(ce(1600).year, poly([[3, 51], [7, 54], [12, 54], [15, 53], [18, 50], [17, 47], [14, 46], [11, 45], [8, 45], [6, 47], [4, 49], [3, 51]]), 'medium', 'Early modern extent; internally very fragmented.'),
-    ],
-  },
+  // The Holy Roman Empire and its constituent territories now live in
+  // regions/hre.ts, with much finer temporal and spatial resolution.
   {
     id: 'kingdom-of-england',
     name: 'Kingdom of England',
@@ -899,7 +878,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#6a6a8a',
     labelImportance: 4,
-    predecessorIds: ['holy-roman-empire'],
+    predecessorIds: ['holy-roman-empire', 'brandenburg'],
     description:
       'The German nation-state, unified in 1871 under Prussia: the Empire with Alsace-Lorraine and the eastern provinces to 1918, the truncated Weimar Republic after Versailles, division into the Federal Republic (shown here) and the Soviet-bloc GDR from 1949, and reunification on 3 October 1990. The contemporary boundary is from Natural Earth.',
     sources: [

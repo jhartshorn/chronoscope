@@ -338,6 +338,13 @@ describe('dataset integrity', () => {
     // Severan Mesopotamia (211 CE) is Roman; by the crisis (271) it is gone.
     expect(covers('roman-empire', ce(211), 43, 34)).toBe(true);
     expect(covers('roman-empire', ce(271), 43, 34)).toBe(false);
+    // Gallia Narbonensis (Marseille, Nice) bridges Italy and the rest of
+    // Gaul continuously from Caesar's conquest to the fall of the west —
+    // no gap along the Riviera coast at any point in between.
+    expect(covers('roman-republic', bce(44), 5.37, 43.3)).toBe(true); // Marseille
+    expect(covers('roman-empire', ce(230), 5.37, 43.3)).toBe(true);
+    expect(covers('roman-empire', ce(230), 7.27, 43.7)).toBe(true); // Nice
+    expect(covers('roman-empire', ce(395), 5.37, 43.3)).toBe(true);
 
     // All the notable frontier peoples and kingdoms are present.
     const PERIPHERY = [
@@ -354,6 +361,63 @@ describe('dataset integrity', () => {
     // Crusader Levant and Seljuk Anatolia flank Byzantium in the 12th–13th c.
     expect(covers('kingdom-of-jerusalem', ce(1140), 35.2, 32.5)).toBe(true);
     expect(covers('sultanate-of-rum', ce(1200), 34, 38.5)).toBe(true);
+  });
+
+  it('models fine-grained territorial change for the Holy Roman Empire', () => {
+    // Nine snapshots trace the empire's real rise and contraction.
+    expect(ENTITY_BY_ID.get('holy-roman-empire')!.snapshots.length).toBeGreaterThanOrEqual(8);
+
+    // Milan (Kingdom of Italy): in from Otto I's 962 coronation, lost for
+    // good after the Great Interregnum (1273).
+    expect(covers('holy-roman-empire', ce(962), 9.19, 45.46)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1273), 9.19, 45.46)).toBe(false);
+
+    // Lyon (Kingdom of Burgundy/Arles): outside until Conrad II's 1032
+    // inheritance, lost with the rest of Burgundy by 1273.
+    expect(covers('holy-roman-empire', ce(962), 4.83, 45.76)).toBe(false);
+    expect(covers('holy-roman-empire', ce(1032), 4.83, 45.76)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1273), 4.83, 45.76)).toBe(false);
+
+    // Zurich: formally excised by the Peace of Westphalia (1648), present before.
+    expect(covers('holy-roman-empire', ce(1500), 8.54, 47.37)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1648), 8.54, 47.37)).toBe(false);
+
+    // Amsterdam: joins with the Burgundian Netherlands (1500), leaves with
+    // Dutch independence at Westphalia (1648).
+    expect(covers('holy-roman-empire', ce(1500), 4.9, 52.37)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1648), 4.9, 52.37)).toBe(false);
+
+    // Strasbourg: still imperial after Westphalia (1648), lost to France
+    // with the rest of the left bank of the Rhine by 1801 (Lunéville).
+    expect(covers('holy-roman-empire', ce(1648), 7.75, 48.58)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1801), 7.75, 48.58)).toBe(false);
+
+    // Vienna: always within the empire's German-speaking core.
+    expect(covers('holy-roman-empire', ce(1100), 16.37, 48.21)).toBe(true);
+    expect(covers('holy-roman-empire', ce(1801), 16.37, 48.21)).toBe(true);
+
+    // Constituent territories are present with multi-snapshot timelines.
+    const HRE_TERRITORIES = [
+      'duchy-of-saxony', 'duchy-of-bavaria', 'duchy-of-swabia', 'duchy-of-franconia',
+      'duchy-of-austria', 'bohemia', 'brandenburg', 'kingdom-of-burgundy-arles',
+      'teutonic-order-state', 'swiss-confederacy', 'hanseatic-league',
+    ];
+    for (const id of HRE_TERRITORIES) expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+
+    // Austria (Babenberg march, then Habsburg duchy): Vienna always, Munich never.
+    expect(covers('duchy-of-austria', ce(1282), 16.37, 48.21)).toBe(true);
+    expect(covers('duchy-of-austria', ce(1282), 11.58, 48.14)).toBe(false);
+
+    // Bohemia: Prague always; Wrocław (Silesia) only after its 1335 absorption.
+    expect(covers('bohemia', ce(1212), 14.42, 50.08)).toBe(true);
+    expect(covers('bohemia', ce(1212), 17.03, 51.11)).toBe(false);
+    expect(covers('bohemia', ce(1355), 17.03, 51.11)).toBe(true);
+
+    // Swiss Confederacy: Zurich only after its 1351 accession (not in the
+    // 1315 founding forest cantons); Geneva never (an ally, not a member).
+    expect(covers('swiss-confederacy', ce(1315), 8.54, 47.37)).toBe(false);
+    expect(covers('swiss-confederacy', ce(1499), 8.54, 47.37)).toBe(true);
+    expect(covers('swiss-confederacy', ce(1648), 6.14, 46.2)).toBe(false);
   });
 
   it('covers the top ~50 economies and top ~50 countries by area', () => {
