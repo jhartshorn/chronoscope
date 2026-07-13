@@ -67,6 +67,7 @@ export const MEDIEVAL_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#5a8a9a',
     labelImportance: 3,
+    successorIds: ['kingdom-of-denmark', 'kingdom-of-norway', 'kingdom-of-sweden'],
     description:
       'Seafaring peoples of Scandinavia whose traders, raiders and settlers ranged from the North Atlantic to the rivers of Russia during the Viking Age. The homeland is shown; the wider sphere of raids and colonies (Iceland, the British Isles, Normandy, Vinland) is not.',
     sources: [src('Winroth 2014, The Age of the Vikings')],

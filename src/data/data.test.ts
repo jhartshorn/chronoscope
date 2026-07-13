@@ -340,6 +340,32 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-navarre', ce(1200), -2.93, 43.26)).toBe(false);
   });
 
+  it('models the medieval Scandinavian kingdoms and the Kalmar Union', () => {
+    // Denmark: Skåne is core territory throughout; Bergen (Norway) only
+    // under Cnut's brief North Sea Empire (1028-35).
+    expect(covers('kingdom-of-denmark', ce(965), 13.0, 55.6)).toBe(true); // Skåne
+    expect(covers('kingdom-of-denmark', ce(1028), 5.32, 60.39)).toBe(true); // Bergen
+    expect(covers('kingdom-of-denmark', ce(1157), 5.32, 60.39)).toBe(false);
+
+    // Norway: Iceland only from the 1265 "Norwegian Realm" snapshot; the
+    // Hebrides are held only at that peak, lost by the 1380 snapshot.
+    expect(covers('kingdom-of-norway', ce(1015), -21.9, 64.15)).toBe(false); // Reykjavík
+    expect(covers('kingdom-of-norway', ce(1265), -21.9, 64.15)).toBe(true);
+    expect(covers('kingdom-of-norway', ce(1265), -6.39, 58.2)).toBe(true); // Stornoway
+    expect(covers('kingdom-of-norway', ce(1380), -6.39, 58.2)).toBe(false);
+
+    // Sweden: Turku (Finland) only after the 1249 crusade.
+    expect(covers('kingdom-of-sweden', ce(995), 22.27, 60.45)).toBe(false);
+    expect(covers('kingdom-of-sweden', ce(1250), 22.27, 60.45)).toBe(true);
+
+    // Kalmar Union: Stockholm toggles in and out as Sweden repeatedly broke
+    // from the union before Gustav Vasa's final 1523 secession.
+    expect(covers('kalmar-union', ce(1397), 18.07, 59.33)).toBe(true);
+    expect(covers('kalmar-union', ce(1449), 18.07, 59.33)).toBe(false);
+    expect(covers('kalmar-union', ce(1497), 18.07, 59.33)).toBe(true);
+    expect(covers('kalmar-union', ce(1523), 18.07, 59.33)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
