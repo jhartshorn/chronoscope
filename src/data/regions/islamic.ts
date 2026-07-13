@@ -153,8 +153,32 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
     description:
       'The first steppe empire to call its rulers “Turk”, a vast Central Asian khaganate spanning Mongolia to the Caspian that controlled the Silk Road and left the earliest Turkic inscriptions.',
     sources: [src('Golden 1992, An Introduction to the History of the Turkic Peoples')],
+    successorIds: ['uyghur-khaganate'],
     snapshots: [
       snap(ce(580).year, poly([[60, 40], [80, 48], [100, 50], [118, 48], [115, 42], [98, 40], [80, 40], [66, 40], [60, 40]]), 'low', 'Central Asian and Mongolian steppe, approximate.'),
+    ],
+  },
+  {
+    id: 'uyghur-khaganate',
+    name: 'Uyghur Khaganate',
+    category: 'confederation',
+    start: ce(744),
+    end: ce(840),
+    confidence: 'low',
+    colour: '#5a8a9a',
+    labelImportance: 3,
+    predecessorIds: ['gokturk'],
+    description:
+      'Overthrowing the Göktürks in 744, the Uyghurs built a Mongolian steppe empire that became Tang China’s key ally — Uyghur cavalry helped suppress the An Lushan Rebellion (755–63) — and adopted Manichaeism as a state religion under Bögü Qaghan. A Kirghiz invasion sacked the capital Ordu-Baliq in 840, scattering Uyghur populations into the Tarim Basin and Gansu corridor — the ancestral link to the modern Uyghur homeland in Xinjiang.',
+    sources: [
+      src('Mackerras 1972, The Uighur Empire According to the T’ang Dynastic Histories'),
+      src('Golden 1992, An Introduction to the History of the Turkic Peoples'),
+    ],
+    snapshots: [
+      snap(ce(744).year, poly([[95, 45], [105, 45], [110, 49], [102, 52], [93, 50], [95, 45]]), 'low', 'Founding core in Mongolia after overthrowing the Göktürks.'),
+      snap(ce(760).year, poly([[88, 44], [108, 44], [112, 50], [100, 53], [90, 51], [85, 47], [87, 42], [91, 42], [88, 44]]), 'low', 'Expansion west toward the Tarim Basin as the khaganate aids Tang China against the An Lushan Rebellion.'),
+      snap(ce(800).year, poly([[85, 42], [108, 43], [113, 50], [100, 53], [88, 51], [82, 46], [85, 42]]), 'low', 'Stable peak controlling Mongolia and the Silk Road oasis towns of the eastern Tarim Basin.'),
+      snap(ce(840).year, poly([[87, 41], [91, 41], [92, 43.5], [88, 43.5], [87, 41]]), 'medium', 'A Kirghiz invasion sacks Ordu-Baliq (840); survivors flee to the Tarim Basin, foreshadowing the later Qocho kingdom.'),
     ],
   },
   {

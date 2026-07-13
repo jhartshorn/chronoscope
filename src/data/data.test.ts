@@ -676,6 +676,17 @@ describe('dataset integrity', () => {
     expect(covers('kongo', ce(1857), 14.3, -5.6)).toBe(true); // Mbanza Kongo core
   });
 
+  it('adds the Uyghur Khaganate', () => {
+    const uyghur = ENTITY_BY_ID.get('uyghur-khaganate');
+    expect(uyghur).toBeDefined();
+    expect(uyghur!.snapshots.length).toBeGreaterThanOrEqual(4);
+    // The Tarim Basin (Turfan) only reached from the 760 CE westward push;
+    // the Mongolian heartland (Ordu-Baliq) is lost in the 840 collapse.
+    expect(covers('uyghur-khaganate', ce(744), 89.2, 42.9)).toBe(false); // Turfan
+    expect(covers('uyghur-khaganate', ce(760), 89.2, 42.9)).toBe(true);
+    expect(covers('uyghur-khaganate', ce(840), 102.83, 47.27)).toBe(false); // Ordu-Baliq
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
