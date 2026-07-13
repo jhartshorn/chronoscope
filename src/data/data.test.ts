@@ -778,6 +778,23 @@ describe('dataset integrity', () => {
     expect(covers('venetian-republic', ce(697), 12.33, 45.44)).toBe(true);
   });
 
+  it('raises resolution on the Habsburg Monarchy', () => {
+    expect(ENTITY_BY_ID.get('habsburg-monarchy')!.snapshots.length).toBeGreaterThanOrEqual(6);
+    // Wrocław/Silesia is held in 1699 but lost for good by 1748; Lviv/Galicia
+    // only from the 1772 Polish partition.
+    expect(covers('habsburg-monarchy', ce(1699), 17.03, 51.11)).toBe(true); // Wrocław
+    expect(covers('habsburg-monarchy', ce(1748), 17.03, 51.11)).toBe(false);
+    expect(covers('habsburg-monarchy', ce(1748), 24.03, 49.84)).toBe(false); // Lviv
+    expect(covers('habsburg-monarchy', ce(1772), 24.03, 49.84)).toBe(true);
+    // Milan (Lombardy) only 1815-1866.
+    expect(covers('habsburg-monarchy', ce(1772), 9.19, 45.46)).toBe(false);
+    expect(covers('habsburg-monarchy', ce(1815), 9.19, 45.46)).toBe(true);
+    expect(covers('habsburg-monarchy', ce(1866), 9.19, 45.46)).toBe(false);
+    // Sarajevo (Bosnia) only from the 1908 annexation.
+    expect(covers('habsburg-monarchy', ce(1866), 18.41, 43.86)).toBe(false);
+    expect(covers('habsburg-monarchy', ce(1908), 18.41, 43.86)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

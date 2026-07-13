@@ -251,10 +251,22 @@ export const EUROPE_ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     predecessorIds: ['duchy-of-austria', 'bohemia', 'kingdom-of-hungary', 'holy-roman-empire'],
     description:
-      'The composite central-European monarchy of the House of Habsburg — Austria, Bohemia, Hungary and more — which endured as the Austrian Empire and then Austria-Hungary until its collapse in 1918.',
+      'The composite central-European monarchy of the House of Habsburg — Austria, Bohemia, Hungary and more — which endured as the Austrian Empire and then, after the 1867 Ausgleich split it into a dual monarchy, Austria-Hungary until its collapse in 1918. Its 392-year territorial history swung repeatedly: Silesia lost to Prussia (1740s), Galicia gained in the Polish partitions, Lombardy-Venetia gained at the 1815 Congress of Vienna and lost to Italian unification (1859–66), and Bosnia-Herzegovina annexed in 1908.',
     sources: [src('Judson 2016, The Habsburg Empire: A New History')],
     snapshots: [
-      snap(ce(1720).year, poly([[9, 45.5], [14, 48.5], [19, 49.5], [24, 48], [26, 45.5], [22, 44.5], [16, 45], [11, 46], [9, 45.5]]), 'medium', 'Habsburg lands after 1718, approximate.'),
+      snap(ce(1526).year, poly([[9, 46], [13, 51], [17, 51], [19, 49.5], [17, 46.5], [14, 45.5], [10, 45.3], [9, 46]]), 'medium', 'Ferdinand I inherits Austria, Bohemia and a narrow strip of Royal Hungary after Mohács, approximate.'),
+      snap(ce(1699).year, poly([[9, 45.5], [13, 51], [19, 51.5], [23, 49], [26, 47.5], [22, 44.5], [16, 45], [11, 46], [9, 45.5]]), 'high', 'The Treaty of Karlowitz completes the reconquest of all of Hungary from the Ottomans.'),
+      snap(ce(1748).year, poly([[9, 45.5], [13, 50.3], [18.5, 50.3], [23, 49], [26, 47.5], [22, 44.5], [16, 45], [11, 46], [9, 45.5]]), 'high', 'Silesia is confirmed lost to Prussia by the Treaty of Aix-la-Chapelle, ending the War of the Austrian Succession.'),
+      snap(ce(1772).year, poly([[9, 45.5], [13, 50.3], [18.5, 50.3], [22, 50.8], [26, 49.5], [26.5, 47.5], [22, 44.5], [16, 45], [11, 46], [9, 45.5]]), 'medium', 'The First Partition of Poland adds Galicia in the north-east.'),
+      snap(ce(1815).year, poly(
+        [[7, 44.3], [9, 46.5], [13, 50.3], [18.5, 50.3], [22, 50.8], [26, 49.5], [26.5, 47.5], [22, 44.5], [18, 42.5], [14, 44], [10, 45], [7, 44.3]],
+        [[17.0, 42.6], [19.5, 42.6], [19.6, 44.8], [17.8, 45.0], [16.3, 44.3], [17.0, 42.6]],
+      ), 'high', 'The Congress of Vienna adds Lombardy-Venetia and the Illyrian provinces along the Adriatic — the monarchy’s greatest territorial extent. Ottoman Bosnia (hole) is not yet held.'),
+      snap(ce(1866).year, poly(
+        [[9, 45.5], [9.5, 47], [13, 50.3], [18.5, 50.3], [22, 50.8], [26, 49.5], [26.5, 47.5], [22, 44.5], [18, 42.5], [15, 44], [11, 46], [9, 45.5]],
+        [[17.0, 42.6], [19.5, 42.6], [19.6, 44.8], [17.8, 45.0], [16.3, 44.3], [17.0, 42.6]],
+      ), 'high', 'Lombardy (1859) and Venetia (1866) are lost to Italian unification; Ottoman Bosnia (hole) remains unannexed.'),
+      snap(ce(1908).year, poly([[9, 45.5], [9.5, 47], [13, 50.3], [18.5, 50.3], [22, 50.8], [26, 49.5], [26.5, 47.5], [19, 42.3], [16, 43], [15, 44], [11, 46], [9, 45.5]]), 'high', 'The formal annexation of Bosnia-Herzegovina (occupied since 1878).'),
     ],
   },
   {
