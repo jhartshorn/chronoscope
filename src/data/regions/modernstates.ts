@@ -203,8 +203,8 @@ const TABLE: MS[] = [
   { id: 'central-african-republic', name: 'Central African Republic', ne: 'Central African Rep.', start: 1960, colour: '#8a8b5a', label: 2, alt: ['CAR'] },
 
   // ---- Americas
-  { id: 'colombia', name: 'Colombia', ne: 'Colombia', start: 1819, colour: '#5a9a9a', label: 3, pred: ['spanish-empire', 'muisca'] },
-  { id: 'venezuela', name: 'Venezuela', ne: 'Venezuela', start: 1830, colour: '#4a9a8a', label: 3, pred: ['spanish-empire'] },
+  { id: 'colombia', name: 'Colombia', ne: 'Colombia', start: 1819, colour: '#5a9a9a', label: 3, pred: ['gran-colombia', 'muisca'] },
+  { id: 'venezuela', name: 'Venezuela', ne: 'Venezuela', start: 1830, colour: '#4a9a8a', label: 3, pred: ['gran-colombia'] },
   { id: 'peru', name: 'Peru', ne: 'Peru', start: 1821, colour: '#c98a3f', label: 4, pred: ['spanish-empire', 'inca-empire'] },
   { id: 'chile', name: 'Chile', ne: 'Chile', start: 1818, colour: '#5a9a7a', label: 3, pred: ['spanish-empire'] },
   { id: 'bolivia', name: 'Bolivia', ne: 'Bolivia', start: 1825, colour: '#6a9a5a', label: 3, pred: ['spanish-empire', 'inca-empire'] },

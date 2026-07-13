@@ -847,6 +847,16 @@ describe('dataset integrity', () => {
     expect(covers('duchy-of-milan', ce(1450), 9.15, 45.18)).toBe(true);
   });
 
+  it('adds Gran Colombia', () => {
+    const gc = ENTITY_BY_ID.get('gran-colombia');
+    expect(gc).toBeDefined();
+    // Quito (Ecuador) and Panama only join after the 1822 campaigns
+    // (Carabobo/Pichincha); the 1819 Angostura core is Venezuela/New Granada.
+    expect(covers('gran-colombia', ce(1819), -78.5, -0.23)).toBe(false); // Quito
+    expect(covers('gran-colombia', ce(1822), -78.5, -0.23)).toBe(true);
+    expect(covers('gran-colombia', ce(1819), -74.08, 4.71)).toBe(true); // Bogotá, from the start
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

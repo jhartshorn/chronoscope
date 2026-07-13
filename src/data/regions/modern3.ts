@@ -1,6 +1,6 @@
 import type { HistoricalEntity } from '../../types';
 import { hd } from '../../history/date';
-import { ce, snap, src } from '../helpers';
+import { ce, poly, snap, src } from '../helpers';
 import { buildModernState, type MS } from './modernstates';
 
 /**
@@ -125,7 +125,7 @@ const TABLE: MS[] = [
   { id: 'costa-rica', name: 'Costa Rica', ne: 'Costa Rica', start: 1838, colour: '#5a8a4f', label: 2, pred: ['spanish-empire'], desc: 'Costa Rica, independent from Spain in 1821 and a sovereign republic on leaving the Central American federation in 1838. Contemporary boundary from Natural Earth.' },
   { id: 'belize', name: 'Belize', ne: 'Belize', start: 1981, colour: '#4a8a6f', label: 2, alt: ['British Honduras'], pred: ['british-empire', 'maya'], desc: 'Belize (British Honduras), independent from Britain in 1981; Guatemala long claimed the territory. Contemporary boundary from Natural Earth.' },
   { id: 'panama', name: 'Panama', ne: 'Panama', start: 1903, colour: '#9a5a8a', label: 2, pred: ['colombia', 'spanish-empire'], desc: 'Panama, separated from Colombia in 1903 with US backing to allow the canal; the Canal Zone was under US control until 1979–1999. Contemporary boundary from Natural Earth.' },
-  { id: 'ecuador', name: 'Ecuador', ne: 'Ecuador', start: 1830, colour: '#a87a5a', label: 3, pred: ['spanish-empire', 'inca-empire'], desc: 'Ecuador, independent from Spain in 1822 and a separate republic on leaving Gran Colombia in 1830. Its Amazonian boundary with Peru — long claimed much further east — was settled in 1942 and finally in 1998; the contemporary boundary is from Natural Earth.' },
+  { id: 'ecuador', name: 'Ecuador', ne: 'Ecuador', start: 1830, colour: '#a87a5a', label: 3, pred: ['gran-colombia', 'inca-empire'], desc: 'Ecuador, independent from Spain in 1822 and a separate republic on leaving Gran Colombia in 1830. Its Amazonian boundary with Peru — long claimed much further east — was settled in 1942 and finally in 1998; the contemporary boundary is from Natural Earth.' },
   { id: 'paraguay', name: 'Paraguay', ne: 'Paraguay', start: 1811, colour: '#8a6a5f', label: 2, pred: ['spanish-empire'], desc: 'Paraguay, independent from Spain in 1811. It lost territory in the catastrophic War of the Triple Alliance (1864–70) and gained the Chaco in the Chaco War (1932–35); the contemporary boundary is from Natural Earth.' },
   { id: 'uruguay', name: 'Uruguay', ne: 'Uruguay', start: 1828, colour: '#5a7a9f', label: 2, pred: ['spanish-empire', 'portuguese-empire'], desc: 'Uruguay, established in 1828 as an independent buffer state between Brazil and Argentina after the Cisplatine War. Contemporary boundary from Natural Earth.' },
   { id: 'guyana', name: 'Guyana', ne: 'Guyana', start: 1966, colour: '#6a9a7f', label: 2, pred: ['british-empire', 'dutch-empire'], desc: 'Guyana (British Guiana), independent from Britain in 1966; Venezuela claims the Essequibo region west of the river. Contemporary boundary from Natural Earth.' },
@@ -134,6 +134,32 @@ const TABLE: MS[] = [
 
 export const MODERN3_ENTITIES: HistoricalEntity[] = [
   ...TABLE.map(buildModernState),
+  // Gran Colombia bridges Spanish-American independence to the separate
+  // Colombia/Venezuela/Ecuador republics; previously mentioned only in
+  // Ecuador's description text, never modelled as its own entity.
+  {
+    id: 'gran-colombia',
+    name: 'Gran Colombia',
+    category: 'republic',
+    start: ce(1819),
+    end: ce(1831),
+    confidence: 'medium',
+    colour: '#c9a24a',
+    labelImportance: 4,
+    predecessorIds: ['spanish-empire'],
+    successorIds: ['colombia', 'venezuela', 'ecuador'],
+    description:
+      'Simón Bolívar’s short-lived union of Venezuela, New Granada (Colombia and Panama) and Quito (Ecuador), declared at the Congress of Angostura (1819) and constituted at Cúcuta (1821) as independence from Spain was won. Regional rivalries and Bolívar’s failing health broke it apart in 1830, when Venezuela and Ecuador seceded as separate republics, leaving New Granada to carry on alone as the ancestor of modern Colombia.',
+    sources: [
+      src('Bushnell 1954, The Santander Regime in Gran Colombia'),
+      src('Lynch 2006, Simón Bolívar: A Life'),
+    ],
+    snapshots: [
+      snap(ce(1819).year, poly([[-73.5, 12.5], [-68.0, 10.8], [-64.5, 10.5], [-60.0, 8.5], [-67.0, 1.5], [-72.0, -1.0], [-77.0, 1.0], [-75.5, 7.5], [-73.5, 12.5]]), 'medium', 'The Congress of Angostura: Venezuela and the newly-liberated core of New Granada (after Boyacá, August 1819), approximate.'),
+      snap(ce(1822).year, poly([[-82.0, 9.5], [-77.5, 12.5], [-71.0, 11.5], [-64.5, 10.5], [-60.0, 8.5], [-67.0, 1.5], [-72.0, -1.0], [-79.5, -4.5], [-81.0, 1.0], [-82.0, 9.5]]), 'high', 'Full union after Carabobo (1821) secures Venezuela and Pichincha (1822) adds Quito and Panama.'),
+      snap(ce(1830).year, poly([[-82.0, 9.5], [-77.5, 12.5], [-71.0, 11.5], [-64.5, 10.5], [-60.0, 8.5], [-67.0, 1.5], [-72.0, -1.0], [-79.5, -4.5], [-81.0, 1.0], [-82.0, 9.5]]), 'high', 'Still nominally whole on the eve of 1830, when Venezuela and Ecuador secede as separate republics.'),
+    ],
+  },
   // Yugoslavia bridges the gap between the Habsburg/Ottoman Balkans and
   // today's successor states; shown as the union of their basemap polygons.
   {
