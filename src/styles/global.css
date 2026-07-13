@@ -242,11 +242,33 @@ main,
   z-index: 20;
 }
 
-/* -------------------------------------------------------------- legend */
-.legend {
+/* -------------------------------------------------------------- left dock */
+/*
+ * Shared column for the visible-entities list and the legend. The legend is
+ * pinned to the bottom; the list takes whatever room remains above it and
+ * scrolls, so the two panels never overlap. The dock itself must not eat
+ * map interactions in its empty space.
+ */
+.left-dock {
   position: absolute;
   left: 14px;
+  top: 70px;
   bottom: 178px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 24;
+  pointer-events: none;
+}
+.left-dock > * {
+  pointer-events: auto;
+}
+
+/* -------------------------------------------------------------- legend */
+.legend {
+  margin-top: auto;
+  flex: none;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: 10px;
@@ -254,7 +276,6 @@ main,
   box-shadow: var(--shadow);
   backdrop-filter: blur(6px);
   max-width: 250px;
-  z-index: 15;
   font-size: 12px;
 }
 .legend h2 {
@@ -807,18 +828,15 @@ button.chip:hover {
 
 /* -------------------------------------------------------------- visible list */
 .visible-list {
-  position: absolute;
-  left: 14px;
-  top: 70px;
   width: 300px;
-  max-height: calc(100vh - 240px);
+  flex: 0 1 auto;
+  min-height: 0;
   overflow-y: auto;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: 12px;
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
-  z-index: 24;
   padding: 6px;
 }
 .visible-list h2 {
@@ -853,12 +871,24 @@ button.chip:hover {
 
 /* -------------------------------------------------------------- responsive */
 @media (max-width: 720px) {
-  .info-panel,
-  .visible-list {
+  .info-panel {
     top: auto;
     bottom: 200px;
     left: 8px;
     right: 8px;
+    width: auto;
+    max-height: 45vh;
+  }
+  /* The dock hugs the bottom on phones; the legend inside it is hidden, so
+     it only ever shows the visible list. */
+  .left-dock {
+    top: auto;
+    bottom: 200px;
+    left: 8px;
+    right: 8px;
+    align-items: stretch;
+  }
+  .visible-list {
     width: auto;
     max-height: 45vh;
   }

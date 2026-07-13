@@ -226,16 +226,19 @@ export default function App() {
         </button>
       </div>
 
-      <Legend renderer={renderer} />
-
-      {showVisibleList && (
-        <VisibleList
-          renderer={renderer}
-          onSelectEntity={selectEntity}
-          onSelectEvent={selectEvent}
-          onClose={() => setShowVisibleList(false)}
-        />
-      )}
+      {/* Left dock: visible list above, legend pinned at the bottom, so the
+          two panels share the column instead of overlapping. */}
+      <div className="left-dock">
+        {showVisibleList && (
+          <VisibleList
+            renderer={renderer}
+            onSelectEntity={selectEntity}
+            onSelectEvent={selectEvent}
+            onClose={() => setShowVisibleList(false)}
+          />
+        )}
+        <Legend renderer={renderer} />
+      </div>
 
       {selectedEntity && (
         <InfoPanel
