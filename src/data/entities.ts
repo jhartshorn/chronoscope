@@ -278,21 +278,41 @@ export const ENTITIES: HistoricalEntity[] = [
   },
   {
     id: 'akkad-babylon',
-    name: 'Babylonia',
-    alternativeNames: ['Old Babylonian Empire'],
+    name: 'Old Babylonian Empire',
+    alternativeNames: ['Babylonia'],
     category: 'kingdom',
     start: bce(1894),
-    end: bce(539),
+    end: bce(1595),
     confidence: 'medium',
     colour: '#b26a3a',
     labelImportance: 3,
     predecessorIds: ['sumer'],
-    successorIds: ['achaemenid'],
+    successorIds: ['kassite-babylon'],
     description:
-      'Mesopotamian state centred on Babylon. Extent shown approximates the reach of Hammurabi (18th c. BCE); borders fluctuated greatly over its long history.',
+      'The Amorite dynasty of Babylon that rose from a minor city-state to dominate Mesopotamia under Hammurabi (r. c. 1792–1750 BCE), famed for his law code. The dynasty declined after his death and Babylon itself was sacked by a Hittite raid in 1595 BCE, opening the way for Kassite rule.',
     sources: [src('Van De Mieroop 2005, King Hammurabi of Babylon')],
     snapshots: [
-      snap(bce(1750).year, poly([[42, 30], [46, 30], [49, 32], [48, 35], [44, 36], [41, 34], [40, 31], [42, 30]]), 'medium', 'Hammurabi-era Babylonia, approximate.'),
+      snap(bce(1850).year, poly([[43.5, 32], [45, 32.5], [45.3, 33.5], [43.8, 33.7], [43, 33], [43.5, 32]]), 'medium', 'Babylon before Hammurabi: one city-state among several rivals (Larsa, Mari, Eshnunna, Assyria), approximate.'),
+      snap(bce(1750).year, poly([[42, 30], [46, 30], [49, 32], [48, 35], [44, 36], [41, 34], [40, 31], [42, 30]]), 'medium', 'Hammurabi-era Babylonia at its height, having defeated Larsa, Mari and Eshnunna, approximate.'),
+    ],
+  },
+  {
+    id: 'kassite-babylon',
+    name: 'Kassite Babylon',
+    alternativeNames: ['Kassite Dynasty', 'Karduniaš'],
+    category: 'kingdom',
+    start: bce(1595),
+    end: bce(1155),
+    confidence: 'low',
+    colour: '#a05a35',
+    labelImportance: 2,
+    predecessorIds: ['akkad-babylon'],
+    successorIds: ['neo-babylonian'],
+    description:
+      'A dynasty of non-Mesopotamian Kassite origin that ruled Babylon for nearly four and a half centuries — the longest-lived Babylonian dynasty, and a stable great power that corresponded as an equal with Egypt, Hatti and Mitanni — before Elamite and Assyrian pressure ended it in 1155 BCE.',
+    sources: [src('Van De Mieroop 2015, A History of the Ancient Near East'), src('Bryce 2003, Letters of the Great Kings of the Ancient Near East')],
+    snapshots: [
+      snap(bce(1400).year, poly([[41, 29], [45, 29.5], [48.5, 31.5], [47.5, 34.5], [43.5, 35.5], [40, 33.5], [39, 31], [41, 29]]), 'low', 'Stable Kassite-era Babylonia, approximate.'),
     ],
   },
   {
@@ -313,6 +333,7 @@ export const ENTITIES: HistoricalEntity[] = [
     ],
     snapshots: [
       snap(bce(2600).year, poly([[30, 24], [33, 24], [33.5, 27], [32, 30], [31, 31.5], [30, 31], [29.5, 28], [30, 24]]), 'medium', 'Old Kingdom: Nile valley and delta.'),
+      snap(bce(1850).year, poly([[29.5, 21], [33, 21], [34, 27], [32.5, 31], [31, 31.5], [30, 30], [29, 25], [29.5, 21]]), 'medium', 'Middle Kingdom under Senusret III: the Nile valley extended south to the fortresses of the second cataract in Nubia.'),
       snap(bce(1250).year, poly([[30, 20], [34, 20], [36, 27], [35, 31], [33, 32], [31, 31.5], [30, 29], [29, 25], [30, 20]]), 'medium', 'New Kingdom peak: south into Nubia, north into the Levant.'),
       snap(bce(500).year, poly([[29.5, 22], [33, 22], [34, 27], [32.5, 31], [31, 31.5], [30, 30], [29, 26], [29.5, 22]]), 'medium', 'Late Period, reduced extent.'),
     ],
@@ -422,7 +443,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#c0554f',
     labelImportance: 5,
-    predecessorIds: ['akkad-babylon'],
+    predecessorIds: ['neo-babylonian', 'lydia'],
     description:
       'The first Persian empire, founded by Cyrus the Great; at its height under Darius I it stretched from the Balkans and Egypt to the Indus. Boundaries are provincial and approximate.',
     sources: [

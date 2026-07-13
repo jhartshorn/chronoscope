@@ -520,6 +520,75 @@ describe('dataset integrity', () => {
     expect(ENTITY_BY_ID.get('pagan-kingdom')!.snapshots.length).toBeGreaterThanOrEqual(2);
   });
 
+  it('untangles Babylonia into distinct dynasties and adds the missing Near Eastern civilisations', () => {
+    // Old Babylonian Empire (Hammurabi) ends in 1595 BCE, handing off to
+    // Kassite Babylon rather than lingering unchanged for 1355 years.
+    expect(covers('akkad-babylon', bce(1750), 44.42, 32.54)).toBe(true); // Babylon
+    expect(ENTITY_BY_ID.get('akkad-babylon')!.end.year).toBe(bce(1595).year);
+    expect(covers('kassite-babylon', bce(1400), 44.42, 32.54)).toBe(true); // Babylon
+    expect(covers('achaemenid', bce(540), 44.42, 32.54)).toBe(true); // Babylon, after Cyrus
+
+    // The new civilisations resolve and cover their core cities.
+    expect(covers('elam', bce(2000), 48.26, 32.19)).toBe(true); // Susa
+    expect(covers('mitanni', bce(1400), 40, 36)).toBe(true);
+    expect(covers('aram-damascus', bce(800), 36.3, 33.5)).toBe(true); // Damascus
+    expect(covers('philistia', bce(1000), 34.57, 31.67)).toBe(true); // Ashkelon
+    for (const id of ['elam', 'mitanni', 'aram-damascus', 'philistia', 'kassite-babylon']) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+  });
+
+  it('gives the ancient Near East and Egypt finer temporal and spatial resolution', () => {
+    // Hittite Anatolia: Hattusa held from the Old Kingdom through the
+    // Empire period to the eve of the Bronze Age collapse.
+    expect(ENTITY_BY_ID.get('hittite-empire')!.snapshots.length).toBeGreaterThanOrEqual(3);
+    expect(covers('hittite-empire', bce(1600), 34.61, 40.01)).toBe(true);
+    expect(covers('hittite-empire', bce(1200), 34.61, 40.01)).toBe(true);
+
+    // Neo-Assyria: Egypt (Memphis) is Assyrian only in the brief 671-663
+    // BCE window opened by Esarhaddon's conquest.
+    expect(ENTITY_BY_ID.get('neo-assyrian')!.snapshots.length).toBeGreaterThanOrEqual(4);
+    expect(covers('neo-assyrian', bce(710), 31.25, 29.85)).toBe(false);
+    expect(covers('neo-assyrian', bce(671), 31.25, 29.85)).toBe(true);
+    expect(covers('neo-assyrian', bce(630), 31.25, 29.85)).toBe(false);
+
+    // Neo-Babylon: Jerusalem is captured only after its 586 BCE destruction.
+    expect(covers('neo-babylonian', bce(610), 35.22, 31.77)).toBe(false);
+    expect(covers('neo-babylonian', bce(560), 35.22, 31.77)).toBe(true);
+
+    // Seleucid decline: Bactra is held at Ipsus (301 BCE) but lost once
+    // Bactria breaks away (c. 250 BCE); the empire ends a Syrian rump.
+    expect(covers('seleucid-empire', bce(301), 66.9, 36.75)).toBe(true);
+    expect(covers('seleucid-empire', bce(200), 66.9, 36.75)).toBe(false);
+    expect(ENTITY_BY_ID.get('seleucid-empire')!.snapshots.length).toBeGreaterThanOrEqual(3);
+
+    // Sasanian Persia: Ctesiphon is the capital throughout; Egypt
+    // (Alexandria) is Sasanian only in Khosrow II's 614-28 peak.
+    expect(covers('sassanid-empire', ce(240), 44.58, 33.09)).toBe(true); // Ctesiphon
+    expect(covers('sassanid-empire', ce(500), 29.92, 31.2)).toBe(false); // Alexandria
+    expect(covers('sassanid-empire', ce(620), 29.92, 31.2)).toBe(true);
+    expect(ENTITY_BY_ID.get('sassanid-empire')!.snapshots.length).toBeGreaterThanOrEqual(3);
+
+    // Carthage: Gades (Cadiz) in Iberia is held only after the Barcid
+    // conquests of the 230s-220s BCE, not at the pre-Punic-War height.
+    expect(covers('carthage', bce(264), -6.29, 36.53)).toBe(false);
+    expect(covers('carthage', bce(220), -6.29, 36.53)).toBe(true);
+    expect(ENTITY_BY_ID.get('carthage')!.snapshots.length).toBeGreaterThanOrEqual(3);
+
+    // Egypt: the Middle Kingdom's Nubian fortress line at Buhen is held,
+    // unlike the smaller Old Kingdom.
+    expect(covers('ancient-egypt', bce(2600), 31, 21.9)).toBe(false);
+    expect(covers('ancient-egypt', bce(1850), 31, 21.9)).toBe(true);
+    expect(ENTITY_BY_ID.get('ancient-egypt')!.snapshots.length).toBeGreaterThanOrEqual(4);
+
+    // Kush: Memphis (Egypt) is Kushite only during the 25th Dynasty
+    // (715-663 BCE), not before or in the later Meroitic period.
+    expect(covers('kingdom-of-kush', bce(900), 31.25, 29.85)).toBe(false);
+    expect(covers('kingdom-of-kush', bce(715), 31.25, 29.85)).toBe(true);
+    expect(covers('kingdom-of-kush', ce(100), 31.25, 29.85)).toBe(false);
+    expect(ENTITY_BY_ID.get('kingdom-of-kush')!.snapshots.length).toBeGreaterThanOrEqual(3);
+  });
+
   it('covers the top ~50 economies and top ~50 countries by area', () => {
     // Natural Earth names referenced by contemporary (2026) modern-state snapshots.
     const covered = new Set<string>();

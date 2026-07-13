@@ -74,7 +74,44 @@ export const NEAR_EAST_ENTITIES: HistoricalEntity[] = [
       'The Iron Age kingdoms of the southern Levant. A united monarchy of tradition later divided into Israel in the north (fell to Assyria, 722 BCE) and Judah in the south (fell to Babylon, 586 BCE), the setting of much of the Hebrew Bible.',
     sources: [src('Finkelstein & Silberman 2001, The Bible Unearthed')],
     snapshots: [
-      snap(bce(800).year, poly([[34.3, 29.5], [35.6, 30.5], [35.9, 33], [35, 33.3], [34.5, 31.5], [34.3, 29.5]]), 'medium', 'Israel and Judah in the southern Levant, approximate.'),
+      snap(bce(950).year, poly([[34.3, 29.5], [35.6, 30.5], [36.2, 33], [35, 33.3], [34.5, 31.5], [34.3, 29.5]]), 'low', 'The traditional united monarchy of David and Solomon; archaeological evidence for its scale is debated.'),
+      snap(bce(800).year, poly([[34.3, 29.5], [35.6, 30.5], [35.9, 33], [35, 33.3], [34.5, 31.5], [34.3, 29.5]]), 'medium', 'The divided kingdoms of Israel (north) and Judah (south) in the southern Levant, approximate.'),
+    ],
+  },
+  {
+    id: 'aram-damascus',
+    name: 'Aram-Damascus',
+    alternativeNames: ['Kingdom of Aram'],
+    category: 'kingdom',
+    start: bce(1100),
+    end: bce(732),
+    confidence: 'low',
+    colour: '#8a7a9a',
+    labelImportance: 2,
+    successorIds: ['neo-assyrian'],
+    description:
+      'An Aramaean kingdom centred on Damascus, a persistent rival of Israel in the southern Levant — the wars of Ben-Hadad and Hazael recounted in the Hebrew Bible — until Tiglath-Pileser III of Assyria conquered it in 732 BCE.',
+    sources: [src('Lipiński 2000, The Aramaeans: Their Ancient History, Culture, Religion')],
+    snapshots: [
+      snap(bce(800).year, poly([[35.5, 32], [37, 33.5], [38, 35], [36.5, 35.5], [35, 34], [35, 32.5], [35.5, 32]]), 'low', 'Damascus and southern Syria, approximate.'),
+    ],
+  },
+  {
+    id: 'philistia',
+    name: 'Philistia',
+    alternativeNames: ['Philistines', 'Philistine Pentapolis'],
+    category: 'civilisation',
+    start: bce(1175),
+    end: bce(604),
+    confidence: 'low',
+    colour: '#a8724a',
+    labelImportance: 2,
+    successorIds: ['neo-babylonian'],
+    description:
+      'A confederation of five city-states (the Pentapolis: Gaza, Ashkelon, Ashdod, Ekron and Gath) on the south-western Levantine coast, settled by seafaring "Sea Peoples" amid the Bronze Age collapse and a persistent rival of early Israel, until Nebuchadnezzar II destroyed Ashkelon in 604 BCE.',
+    sources: [src('Killebrew & Lehmann (eds.) 2013, The Philistines and Other "Sea Peoples" in Text and Archaeology')],
+    snapshots: [
+      snap(bce(1000).year, poly([[34.2, 31], [34.9, 31.2], [35, 32], [34.5, 32.2], [34, 31.7], [34.2, 31]]), 'low', 'The coastal Pentapolis strip, approximate.'),
     ],
   },
   {
@@ -127,7 +164,8 @@ export const NEAR_EAST_ENTITIES: HistoricalEntity[] = [
       'The empire of Nebuchadnezzar II, which destroyed Jerusalem and rebuilt Babylon with its famous walls and Hanging Gardens, before falling to Cyrus the Great of Persia.',
     sources: [src('Beaulieu 2018, A History of Babylon 2200 BC–AD 75')],
     snapshots: [
-      snap(bce(560).year, poly([[35, 31], [40, 30], [46, 31], [48, 34], [45, 37], [40, 36], [36, 34], [35, 31]]), 'medium', 'Mesopotamia and the Levant, approximate.'),
+      snap(bce(610).year, poly([[38, 30], [42, 30], [46, 31], [47, 34], [44, 36], [40, 35], [38, 32], [38, 30]]), 'medium', 'Nabopolassar’s founding core in Babylonia, shortly after throwing off Assyrian rule (626 BCE) and sacking Nineveh (612 BCE) with Median allies.'),
+      snap(bce(560).year, poly([[34.3, 30.5], [40, 30], [46, 31], [48, 34], [45, 37], [40, 36], [36, 34], [34.3, 30.5]]), 'medium', 'Under Nebuchadnezzar II: Mesopotamia and the Levant, including Judah after Jerusalem’s destruction (586 BCE).'),
     ],
   },
   {

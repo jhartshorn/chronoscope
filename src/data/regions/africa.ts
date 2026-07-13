@@ -18,7 +18,9 @@ export const AFRICA_ENTITIES: HistoricalEntity[] = [
       'A Nubian kingdom on the upper Nile, centred first on Napata and later Meroë, which for a time ruled Egypt itself as the 25th Dynasty and developed its own script and ironworking tradition.',
     sources: [src('Welsby 1996, The Kingdom of Kush')],
     snapshots: [
-      snap(ce(100).year, poly([[30, 15], [34, 18], [35.5, 22], [33, 21], [31, 18], [30, 15]]), 'low', 'Meroitic Kush on the upper Nile, approximate.'),
+      snap(bce(900).year, poly([[29.5, 16.5], [33.3, 17.8], [33.8, 23], [31, 22], [29.8, 18.5], [29.5, 16.5]]), 'low', 'The early Napatan kingdom of Kush, before the conquest of Egypt.'),
+      snap(bce(715).year, poly([[29.5, 17.5], [33, 19], [33.5, 24], [32, 28], [31.5, 30.5], [30.5, 31.5], [29.3, 31], [29, 26], [29.3, 20], [29.5, 17.5]]), 'low', 'Piye and Shabaka’s 25th Dynasty rules Egypt as well as Kush, from Meroë to the Mediterranean, until Assyrian invasions drive them back south (663 BCE).'),
+      snap(ce(100).year, poly([[30, 15], [34, 18], [35.5, 22], [33, 21], [31, 18], [30, 15]]), 'low', 'Meroitic Kush on the upper Nile, back to its Nubian core, approximate.'),
     ],
   },
   {

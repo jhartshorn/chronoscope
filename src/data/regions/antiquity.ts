@@ -19,7 +19,44 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'Founded by Sargon of Akkad, often called the world’s first empire: the first state to unite the Sumerian and Akkadian cities of Mesopotamia under a single ruler.',
     sources: [src('Van De Mieroop 2015, A History of the Ancient Near East')],
     snapshots: [
-      snap(bce(2250).year, poly([[38, 32], [44, 30], [48, 31], [49, 34], [46, 37], [42, 37], [39, 35], [38, 32]]), 'low', 'Mesopotamia and neighbouring lands under Sargon’s dynasty, approximate.'),
+      snap(bce(2300).year, poly([[42, 32], [45, 31], [47, 32], [46, 34], [43, 34], [42, 32]]), 'low', 'Sargon’s founding core around Akkad and Kish, approximate.'),
+      snap(bce(2250).year, poly([[38, 32], [44, 30], [48, 31], [49, 34], [46, 37], [42, 37], [39, 35], [38, 32]]), 'low', 'Height under Naram-Sin, who claimed divinity and the title "King of the Four Quarters", approximate.'),
+    ],
+  },
+  {
+    id: 'elam',
+    name: 'Elam',
+    category: 'civilisation',
+    start: bce(2700),
+    end: bce(539),
+    confidence: 'low',
+    colour: '#8a5a9a',
+    labelImportance: 3,
+    successorIds: ['achaemenid'],
+    description:
+      'A civilisation of south-western Iran centred on Susa, one of the oldest of the ancient Near East and a persistent rival — and sometime overlord — of Sumer and Babylon for over two millennia. Its highland region of Anshan (Fars) gave Cyrus the Great his original royal title, and Elamite language and administrative practice deeply shaped the early Achaemenid state.',
+    sources: [src('Potts 1999, The Archaeology of Elam')],
+    snapshots: [
+      snap(bce(2000).year, poly([[47, 29], [49, 31], [50, 33], [48, 34], [46, 32], [46, 29], [47, 29]]), 'low', 'The Elamite core of Susiana and Anshan, approximate.'),
+      snap(bce(700).year, poly([[46, 28], [49, 30], [51, 33], [50, 35], [47, 34], [45, 31], [45, 28], [46, 28]]), 'low', 'Neo-Elamite height, shortly before Ashurbanipal’s Assyrian army sacked Susa (647 BCE), approximate.'),
+    ],
+  },
+  {
+    id: 'mitanni',
+    name: 'Mitanni',
+    alternativeNames: ['Hanigalbat'],
+    category: 'kingdom',
+    start: bce(1500),
+    end: bce(1270),
+    confidence: 'low',
+    colour: '#7a6a4a',
+    labelImportance: 2,
+    successorIds: ['hittite-empire'],
+    description:
+      'A Hurrian-ruled kingdom of northern Mesopotamia and Syria, a major Bronze Age power whose kings corresponded with the pharaohs of Egypt as equals (the Amarna letters), crushed between Hittite and Assyrian pressure in the 13th century BCE.',
+    sources: [src('Kuhrt 1995, The Ancient Near East c. 3000–330 BC, Vol. I')],
+    snapshots: [
+      snap(bce(1400).year, poly([[36, 35], [40, 37], [43, 37.5], [43, 35], [40, 34], [37, 34], [36, 35]]), 'low', 'Northern Mesopotamia and Syria, approximate.'),
     ],
   },
   {
@@ -36,7 +73,9 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'A Bronze Age Anatolian empire centred on Hattusa, a great power that fought Egypt to a standstill at Kadesh (c. 1274 BCE) and collapsed in the Late Bronze Age crisis.',
     sources: [src('Bryce 2005, The Kingdom of the Hittites')],
     snapshots: [
-      snap(bce(1300).year, poly([[27, 38], [34, 37], [38, 37], [39, 39], [36, 41], [30, 41], [27, 40], [27, 38]]), 'low', 'Anatolian heartland at its height, approximate.'),
+      snap(bce(1600).year, poly([[29, 39], [33, 38.5], [36, 39.5], [35.5, 41.5], [30, 41.5], [29, 39]]), 'low', 'The Old Kingdom’s Anatolian core, before the imperial expansion into Syria.'),
+      snap(bce(1300).year, poly([[27, 38], [34, 37], [38, 37], [39, 39], [36, 41], [30, 41], [27, 40], [27, 38]]), 'low', 'Imperial height under Suppiluliuma I and successors, reaching into Syria after defeating Mitanni.'),
+      snap(bce(1200).year, poly([[29, 38.5], [33, 38], [36, 39.5], [35, 41], [30, 41], [29, 38.5]]), 'low', 'Contracting back to the Anatolian core under the pressures that brought the Late Bronze Age collapse, shortly before Hattusa’s abandonment.'),
     ],
   },
   {
@@ -57,7 +96,10 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       src('Frahm (ed.) 2017, A Companion to Assyria'),
     ],
     snapshots: [
-      snap(bce(660).year, poly([[27, 31], [33, 31], [40, 30], [46, 31], [50, 34], [48, 38], [42, 39], [36, 38], [30, 36], [27, 34], [27, 31]]), 'medium', 'Height under Ashurbanipal: Mesopotamia and the Levant, approximate.'),
+      snap(bce(870).year, poly([[38, 34], [42, 33], [45, 35], [44, 37], [40, 37], [38, 36], [38, 34]]), 'medium', 'Ashurnasirpal II’s renewed Assyrian heartland, before the great territorial expansion.'),
+      snap(bce(710).year, poly([[27, 31], [33, 31], [40, 30], [46, 31], [50, 34], [48, 38], [42, 39], [36, 38], [30, 36], [27, 34], [27, 31]]), 'medium', 'After Tiglath-Pileser III’s administrative reforms and Sargon II’s conquests: Mesopotamia and the Levant.'),
+      snap(bce(671).year, poly([[27, 31], [30, 24], [33, 22], [34, 25], [35, 30], [33, 31], [40, 30], [46, 31], [50, 34], [48, 38], [42, 39], [36, 38], [30, 36], [27, 34], [27, 31]]), 'medium', 'Esarhaddon conquers Egypt (671 BCE): the largest empire the world had yet seen, from the Nile to the Persian Gulf.'),
+      snap(bce(630).year, poly([[30, 31], [35, 30], [40, 30], [46, 31], [49, 34], [47, 37], [42, 38], [36, 37], [31, 35], [30, 31]]), 'medium', 'Egypt lost (663 BCE) and civil war brewing: the empire contracts back to Mesopotamia and the Levant shortly before Nineveh’s fall (612 BCE).'),
     ],
   },
   {
@@ -93,10 +135,12 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'Classified here as a maritime empire (it can equally be described as a city-state or a republic): a Phoenician colony that grew into the dominant western-Mediterranean power, controlling North Africa, southern Iberia and the islands, until destroyed by Rome in the Punic Wars.',
     sources: [src('Miles 2010, Carthage Must Be Destroyed')],
     snapshots: [
-      snap(bce(300).year, mpoly(
+      snap(bce(600).year, poly([[9, 36], [11, 37], [9, 37.5], [8, 36.5], [9, 36]]), 'low', 'The young Phoenician colony and its immediate hinterland.'),
+      snap(bce(264).year, poly([[6, 32], [11, 37], [5, 37.5], [-1, 36], [3, 33], [6, 32]]), 'low', 'North African hegemony on the eve of the First Punic War; Sicily and Sardinia (not drawn) are still held, Iberia is not yet conquered.'),
+      snap(bce(220).year, mpoly(
         [[8, 33], [11, 37], [6, 37], [1, 36], [3, 34], [8, 33]],
-        [[-6, 37], [-2, 38], [0, 39], [-1, 37], [-5, 36.5], [-6, 37]],
-      ), 'low', 'North African core and Iberian coast; islands not all drawn.'),
+        [[-6.5, 36.8], [-2, 38], [0, 39], [-1, 37], [-6.3, 36.2], [-6.5, 36.8]],
+      ), 'low', 'After the First Punic War lost Sicily, Sardinia and Corsica to Rome (241 BCE), Hamilcar and Hasdrubal Barca build a new Iberian empire (237–220s BCE); islands not drawn.'),
     ],
   },
   {
@@ -137,7 +181,9 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'The largest of the Hellenistic successor states, ruling from Syria and Mesopotamia across Iran to Central Asia before contracting under Parthian and Roman pressure.',
     sources: [src('Kosmin 2014, The Land of the Elephant Kings')],
     snapshots: [
-      snap(bce(280).year, poly([[35, 36], [45, 38], [55, 38], [65, 36], [70, 32], [62, 27], [52, 27], [44, 30], [36, 33], [35, 36]]), 'medium', 'Extent in the early 3rd century BCE, approximate.'),
+      snap(bce(301).year, poly([[35, 36], [45, 39], [58, 40], [70, 38], [75, 34], [70, 28], [62, 24], [52, 24], [44, 28], [36, 33], [35, 36]]), 'medium', 'After the Battle of Ipsus (301 BCE): the largest extent, from the Aegean to the Indus borderlands (soon ceded to the Mauryas in the east, 305 BCE).'),
+      snap(bce(200).year, poly([[35, 36], [45, 38], [55, 38], [65, 36], [70, 32], [62, 27], [52, 27], [44, 30], [36, 33], [35, 36]]), 'medium', 'By 200 BCE, Bactria has broken away as an independent Greek kingdom (c. 250 BCE), but Iran and Mesopotamia are still held.'),
+      snap(bce(100).year, poly([[35, 35], [37, 37], [39, 37], [38, 34], [36, 33], [35, 35]]), 'medium', 'Reduced to a Syrian rump after the Parthians overran Mesopotamia and Iran (141 BCE) — a generation before Pompey annexes what remains (63 BCE).'),
     ],
   },
   {
@@ -156,7 +202,9 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'An Iranian empire that supplanted the Seleucids and was Rome’s great rival in the east for nearly three centuries, controlling the Silk Road trade of the Iranian plateau and Mesopotamia.',
     sources: [src('Curtis & Stewart (eds.) 2007, The Age of the Parthians')],
     snapshots: [
-      snap(ce(1).year, poly([[40, 32], [48, 37], [58, 40], [66, 38], [68, 30], [60, 26], [50, 27], [44, 28], [40, 30], [40, 32]]), 'medium', 'Parthian Iran and Mesopotamia, approximate.'),
+      snap(bce(200).year, poly([[52, 35], [57, 38], [61, 38], [59, 34], [55, 32], [52, 35]]), 'medium', 'The early Parthian-Hyrcanian core, before the conquest of Media and Mesopotamia.'),
+      snap(ce(1).year, poly([[40, 32], [48, 37], [58, 40], [66, 38], [68, 30], [60, 26], [50, 27], [44, 28], [40, 30], [40, 32]]), 'medium', 'Height under the Arsacids: Iran and Mesopotamia, approximate.'),
+      snap(ce(200).year, poly([[42, 32], [48, 37], [58, 40], [66, 38], [68, 30], [60, 26], [50, 27], [45, 29], [42, 30], [42, 32]]), 'medium', 'After repeated Roman invasions sacked Ctesiphon (116, 165, 197 CE), the western frontier is weakened on the eve of the Sasanian overthrow (224 CE).'),
     ],
   },
   {
@@ -175,7 +223,9 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
       'The last pre-Islamic Persian empire, a major power of late antiquity that rivalled Rome and Byzantium for four centuries before the Arab conquests of the 7th century.',
     sources: [src('Daryaee 2009, Sasanian Persia: The Rise and Fall of an Empire')],
     snapshots: [
-      snap(ce(500).year, poly([[38, 33], [46, 38], [56, 40], [66, 38], [68, 29], [58, 25], [48, 26], [42, 29], [38, 31], [38, 33]]), 'medium', 'Sasanian Iran and Mesopotamia, approximate.'),
+      snap(ce(240).year, poly([[40, 30], [47, 35], [56, 36], [62, 32], [60, 27], [52, 25], [45, 26], [40, 30]]), 'medium', 'Ardashir I overthrows the Parthians (224 CE), capturing the capital Ctesiphon: the founding Persian-Mesopotamian core.'),
+      snap(ce(500).year, poly([[38, 33], [46, 38], [56, 40], [66, 38], [68, 29], [58, 25], [48, 26], [42, 29], [38, 31], [38, 33]]), 'medium', 'Sasanian Iran and Mesopotamia at a stable height, approximate.'),
+      snap(ce(620).year, poly([[27, 31], [30, 24], [33, 22], [35, 30], [36, 35], [38, 33], [46, 38], [56, 40], [66, 38], [68, 29], [58, 25], [48, 26], [42, 29], [38, 31], [35, 33], [30, 34], [27, 31]]), 'medium', 'Khosrow II’s near-conquest of Byzantium (614–28): Egypt, the Levant and much of Anatolia are briefly Sasanian, the empire’s absolute peak — followed within a generation by total collapse to the Arab conquests.'),
     ],
   },
   {
