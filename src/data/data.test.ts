@@ -809,6 +809,21 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-kandy', ce(1803), 80.63, 7.29)).toBe(true);
   });
 
+  it('adds Tibetan post-imperial coverage: Sakya, Phagmodrupa, Ganden Phodrang', () => {
+    for (const id of ['sakya-tibet', 'phagmodrupa', 'ganden-phodrang']) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+    // Phagmodrupa: Shigatse (Tsang, the Rinpungpa/Tsangpa power base) is
+    // part of the 1354 founding reunification but lost from central control
+    // once regional strongmen eclipse it from 1435 onward.
+    expect(covers('phagmodrupa', ce(1354), 88.88, 29.27)).toBe(true); // Shigatse
+    expect(covers('phagmodrupa', ce(1435), 88.88, 29.27)).toBe(false);
+    // Lhasa itself is the last holdout, held right up to 1618.
+    expect(covers('phagmodrupa', ce(1618), 91.13, 29.65)).toBe(true);
+    // Ganden Phodrang reunifies the whole plateau in 1642.
+    expect(covers('ganden-phodrang', ce(1642), 88.88, 29.27)).toBe(true); // Shigatse
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
