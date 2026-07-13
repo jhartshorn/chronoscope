@@ -176,10 +176,19 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     predecessorIds: ['aksum'],
     description:
-      'The Christian empire of the Ethiopian highlands under the Solomonic dynasty, which traced descent from Solomon and Sheba, uniquely preserved its independence through the age of European colonialism, and endured until 1974.',
-    sources: [src('Marcus 1994, A History of Ethiopia')],
+      'The Christian empire of the Ethiopian highlands under the Solomonic dynasty, which traced descent from Solomon and Sheba, uniquely preserved its independence through the age of European colonialism, and endured until 1974. Its 700-year history swung between medieval expansion, the near-catastrophic 16th-century jihad of Ahmad "Gran", the fragmented "Age of Princes", and Menelik II’s late-19th-century conquests that shaped Ethiopia’s modern borders.',
+    sources: [
+      src('Marcus 1994, A History of Ethiopia'),
+      src('Pankhurst 1997, The Ethiopian Borderlands'),
+    ],
     snapshots: [
-      snap(ce(1550).year, poly([[36, 6], [40, 7], [42, 11], [40, 14], [37, 14], [35, 10], [36, 6]]), 'medium', 'Ethiopian highlands, approximate.'),
+      snap(ce(1270).year, poly([[36.5, 8.5], [38.0, 8.0], [39.5, 9.0], [39.8, 11.0], [39.0, 13.0], [37.5, 13.0], [36.0, 11.0], [36.5, 8.5]]), 'medium', 'Yekuno Amlak’s founding realm: the central Amhara and Lasta highlands.'),
+      snap(ce(1400).year, poly([[35.5, 7.5], [37.5, 6.5], [40.0, 7.5], [41.5, 9.5], [40.5, 12.0], [39.0, 14.5], [37.0, 14.0], [35.5, 11.0], [35.0, 9.0], [35.5, 7.5]]), 'medium', 'Amda Seyon and his successors’ campaigns push south and east against the Muslim sultanates of the lowlands.'),
+      snap(ce(1530).year, poly([[38.0, 10.5], [39.2, 10.3], [39.5, 11.5], [38.5, 12.3], [37.5, 11.5], [38.0, 10.5]]), 'high', 'Ahmad ibn Ibrahim al-Ghazi’s ("Gran") jihad overruns nearly the whole empire, leaving only a mountain remnant.'),
+      snap(ce(1550).year, poly([[36.0, 8.0], [38.0, 7.0], [41.0, 7.5], [42.0, 10.5], [40.0, 12.5], [38.5, 14.0], [37.0, 13.5], [35.8, 10.5], [35.5, 9.0], [36.0, 8.0]]), 'medium', 'Recovery after Portuguese-aided victory at Wayna Daga (1543) restores much of the highland realm.'),
+      snap(ce(1700).year, poly([[36.5, 11.5], [38.0, 11.3], [38.3, 13.0], [37.0, 13.5], [36.2, 12.3], [36.5, 11.5]]), 'low', 'The "Age of Princes" (Zemene Mesafint): real imperial authority shrinks to around Gondar as regional warlords rule elsewhere in the emperor’s name.'),
+      snap(ce(1855).year, poly([[36.0, 8.0], [38.0, 7.0], [40.0, 8.0], [41.0, 10.0], [40.0, 12.5], [38.5, 14.0], [37.0, 13.5], [35.8, 10.5], [35.5, 9.0], [36.0, 8.0]]), 'medium', 'Tewodros II reunifies the highlands by force, ending the Age of Princes.'),
+      snap(ce(1900).year, poly([[33.0, 3.5], [35.0, 3.5], [38.0, 4.0], [41.0, 4.5], [44.0, 6.0], [44.8, 8.0], [43.0, 10.5], [41.5, 12.5], [39.5, 14.5], [37.5, 14.8], [36.0, 14.0], [34.0, 11.0], [33.0, 8.0], [33.0, 3.5]]), 'high', 'Menelik II’s conquests — and his 1896 victory over Italy at Adwa — roughly triple the empire, shaping Ethiopia’s modern borders.'),
     ],
   },
   {
@@ -193,10 +202,13 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     colour: '#4a9a8a',
     labelImportance: 3,
     description:
-      'A string of cosmopolitan Muslim trading cities along the East African coast (Kilwa, Mombasa, Zanzibar and others), which grew rich linking the African interior to the Indian Ocean world and developed the Swahili language and culture.',
+      'A string of cosmopolitan Muslim trading cities along the East African coast (Kilwa, Mombasa, Zanzibar and others), which grew rich linking the African interior to the Indian Ocean world and developed the Swahili language and culture. Kilwa’s Mahdali dynasty (from 1277) came to dominate the southern gold trade with Sofala, reaching a peak Ibn Battuta admired in 1331, before Portuguese conquest from 1500 ended Swahili independence.',
     sources: [src('Horton & Middleton 2000, The Swahili')],
     snapshots: [
-      snap(ce(1300).year, poly([[39, -2], [41, -3], [40.5, -9], [39.5, -11], [38.5, -8], [38.5, -3], [39, -2]]), 'low', 'East African Swahili coast, a string of city-states (schematic band).'),
+      snap(ce(900).year, poly([[39.0, -6.0], [40.0, -6.5], [39.8, -9.0], [39.0, -9.5], [38.7, -7.5], [39.0, -6.0]]), 'low', 'Early scattered trading settlements around Kilwa and Zanzibar, approximate.'),
+      snap(ce(1200).year, poly([[39, -2], [41, -3], [40.5, -9], [39.5, -11], [38.5, -8], [38.5, -3], [39, -2]]), 'low', 'A wider band of city-states along the coast (schematic).'),
+      snap(ce(1330).year, poly([[45.3, 2.0], [42.5, -2.0], [40.0, -6.0], [38.0, -11.0], [35.5, -17.0], [33.5, -20.5], [36.0, -21.5], [38.0, -18.0], [40.0, -13.0], [41.5, -8.0], [42.5, -3.0], [44.0, 0.0], [45.3, 2.0]]), 'low', 'Kilwa’s trading network at its height, described by Ibn Battuta in 1331, reaching south to the Sofala gold trade and north toward Mogadishu.'),
+      snap(ce(1500).year, poly([[45.3, 2.0], [42.5, -2.0], [40.0, -6.0], [38.0, -11.0], [35.5, -17.0], [33.5, -20.5], [36.0, -21.5], [38.0, -18.0], [40.0, -13.0], [41.5, -8.0], [42.5, -3.0], [44.0, 0.0], [45.3, 2.0]]), 'medium', 'On the eve of Vasco da Gama’s voyages and the Portuguese sack of Kilwa (1505), which end Swahili political independence.'),
     ],
   },
   {
@@ -211,10 +223,14 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     labelImportance: 2,
     predecessorIds: ['great-zimbabwe'],
     description:
-      'A southern African empire that succeeded Great Zimbabwe between the Zambezi and Limpopo, exporting gold to the Swahili coast and later entangled with the Portuguese.',
+      'A southern African empire that succeeded Great Zimbabwe on the northern plateau, exporting gold to the Swahili coast. Portuguese intervention in a mid-17th-century succession war reduced the mwenemutapa to a client ruler by treaty (1629), and the empire was progressively eclipsed by the rising Rozvi Empire to its south before finally dissolving.',
     sources: [src('Beach 1980, The Shona and Zimbabwe 900–1850')],
     snapshots: [
-      snap(ce(1550).year, poly([[29, -15], [33, -15.5], [34, -18], [32, -19], [29.5, -18], [29, -16], [29, -15]]), 'low', 'Northern Zimbabwe plateau, approximate.'),
+      snap(ce(1430).year, poly([[30.5, -15.5], [32.0, -15.7], [32.3, -17.0], [31.0, -17.3], [30.2, -16.3], [30.5, -15.5]]), 'low', 'Nyatsimba Mutota’s founding realm, breaking away from Great Zimbabwe.'),
+      snap(ce(1500).year, poly([[29, -15], [33, -15.5], [34, -18], [32, -19], [29.5, -18], [29, -16], [29, -15]]), 'low', 'Peak extent across the northern Zimbabwe plateau, approximate.'),
+      snap(ce(1629).year, poly([[29, -15], [33, -15.5], [34, -18], [32, -19], [29.5, -18], [29, -16], [29, -15]]), 'medium', 'Territory intact, but the 1629 treaty after a Portuguese-backed succession war reduces the mwenemutapa to a client ruler.'),
+      snap(ce(1700).year, poly([[29.5, -15.3], [32.5, -15.6], [33.0, -17.0], [31.0, -17.5], [29.8, -16.5], [29.5, -15.3]]), 'medium', 'The rising Rozvi Empire eclipses Mutapa from the south, shrinking its effective territory.'),
+      snap(ce(1750).year, poly([[30.0, -15.5], [31.8, -15.7], [32.0, -16.8], [30.8, -17.0], [30.0, -16.2], [30.0, -15.5]]), 'medium', 'A minor rump state shortly before its final dissolution.'),
     ],
   },
   {
@@ -228,10 +244,15 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     labelImportance: 3,
     successorIds: ['south-africa'],
     description:
-      'A southern African kingdom forged by Shaka, whose military innovations made it a formidable power that famously defeated a British army at Isandlwana before its own conquest.',
+      'A southern African kingdom forged by Shaka, whose military innovations (the short stabbing spear, the "buffalo horns" encirclement) drove an explosive 1816–28 expansion and touched off the wider Mfecane upheaval across the region. His successors’ Zulu Kingdom famously defeated a British army at Isandlwana (1879) before its own conquest that same year and eventual annexation.',
     sources: [src('Laband 1995, Rope of Sand: The Rise and Fall of the Zulu Kingdom')],
     snapshots: [
-      snap(ce(1830).year, poly([[30, -27], [32.5, -27.5], [33, -30], [31, -31], [29.5, -29.5], [30, -27]]), 'medium', 'South-eastern Africa (modern KwaZulu-Natal), approximate.'),
+      snap(ce(1816).year, poly([[30.8, -28.2], [31.3, -28.2], [31.4, -28.7], [30.9, -28.8], [30.7, -28.5], [30.8, -28.2]]), 'medium', 'Shaka’s original small chiefdom.'),
+      snap(ce(1820).year, poly([[29.8, -27.0], [31.5, -26.8], [32.8, -27.8], [32.5, -29.5], [31.0, -30.3], [29.5, -29.0], [29.3, -27.8], [29.8, -27.0]]), 'medium', 'Rapid conquest during the Mfecane upheaval.'),
+      snap(ce(1828).year, poly([[29.5, -26.8], [31.7, -26.5], [33.0, -27.5], [32.9, -29.8], [31.2, -30.6], [29.3, -29.3], [29.0, -27.5], [29.5, -26.8]]), 'high', 'Peak extent at Shaka’s assassination: most of what is now KwaZulu-Natal.'),
+      snap(ce(1850).year, poly([[29.8, -27.0], [31.7, -26.8], [32.8, -27.6], [32.6, -29.2], [31.0, -29.8], [29.6, -28.6], [29.5, -27.5], [29.8, -27.0]]), 'medium', 'Stable under Mpande, though Boer Voortrekkers have carved off the southern coastal strip as Natal (1838–43).'),
+      snap(ce(1879).year, poly([[30, -27], [32.5, -27.5], [33, -30], [31, -31], [29.5, -29.5], [30, -27]]), 'medium', 'On the eve of the Anglo-Zulu War: victory at Isandlwana followed within months by defeat at Ulundi.'),
+      snap(ce(1887).year, poly([[30.5, -27.8], [31.8, -28.0], [32.0, -29.0], [31.0, -29.3], [30.3, -28.6], [30.5, -27.8]]), 'high', 'A fractured rump after post-war civil conflict, shortly before Britain annexes Zululand outright.'),
     ],
   },
 ];

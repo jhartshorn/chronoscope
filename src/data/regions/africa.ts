@@ -93,10 +93,12 @@ export const AFRICA_ENTITIES: HistoricalEntity[] = [
     colour: '#8a7a4a',
     labelImportance: 2,
     description:
-      'A southern African kingdom whose capital, Great Zimbabwe, was a city of monumental dry-stone architecture grown rich on cattle and the Indian Ocean gold trade.',
+      'A southern African kingdom whose capital, Great Zimbabwe, was a city of monumental dry-stone architecture grown rich on cattle and the Indian Ocean gold trade. Its authority faded in the 15th century as trade routes shifted, giving rise to the successor Mutapa and Torwa states.',
     sources: [src('Pikirayi 2001, The Zimbabwe Culture')],
     snapshots: [
-      snap(ce(1300).year, poly([[29, -18], [32, -18], [33, -20.5], [31, -22], [29, -21], [29, -18]]), 'low', 'Zimbabwe plateau between the Zambezi and Limpopo, approximate.'),
+      snap(ce(1100).year, poly([[30.0, -19.5], [31.2, -19.5], [31.3, -20.8], [30.2, -21.2], [29.8, -20.3], [30.0, -19.5]]), 'low', 'Early core around the capital itself, approximate.'),
+      snap(ce(1300).year, poly([[29, -18], [32, -18], [33, -20.5], [31, -22], [29, -21], [29, -18]]), 'low', 'Peak extent across the plateau between the Zambezi and Limpopo, approximate.'),
+      snap(ce(1400).year, poly([[29.3, -18.3], [31.7, -18.3], [32.5, -20.3], [30.7, -21.7], [29.3, -20.7], [29.3, -18.3]]), 'low', 'Contracting as gold-trade routes shift north, on the eve of its abandonment and succession by Mutapa and Torwa.'),
     ],
   },
 ];

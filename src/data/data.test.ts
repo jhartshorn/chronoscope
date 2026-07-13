@@ -533,6 +533,32 @@ describe('dataset integrity', () => {
     expect(covers('sokoto-caliphate', ce(1830), 12.48, 9.2)).toBe(true);
   });
 
+  it('raises resolution on Great Zimbabwe, Ethiopia, Kilwa, Mutapa and Zulu', () => {
+    // Ethiopia: Harar-area (east) held at the medieval peak, lost almost
+    // everywhere during Ahmad Gran's jihad, recovered after Wayna Daga, and
+    // regained (plus far more) under Menelik II.
+    expect(covers('solomonic-ethiopia', ce(1270), 41.0, 9.0)).toBe(false);
+    expect(covers('solomonic-ethiopia', ce(1400), 41.0, 9.0)).toBe(true);
+    expect(covers('solomonic-ethiopia', ce(1530), 41.0, 9.0)).toBe(false);
+    expect(covers('solomonic-ethiopia', ce(1550), 41.0, 9.0)).toBe(true);
+    expect(covers('solomonic-ethiopia', ce(1700), 41.0, 9.0)).toBe(false); // Age of Princes contraction
+    expect(covers('solomonic-ethiopia', ce(1900), 44.0, 7.0)).toBe(true); // Ogaden, Menelik-era
+
+    // Kilwa: Sofala (far south gold trade) only from the 1331 Ibn Battuta-era
+    // peak, not the earlier scattered settlements.
+    expect(covers('kilwa', ce(900), 35.5, -19.5)).toBe(false);
+    expect(covers('kilwa', ce(1330), 35.5, -19.5)).toBe(true);
+
+    // Mutapa: stays territorially intact through the 1629 Portuguese
+    // vassal treaty, then shrinks as the Rozvi Empire eclipses it.
+    expect(covers('mutapa', ce(1629), 33.5, -17.5)).toBe(true);
+    expect(covers('mutapa', ce(1750), 33.5, -17.5)).toBe(false);
+
+    // Zulu: explosive 1816-28 expansion under Shaka.
+    expect(covers('zulu', ce(1816), 29.6, -29.0)).toBe(false);
+    expect(covers('zulu', ce(1828), 29.6, -29.0)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
