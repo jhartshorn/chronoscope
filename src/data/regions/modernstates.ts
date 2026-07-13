@@ -134,7 +134,7 @@ const TABLE: MS[] = [
   { id: 'thailand', name: 'Thailand', ne: 'Thailand', start: 1782, colour: '#c9a24a', label: 3, alt: ['Siam'], pred: ['ayutthaya'] },
   { id: 'vietnam', name: 'Vietnam', ne: 'Vietnam', start: 1945, colour: '#5a8a5a', label: 3, pred: ['dai-viet', 'french-colonial-empire'] },
   { id: 'philippines', name: 'Philippines', ne: 'Philippines', start: 1946, colour: '#4a9a7a', label: 3, pred: ['spanish-empire'] },
-  { id: 'malaysia', name: 'Malaysia', ne: 'Malaysia', start: 1963, colour: '#4a9a8a', label: 3, pred: ['british-empire'] },
+  { id: 'malaysia', name: 'Malaysia', ne: 'Malaysia', start: 1963, colour: '#4a9a8a', label: 3, pred: ['british-empire', 'malacca-sultanate'] },
   { id: 'bangladesh', name: 'Bangladesh', ne: 'Bangladesh', start: 1971, colour: '#5a9a6a', label: 3, pred: ['pakistan', 'british-empire'] },
   { id: 'myanmar', name: 'Myanmar', ne: 'Myanmar', start: 1948, colour: '#b0864a', label: 3, alt: ['Burma'], pred: ['pagan-kingdom', 'british-empire'] },
   {

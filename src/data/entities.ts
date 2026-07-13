@@ -504,6 +504,8 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#c98a2f',
     labelImportance: 5,
+    predecessorIds: ['qin-dynasty'],
+    successorIds: ['cao-wei', 'shu-han', 'eastern-wu'],
     description:
       'The Han dynasty, a foundational era of imperial China, contemporary with Rome. Extent shown at the height of Emperor Wu, including the Hexi Corridor toward Central Asia.',
     sources: [
@@ -929,6 +931,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#b0567a',
     labelImportance: 3,
+    predecessorIds: ['tokugawa'],
     description:
       'The modern Japanese state from the Meiji Restoration of 1868, though a continuous polity is far older. The contemporary boundary is from Natural Earth.',
     sources: [

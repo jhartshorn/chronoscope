@@ -65,19 +65,21 @@ export const ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#c98a2f',
     labelImportance: 4,
-    predecessorIds: ['han-china'],
+    predecessorIds: ['sui-dynasty'],
     successorIds: ['song-dynasty'],
     description:
       'A cosmopolitan golden age of imperial China, with its capital Chang’an among the world’s largest cities and its influence reaching deep into Central Asia along the Silk Road.',
     sources: [src('Lewis 2009, China’s Cosmopolitan Empire: The Tang Dynasty')],
     snapshots: [
-      snap(ce(700).year, poly([[100, 22], [108, 20], [118, 24], [122, 32], [122, 40], [115, 42], [103, 40], [95, 38], [92, 33], [100, 28], [100, 22]]), 'medium', 'Tang China near its height, approximate.'),
+      snap(ce(649).year, poly([[100, 22], [108, 20], [118, 24], [122, 32], [122, 40], [115, 42], [106, 40], [98, 38], [96, 33], [100, 28], [100, 22]]), 'medium', 'China proper at the death of Taizong, 649 — the Central Asian protectorates are only beginning to form.'),
+      snap(ce(750).year, poly([[68, 40], [75, 43], [85, 44], [95, 42], [100, 40], [108, 40], [115, 42], [122, 40], [122, 32], [118, 24], [108, 20], [100, 22], [96, 28], [90, 33], [80, 35], [72, 37], [68, 40]]), 'medium', 'Maximum reach under Xuanzong, c. 750: the Anxi and Beiting protectorates project Tang power deep into the Tarim Basin and Transoxiana, on the eve of defeat at Talas (751).'),
+      snap(ce(800).year, poly([[100, 25], [106, 22], [116, 25], [122, 32], [122, 40], [113, 41], [104, 39], [98, 35], [98, 28], [100, 25]]), 'medium', 'After the An Lushan Rebellion (755–63): the Central Asian protectorates and the Hexi Corridor are lost, mostly to the Tibetan Empire, and central authority never fully recovers.'),
     ],
   },
   {
     id: 'song-dynasty',
     name: 'Song Dynasty',
-    alternativeNames: ['Song China'],
+    alternativeNames: ['Song China', 'Northern Song', 'Southern Song'],
     category: 'empire',
     start: ce(960),
     end: ce(1279),
@@ -87,10 +89,66 @@ export const ASIA_ENTITIES: HistoricalEntity[] = [
     predecessorIds: ['tang-dynasty'],
     successorIds: ['mongol-empire'],
     description:
-      'An era of Chinese commercial, technological and cultural flourishing — paper money, gunpowder weapons, printing and Neo-Confucian thought — ended by the Mongol conquest.',
+      'An era of Chinese commercial, technological and cultural flourishing — paper money, gunpowder weapons, printing and Neo-Confucian thought. Never reunited the old Tang lands (the Sixteen Prefectures stayed with Liao, the north-west with Western Xia), and lost the north outright to the Jurchen Jin in 1127, ending with the Mongol conquest.',
     sources: [src('Kuhn 2009, The Age of Confucian Rule: The Song Transformation of China')],
     snapshots: [
-      snap(ce(1100).year, poly([[104, 22], [112, 22], [120, 30], [122, 34], [118, 40], [110, 40], [104, 34], [102, 28], [104, 22]]), 'medium', 'Northern Song China, approximate.'),
+      snap(ce(1050).year, poly([[100, 24], [106, 21], [116, 24], [122, 32], [121, 37], [113, 38], [104, 36], [98, 30], [98, 26], [100, 24]]), 'medium', 'Northern Song: China proper south of the Sixteen Prefectures (Liao territory) and east of Western Xia.'),
+      snap(ce(1200).year, poly([[100, 22], [106, 20], [114, 22], [121, 28], [120, 33], [112, 33], [104, 30], [99, 26], [100, 22]]), 'medium', 'Southern Song after the 1127 Jingkang Incident: the court flees south, ceding all of north China to the Jurchen Jin and holding only south of the Huai River.'),
+    ],
+  },
+  {
+    id: 'liao-dynasty',
+    name: 'Liao Dynasty',
+    alternativeNames: ['Khitan Liao'],
+    category: 'empire',
+    start: ce(907),
+    end: ce(1125),
+    confidence: 'medium',
+    colour: '#7a6a9a',
+    labelImportance: 3,
+    successorIds: ['jin-dynasty-jurchen'],
+    description:
+      'A Khitan empire spanning Manchuria, Mongolia and the "Sixteen Prefectures" of north China (ceded by a Chinese client ruler in 938), which Song China never recovered. Overthrown by its former Jurchen vassals, who founded the Jin dynasty.',
+    sources: [src('Twitchett & Tietze 1994, in The Cambridge History of China, Vol. 6')],
+    snapshots: [
+      snap(ce(1000).year, poly([[110, 37.5], [114, 38.5], [121, 39], [125, 42], [130, 45], [135, 48], [130, 52], [120, 52], [110, 50], [105, 45], [108, 40], [110, 37.5]]), 'medium', 'Manchuria, Mongolia and the Sixteen Prefectures (including modern Beijing) on the Song frontier, approximate.'),
+    ],
+  },
+  {
+    id: 'jin-dynasty-jurchen',
+    name: 'Jin Dynasty (Jurchen)',
+    alternativeNames: ['Jurchen Jin'],
+    category: 'empire',
+    start: ce(1115),
+    end: ce(1234),
+    confidence: 'medium',
+    colour: '#6a5a8a',
+    labelImportance: 3,
+    predecessorIds: ['liao-dynasty'],
+    successorIds: ['mongol-empire'],
+    description:
+      'A Jurchen empire that overthrew its former Khitan Liao overlords (1125) and conquered north China from Song (1127), ruling from Manchuria to the Huai River until the Mongols destroyed it in 1234 — the immediate northern neighbour of Southern Song for over a century.',
+    sources: [src('Franke 1994, in The Cambridge History of China, Vol. 6')],
+    snapshots: [
+      snap(ce(1150).year, poly([[108, 33], [113, 33], [120, 35], [125, 40], [130, 45], [128, 50], [118, 50], [110, 45], [105, 38], [108, 33]]), 'medium', 'Manchuria and north China to the Huai River, after conquering both Liao (1125) and northern Song (1127).'),
+    ],
+  },
+  {
+    id: 'western-xia',
+    name: 'Western Xia',
+    alternativeNames: ['Tangut Empire'],
+    category: 'empire',
+    start: ce(1038),
+    end: ce(1227),
+    confidence: 'low',
+    colour: '#9a7a6a',
+    labelImportance: 2,
+    successorIds: ['mongol-empire'],
+    description:
+      'A Tangut state controlling the Gansu Corridor and Ordos, astride the western Silk Road between Song China, Liao/Jin and Tibet, destroyed in the Mongols’ last campaign against Genghis Khan, who died during it (1227).',
+    sources: [src('Dunnell 1994, in The Cambridge History of China, Vol. 6')],
+    snapshots: [
+      snap(ce(1150).year, poly([[95, 36], [99, 39], [104, 40], [108, 38.5], [107, 35], [101, 35], [97, 35], [95, 36]]), 'low', 'The Gansu Corridor and Ordos loop, approximate.'),
     ],
   },
   {
@@ -125,10 +183,12 @@ export const ASIA_ENTITIES: HistoricalEntity[] = [
     predecessorIds: ['ming-dynasty'],
     successorIds: ['china-prc'],
     description:
-      'The last imperial dynasty of China, established by the Manchus, which roughly doubled the empire’s territory to include Manchuria, Mongolia, Tibet and Xinjiang — the basis of modern China’s extent.',
+      'The last imperial dynasty of China, established by the Manchus, which roughly doubled the empire’s territory to include Manchuria, Mongolia, Tibet and Xinjiang — the basis of modern China’s extent — before 19th-century treaty losses.',
     sources: [src('Rowe 2009, China’s Last Empire: The Great Qing')],
     snapshots: [
-      snap(ce(1760).year, poly([[74, 38], [88, 48], [100, 50], [120, 50], [130, 45], [125, 40], [122, 30], [115, 22], [108, 20], [98, 22], [85, 28], [78, 32], [74, 38]]), 'high', 'Near-maximum extent under Qianlong, c. 1760, approximate.'),
+      snap(ce(1650).year, poly([[98, 22], [108, 20], [118, 22], [122, 32], [125, 40], [130, 45], [120, 50], [110, 50], [104, 44], [98, 34], [97, 28], [98, 22]]), 'medium', 'Just after the 1644 conquest: Ming China plus the Manchu homeland, before Mongolia, Tibet and Xinjiang are added.'),
+      snap(ce(1760).year, poly([[74, 38], [88, 48], [100, 50], [120, 50], [134, 45], [133, 40], [122, 30], [115, 22], [108, 20], [98, 22], [85, 28], [78, 32], [74, 38]]), 'high', 'Near-maximum extent under Qianlong, c. 1760, including Outer Manchuria (the Amur/Ussuri lands, lost to Russia in 1858/60), approximate.'),
+      snap(ce(1900).year, poly([[74, 38], [88, 48], [100, 50], [118, 50], [126, 48], [128, 44], [122, 40], [122, 30], [115, 22], [108, 20], [98, 22], [85, 28], [78, 32], [74, 38]]), 'high', 'By 1900: Outer Manchuria (north of the Amur, east of the Ussuri) ceded to Russia by the 1858/1860 treaties; the rest of the Qing extent otherwise holds until 1912.'),
     ],
   },
 ];

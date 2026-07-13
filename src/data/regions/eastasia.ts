@@ -1,7 +1,17 @@
 import type { HistoricalEntity } from '../../types';
 import { bce, ce, poly, snap, src } from '../helpers';
 
-/** Earlier Chinese dynasties, Korea, Japan and the Tibetan Empire. */
+/**
+ * Earlier Chinese dynasties, Korea, Japan and the Tibetan Empire.
+ *
+ * Includes the Three Kingdoms / Jin / Northern & Southern Dynasties era
+ * (220–581 CE) that bridges Han China (entities.ts) and the Sui Dynasty
+ * below — previously a three-and-a-half-century blank — and the Nara,
+ * Heian, Kamakura, Muromachi and Azuchi–Momoyama periods that bridge the
+ * Yamato state to the Tokugawa Shogunate (710–1603 CE), likewise blank
+ * before. Also adds Unified Silla and Balhae, bridging the Three Kingdoms
+ * of Korea to Goryeo (668–918 CE).
+ */
 export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
   {
     id: 'shang-dynasty',
@@ -32,10 +42,11 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     predecessorIds: ['shang-dynasty'],
     successorIds: ['qin-dynasty'],
     description:
-      'The longest-lasting Chinese dynasty, which introduced the “Mandate of Heaven” and, in its long decline (the Spring and Autumn and Warring States periods), hosted the golden age of Chinese philosophy — Confucius, Laozi and the rest.',
+      'The longest-lasting Chinese dynasty, which introduced the “Mandate of Heaven” and, in its long decline (the Spring and Autumn and Warring States periods), hosted the golden age of Chinese philosophy — Confucius, Laozi and the rest. The territory shown is the royal domain and its nominal vassals; from the 8th century BCE real power drained into the dozens, then handful, of warring states not individually mapped here.',
     sources: [src('Li Feng 2013, Early China: A Social and Cultural History')],
     snapshots: [
-      snap(bce(800).year, poly([[106, 32], [114, 34], [120, 36], [119, 39], [112, 39], [107, 36], [105, 34], [106, 32]]), 'medium', 'Zhou realm and its many vassal states, approximate.'),
+      snap(bce(1000).year, poly([[106, 32], [114, 34], [120, 36], [119, 39], [112, 39], [107, 36], [105, 34], [106, 32]]), 'medium', 'Western Zhou: the royal domain around the Wei and Yellow River valleys and its network of vassal states, approximate.'),
+      snap(bce(500).year, poly([[110, 34], [113, 34.5], [113.5, 35], [111, 35.2], [110, 34]]), 'low', 'Eastern Zhou after the 771 BCE flight to Luoyang: the royal domain is now a token territory around the capital, while real power lies with the warring states (Qin, Chu, Qi, Jin and successors) that surround it.'),
     ],
   },
   {
@@ -65,6 +76,7 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#b8823a',
     labelImportance: 3,
+    predecessorIds: ['later-northern-dynasties', 'southern-dynasties-china'],
     successorIds: ['tang-dynasty'],
     description:
       'A short but pivotal dynasty that reunified China after centuries of division and built the Grand Canal, laying the foundations for the Tang golden age.',
@@ -101,7 +113,7 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#5a8a6a',
     labelImportance: 3,
-    successorIds: ['goryeo'],
+    successorIds: ['unified-silla', 'balhae'],
     description:
       'The era when the Korean peninsula and parts of Manchuria were divided among Goguryeo in the north, Baekje in the south-west and Silla in the south-east, until Silla’s unification of most of the peninsula in 668.',
     sources: [src('Seth 2010, A History of Korea')],
@@ -118,7 +130,7 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#5a9a7a',
     labelImportance: 3,
-    predecessorIds: ['three-kingdoms-korea'],
+    predecessorIds: ['unified-silla'],
     successorIds: ['joseon'],
     description:
       'The medieval Korean dynasty that gave the country its Western name, celebrated for its celadon ceramics and the printing of the Buddhist Tripitaka Koreana, which survived Mongol domination.',
@@ -156,7 +168,7 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#b0567a',
     labelImportance: 3,
-    successorIds: ['japan'],
+    successorIds: ['nara-japan'],
     description:
       'The early Japanese state centred on the Nara/Kansai region, which unified the archipelago’s chiefdoms under an imperial line, adopted Buddhism and Chinese-style institutions, and originated Japan’s enduring imperial dynasty.',
     sources: [src('Brown (ed.) 1993, The Cambridge History of Japan, Vol. 1')],
@@ -174,7 +186,7 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#b0466a',
     labelImportance: 4,
-    predecessorIds: ['yamato'],
+    predecessorIds: ['azuchi-momoyama'],
     successorIds: ['japan'],
     description:
       'The military government of the Tokugawa shoguns that unified Japan and imposed more than two centuries of peace and near-isolation (sakoku), ending with the Meiji Restoration of 1868.',
@@ -197,6 +209,280 @@ export const EAST_ASIA_ENTITIES: HistoricalEntity[] = [
     sources: [src('Beckwith 1987, The Tibetan Empire in Central Asia')],
     snapshots: [
       snap(ce(790).year, poly([[79, 28], [86, 30], [94, 33], [101, 36], [100, 30], [95, 27], [88, 27], [82, 28], [79, 28]]), 'low', 'Tibetan Plateau and Silk Road reach at its height, approximate.'),
+    ],
+  },
+
+  // ---------------------------------------------------- Three Kingdoms, Jin, Northern & Southern Dynasties (220-581)
+  {
+    id: 'cao-wei',
+    name: 'Cao Wei',
+    alternativeNames: ['Wei'],
+    category: 'kingdom',
+    start: ce(220),
+    end: ce(266),
+    confidence: 'medium',
+    colour: '#a86a3a',
+    labelImportance: 3,
+    predecessorIds: ['han-china'],
+    successorIds: ['jin-dynasty-china'],
+    description:
+      'The strongest of the Three Kingdoms, holding the north China plain and the old Han capital region after Cao Pi deposed the last Han emperor in 220. Conquered Shu Han in 263; its throne was itself usurped by the Sima family, founding Jin, in 265–66.',
+    sources: [src('de Crespigny 2007, A Biographical Dictionary of Later Han to the Three Kingdoms')],
+    snapshots: [
+      snap(ce(230).year, poly([[100, 32], [104, 36], [110, 40], [116, 40], [122, 38], [122, 34], [118, 30], [112, 30], [106, 30], [100, 32]]), 'medium', 'The north China plain and the Yellow River basin, approximate.'),
+    ],
+  },
+  {
+    id: 'shu-han',
+    name: 'Shu Han',
+    alternativeNames: ['Shu'],
+    category: 'kingdom',
+    start: ce(221),
+    end: ce(263),
+    confidence: 'medium',
+    colour: '#7a9a4a',
+    labelImportance: 2,
+    predecessorIds: ['han-china'],
+    successorIds: ['cao-wei'],
+    description:
+      'The Three Kingdoms state of Liu Bei and Zhuge Liang, based in the mountain-ringed Sichuan basin and claiming Han legitimacy; conquered by Wei in 263, a story told and retold in the Romance of the Three Kingdoms.',
+    sources: [src('de Crespigny 2007, A Biographical Dictionary of Later Han to the Three Kingdoms')],
+    snapshots: [
+      snap(ce(230).year, poly([[98, 28], [102, 30], [108, 32], [110, 29], [108, 26], [104, 23], [100, 24], [98, 28]]), 'medium', 'The Sichuan basin and adjacent highlands, approximate.'),
+    ],
+  },
+  {
+    id: 'eastern-wu',
+    name: 'Eastern Wu',
+    alternativeNames: ['Wu'],
+    category: 'kingdom',
+    start: ce(222),
+    end: ce(280),
+    confidence: 'medium',
+    colour: '#4a8a7a',
+    labelImportance: 2,
+    predecessorIds: ['han-china'],
+    successorIds: ['jin-dynasty-china'],
+    description:
+      'The Three Kingdoms state of Sun Quan, holding the lower and middle Yangtze and the south-east coast; the last of the three to fall, conquered by Jin in 280 to complete China’s reunification.',
+    sources: [src('de Crespigny 2007, A Biographical Dictionary of Later Han to the Three Kingdoms')],
+    snapshots: [
+      snap(ce(230).year, poly([[108, 24], [112, 28], [116, 32], [122, 33], [122, 28], [118, 22], [112, 20], [108, 22], [108, 24]]), 'medium', 'The Yangtze basin and south-eastern coast, approximate.'),
+    ],
+  },
+  {
+    id: 'jin-dynasty-china',
+    name: 'Jin Dynasty',
+    alternativeNames: ['Western Jin', 'Eastern Jin', 'Sima Jin'],
+    category: 'empire',
+    start: ce(266),
+    end: ce(420),
+    confidence: 'medium',
+    colour: '#9a7a4a',
+    labelImportance: 3,
+    predecessorIds: ['cao-wei', 'eastern-wu'],
+    successorIds: ['northern-wei', 'southern-dynasties-china'],
+    description:
+      'The Sima family dynasty that briefly reunified China in 280, only to collapse into the War of the Eight Princes and the Wu Hu uprising; the court fled south in 317 (Eastern Jin), ceding the north to a long era of non-Han successor kingdoms not individually mapped here.',
+    sources: [src('Lewis 2009, China Between Empires: The Northern and Southern Dynasties')],
+    snapshots: [
+      snap(ce(280).year, poly([[98, 22], [104, 20], [112, 22], [118, 26], [122, 32], [122, 39], [116, 41], [108, 41], [100, 39], [96, 33], [96, 26], [98, 22]]), 'medium', 'Briefly reunified China after the conquest of Wu, 280 CE.'),
+      snap(ce(350).year, poly([[98, 26], [100, 31], [105, 33], [112, 33], [118, 33], [122, 33], [122, 25], [116, 20], [108, 20], [100, 22], [98, 26]]), 'medium', 'Eastern Jin after the 317 flight south: the Yangtze basin and Sichuan only, the north lost to non-Han "Sixteen Kingdoms".'),
+    ],
+  },
+  {
+    id: 'northern-wei',
+    name: 'Northern Wei',
+    alternativeNames: ['Tuoba Wei'],
+    category: 'empire',
+    start: ce(386),
+    end: ce(534),
+    confidence: 'medium',
+    colour: '#b0864a',
+    labelImportance: 3,
+    predecessorIds: ['jin-dynasty-china'],
+    successorIds: ['later-northern-dynasties'],
+    description:
+      'A dynasty of Xianbei origin that reunified the fragmented north in 439, ending the chaotic Sixteen Kingdoms era, and drove sweeping sinicisation before splitting into Eastern and Western Wei in 534.',
+    sources: [src('Lewis 2009, China Between Empires: The Northern and Southern Dynasties')],
+    snapshots: [
+      snap(ce(420).year, poly([[103, 34], [106, 38], [112, 41], [117, 40], [116, 36], [111, 33], [106, 32], [103, 34]]), 'medium', 'Early consolidation in Shanxi and Hebei, before the 439 reunification of the north.'),
+      snap(ce(470).year, poly([[98, 32], [102, 37], [108, 42], [116, 42], [122, 38], [121, 33], [115, 30], [108, 30], [102, 30], [98, 32]]), 'medium', 'After unifying the north in 439: the Yellow River basin from Gansu to the sea.'),
+    ],
+  },
+  {
+    id: 'later-northern-dynasties',
+    name: 'Later Northern Dynasties',
+    alternativeNames: ['Eastern Wei', 'Western Wei', 'Northern Qi', 'Northern Zhou'],
+    category: 'empire',
+    start: ce(534),
+    end: ce(581),
+    confidence: 'medium',
+    colour: '#a0764a',
+    labelImportance: 2,
+    predecessorIds: ['northern-wei'],
+    successorIds: ['sui-dynasty'],
+    description:
+      'The generals’ regimes that split Northern Wei’s territory after 534 (Eastern and Western Wei, then their usurping successors Northern Qi and Northern Zhou), covering the same Yellow River basin ground and reunited by Northern Zhou in 577 before Yang Jian founded Sui in 581.',
+    sources: [src('Lewis 2009, China Between Empires: The Northern and Southern Dynasties')],
+    snapshots: [
+      snap(ce(560).year, poly([[98, 32], [102, 37], [108, 42], [116, 42], [122, 38], [121, 33], [115, 30], [108, 30], [102, 30], [98, 32]]), 'medium', 'The Yellow River basin, held first as rival Eastern/Western and then Qi/Zhou states, reunified by Northern Zhou in 577.'),
+    ],
+  },
+  {
+    id: 'southern-dynasties-china',
+    name: 'Southern Dynasties',
+    alternativeNames: ['Liu Song', 'Southern Qi', 'Liang Dynasty', 'Chen Dynasty'],
+    category: 'empire',
+    start: ce(420),
+    end: ce(589),
+    confidence: 'medium',
+    colour: '#4a8a6a',
+    labelImportance: 3,
+    predecessorIds: ['jin-dynasty-china'],
+    successorIds: ['sui-dynasty'],
+    description:
+      'The sequence of four short-lived Han-Chinese dynasties (Liu Song, Southern Qi, Liang, Chen) that held the Yangtze basin and the south after Eastern Jin, gradually losing Sichuan and the middle Yangtze to northern pressure before Sui conquered the last of them, Chen, in 589.',
+    sources: [src('Lewis 2009, China Between Empires: The Northern and Southern Dynasties')],
+    snapshots: [
+      snap(ce(450).year, poly([[98, 26], [100, 31], [105, 33], [112, 33], [118, 33], [122, 33], [122, 25], [116, 20], [108, 20], [100, 22], [98, 26]]), 'medium', 'Liu Song at its height: the Yangtze basin, Sichuan and the south-east.'),
+      snap(ce(570).year, poly([[108, 24], [112, 28], [116, 33], [121, 33], [121, 26], [116, 22], [110, 21], [108, 24]]), 'medium', 'Chen Dynasty, much reduced: Sichuan and the middle Yangtze lost to the north, holding only the lower Yangtze and south-east coast.'),
+    ],
+  },
+
+  // ---------------------------------------------------- Unified Silla and Balhae (668-935)
+  {
+    id: 'unified-silla',
+    name: 'Unified Silla',
+    category: 'kingdom',
+    start: ce(668),
+    end: ce(935),
+    confidence: 'medium',
+    colour: '#4a9a8a',
+    labelImportance: 3,
+    predecessorIds: ['three-kingdoms-korea'],
+    successorIds: ['goryeo'],
+    description:
+      'The Korean peninsula’s first unification, after Silla defeated Baekje (660) and Goguryeo (668) with Tang support, then expelled Tang forces from the peninsula by 676. It shares this era (the "North–South States Period") with Balhae in the former Goguryeo north.',
+    sources: [src('Seth 2010, A History of Korea')],
+    snapshots: [
+      snap(ce(750).year, poly([[126.5, 34], [129.5, 35], [129.6, 37.5], [127.5, 39.5], [125, 40], [124, 37], [125, 35], [126.5, 34]]), 'medium', 'Most of the Korean peninsula south of the Taedong River, approximate.'),
+    ],
+  },
+  {
+    id: 'balhae',
+    name: 'Balhae',
+    alternativeNames: ['Bohai'],
+    category: 'kingdom',
+    start: ce(698),
+    end: ce(926),
+    confidence: 'low',
+    colour: '#5a7a9a',
+    labelImportance: 2,
+    predecessorIds: ['three-kingdoms-korea'],
+    description:
+      'A successor state to Goguryeo founded by the general Dae Joyeong, ruling Manchuria and the northern Korean peninsula alongside Unified Silla until destroyed by the Khitan Liao in 926; claimed by both Korean and Chinese historiography.',
+    sources: [src('Seth 2010, A History of Korea')],
+    snapshots: [
+      snap(ce(800).year, poly([[124, 39], [128, 41], [132, 44], [131, 47], [126, 47], [121, 44], [122, 41], [124, 39]]), 'low', 'Manchuria and the northern Korean peninsula, approximate.'),
+    ],
+  },
+
+  // ---------------------------------------------------- Nara to Azuchi-Momoyama Japan (710-1603)
+  {
+    id: 'nara-japan',
+    name: 'Nara Japan',
+    alternativeNames: ['Nara period'],
+    category: 'kingdom',
+    start: ce(710),
+    end: ce(794),
+    confidence: 'medium',
+    colour: '#a0567a',
+    labelImportance: 3,
+    predecessorIds: ['yamato'],
+    successorIds: ['heian-japan'],
+    description:
+      'A brief but formative period named for the permanent capital established at Nara (Heijō-kyō) in 710, modelled on the Tang capital Chang’an, when the imperial court commissioned the Kojiki, Nihon Shoki and the Great Buddha of Tōdai-ji.',
+    sources: [src('Brown (ed.) 1993, The Cambridge History of Japan, Vol. 1')],
+    snapshots: [
+      snap(ce(750).year, poly([[130, 31], [134, 33], [138, 35], [141, 39], [140.5, 41], [137, 38], [133, 34.5], [130.5, 32], [130, 31]]), 'medium', 'Honshu, Kyushu and Shikoku, with the Emishi frontier pushed further north than under Yamato.'),
+    ],
+  },
+  {
+    id: 'heian-japan',
+    name: 'Heian Japan',
+    alternativeNames: ['Heian period'],
+    category: 'kingdom',
+    start: ce(794),
+    end: ce(1185),
+    confidence: 'medium',
+    colour: '#9a4a6a',
+    labelImportance: 3,
+    predecessorIds: ['nara-japan'],
+    successorIds: ['kamakura-shogunate'],
+    description:
+      'Japan’s classical age, from the move of the capital to Heian-kyō (Kyoto) in 794 — the era of The Tale of Genji and a refined court culture — ending as regional samurai clans (the Taira and Minamoto) eclipsed the court’s power in the Genpei War.',
+    sources: [src('Brown (ed.) 1993, The Cambridge History of Japan, Vol. 1')],
+    snapshots: [
+      snap(ce(900).year, poly([[130, 31], [134, 33], [138, 35], [141, 39], [140.5, 41], [137, 38], [133, 34.5], [130.5, 32], [130, 31]]), 'medium', 'Core Heian Japan: Honshu, Kyushu and Shikoku.'),
+      snap(ce(1150).year, poly([[129, 31], [130, 30.5], [132, 31], [134, 32.5], [136.5, 33.5], [139, 34.5], [140.5, 35.5], [141.8, 37], [142.2, 39], [141.8, 41], [140.5, 41.5], [139.5, 40], [138, 38], [136, 36.5], [134, 35.5], [131.5, 34.5], [130, 33.5], [129, 32], [129, 31]]), 'medium', 'By the late Heian period the Northern Fujiwara push the Emishi frontier to the north of Honshu.'),
+    ],
+  },
+  {
+    id: 'kamakura-shogunate',
+    name: 'Kamakura Shogunate',
+    alternativeNames: ['Kamakura period'],
+    category: 'kingdom',
+    start: ce(1185),
+    end: ce(1333),
+    confidence: 'high',
+    colour: '#8a3a5a',
+    labelImportance: 3,
+    predecessorIds: ['heian-japan'],
+    successorIds: ['muromachi-shogunate'],
+    description:
+      'Japan’s first shogunate, founded by Minamoto no Yoritomo, which established samurai rule alongside the imperial court and twice repelled Mongol invasion fleets (1274, 1281) before falling to Emperor Go-Daigo’s Kenmu Restoration.',
+    sources: [src('Mass (ed.) 1997, The Origins of Japan’s Medieval World')],
+    snapshots: [
+      snap(ce(1250).year, poly([[129, 31], [130, 30.5], [132, 31], [134, 32.5], [136.5, 33.5], [139, 34.5], [140.5, 35.5], [141.8, 37], [142.2, 39], [141.8, 41], [140.5, 41.5], [139.5, 40], [138, 38], [136, 36.5], [134, 35.5], [131.5, 34.5], [130, 33.5], [129, 32], [129, 31]]), 'high', 'Japan proper — Honshu, Kyushu and Shikoku — under samurai rule; Hokkaido (Ezo) is not shown.'),
+    ],
+  },
+  {
+    id: 'muromachi-shogunate',
+    name: 'Muromachi Shogunate',
+    alternativeNames: ['Ashikaga Shogunate', 'Muromachi period'],
+    category: 'kingdom',
+    start: ce(1336),
+    end: ce(1573),
+    confidence: 'medium',
+    colour: '#7a2a4a',
+    labelImportance: 3,
+    predecessorIds: ['kamakura-shogunate'],
+    successorIds: ['azuchi-momoyama'],
+    description:
+      'The Ashikaga shoguns’ rule, nominally spanning all of Japan throughout, though real central authority collapsed after the Ōnin War (1467–77) into the Sengoku ("Warring States") period of rival daimyo domains — a political fragmentation of authority, not of the mapped territory.',
+    sources: [src('Hall (ed.) 1990, The Cambridge History of Japan, Vol. 3')],
+    snapshots: [
+      snap(ce(1450).year, poly([[129, 31], [130, 30.5], [132, 31], [134, 32.5], [136.5, 33.5], [139, 34.5], [140.5, 35.5], [141.8, 37], [142.2, 39], [141.8, 41], [140.5, 41.5], [139.5, 40], [138, 38], [136, 36.5], [134, 35.5], [131.5, 34.5], [130, 33.5], [129, 32], [129, 31]]), 'medium', 'Nominal Ashikaga Japan; the Ōnin War (1467–77) is about to shatter real central control.'),
+    ],
+  },
+  {
+    id: 'azuchi-momoyama',
+    name: 'Azuchi–Momoyama period',
+    alternativeNames: ['Sengoku unification'],
+    category: 'kingdom',
+    start: ce(1573),
+    end: ce(1603),
+    confidence: 'high',
+    colour: '#6a1a3a',
+    labelImportance: 3,
+    predecessorIds: ['muromachi-shogunate'],
+    successorIds: ['tokugawa'],
+    description:
+      'The brief, decisive reunification of Japan by Oda Nobunaga and Toyotomi Hideyoshi after a century of civil war, ending Ashikaga rule (1573) and completing national unification (1590) — the immediate prelude to Tokugawa Ieyasu’s victory at Sekigahara (1600) and shogunate (1603).',
+    sources: [src('Hall (ed.) 1990, The Cambridge History of Japan, Vol. 4')],
+    snapshots: [
+      snap(ce(1590).year, poly([[129, 31], [130, 30.5], [132, 31], [134, 32.5], [136.5, 33.5], [139, 34.5], [140.5, 35.5], [141.8, 37], [142.2, 39], [141.8, 41], [140.5, 41.5], [139.5, 40], [138, 38], [136, 36.5], [134, 35.5], [131.5, 34.5], [130, 33.5], [129, 32], [129, 31]]), 'high', 'Hideyoshi completes the unification of Japan in 1590.'),
     ],
   },
 ];

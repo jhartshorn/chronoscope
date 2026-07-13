@@ -420,6 +420,106 @@ describe('dataset integrity', () => {
     expect(covers('swiss-confederacy', ce(1648), 6.14, 46.2)).toBe(false);
   });
 
+  it('fills the China 220-581 CE gap (Three Kingdoms to Northern & Southern Dynasties)', () => {
+    // Each of the Three Kingdoms holds its own capital, 230 CE.
+    expect(covers('cao-wei', ce(230), 112.5, 34.6)).toBe(true); // Luoyang
+    expect(covers('shu-han', ce(230), 104, 30.7)).toBe(true); // Chengdu
+    expect(covers('eastern-wu', ce(230), 118.8, 32.05)).toBe(true); // Nanjing (Jianye)
+
+    // Jin briefly reunifies China (280), then loses the north and retreats
+    // south of the Yangtze/Sichuan line (350).
+    expect(covers('jin-dynasty-china', ce(280), 112.5, 34.6)).toBe(true); // Luoyang
+    expect(covers('jin-dynasty-china', ce(350), 112.5, 34.6)).toBe(false);
+    expect(covers('jin-dynasty-china', ce(350), 104, 30.7)).toBe(true); // Chengdu retained
+
+    // Northern Wei reunifies the north in 439; Southern Dynasties hold the
+    // Yangtze basin, losing Sichuan (but not Nanjing) by the Chen dynasty.
+    expect(covers('northern-wei', ce(470), 112.5, 34.6)).toBe(true); // Luoyang
+    expect(covers('southern-dynasties-china', ce(450), 104, 30.7)).toBe(true); // Chengdu (Liu Song)
+    expect(covers('southern-dynasties-china', ce(570), 104, 30.7)).toBe(false); // lost by Chen
+    expect(covers('southern-dynasties-china', ce(570), 118.8, 32.05)).toBe(true); // Nanjing held
+
+    // The chain resolves: Han -> Three Kingdoms -> Jin -> Sui, unbroken.
+    for (const id of ['cao-wei', 'shu-han', 'eastern-wu', 'jin-dynasty-china', 'northern-wei', 'southern-dynasties-china']) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+  });
+
+  it('fills the Korea 668-918 and Japan 710-1603 CE gaps', () => {
+    // Unified Silla holds Gyeongju; Balhae holds the Manchurian north.
+    expect(covers('unified-silla', ce(750), 129.2, 35.85)).toBe(true); // Gyeongju
+    expect(covers('balhae', ce(800), 126.5, 43.8)).toBe(true); // Jilin area
+    expect(ENTITY_BY_ID.get('unified-silla')).toBeDefined();
+    expect(ENTITY_BY_ID.get('balhae')).toBeDefined();
+
+    // Nara Japan pushes the Emishi frontier further north than Yamato did.
+    expect(covers('yamato', ce(700), 140, 38)).toBe(false);
+    expect(covers('nara-japan', ce(750), 140, 38)).toBe(true);
+    // Kamakura itself is inside the Kamakura Shogunate's territory.
+    expect(covers('kamakura-shogunate', ce(1250), 139.55, 35.32)).toBe(true);
+    // The chain from Yamato to Tokugawa is unbroken.
+    for (const id of ['nara-japan', 'heian-japan', 'kamakura-shogunate', 'muromachi-shogunate', 'azuchi-momoyama']) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+  });
+
+  it('gives Tang, Song and Qing China finer temporal and spatial resolution', () => {
+    // Tang reaches Kashgar only at its Xuanzong-era height (750), lost after
+    // the An Lushan Rebellion (800).
+    expect(covers('tang-dynasty', ce(649), 76, 39.47)).toBe(false);
+    expect(covers('tang-dynasty', ce(750), 76, 39.47)).toBe(true);
+    expect(covers('tang-dynasty', ce(800), 76, 39.47)).toBe(false);
+
+    // Northern Song holds Kaifeng; Southern Song loses it to the Jurchen
+    // Jin in 1127 but keeps Hangzhou throughout.
+    expect(covers('song-dynasty', ce(1050), 114.3, 34.8)).toBe(true); // Kaifeng
+    expect(covers('song-dynasty', ce(1200), 114.3, 34.8)).toBe(false);
+    expect(covers('song-dynasty', ce(1200), 120.2, 30.25)).toBe(true); // Hangzhou
+    expect(covers('jin-dynasty-jurchen', ce(1150), 114.3, 34.8)).toBe(true); // Kaifeng
+    expect(covers('jin-dynasty-jurchen', ce(1150), 120.2, 30.25)).toBe(false); // never Hangzhou
+    expect(covers('liao-dynasty', ce(1000), 116.4, 39.9)).toBe(true); // Beijing (Yan-Yun)
+    expect(covers('western-xia', ce(1150), 106.27, 38.47)).toBe(true); // Yinchuan
+
+    // Qing loses Outer Manchuria (Vladivostok area) to Russia by 1900.
+    expect(covers('qing-dynasty', ce(1760), 131.9, 43.1)).toBe(true);
+    expect(covers('qing-dynasty', ce(1900), 131.9, 43.1)).toBe(false);
+
+    for (const id of ['liao-dynasty', 'jin-dynasty-jurchen', 'western-xia']) expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+  });
+
+  it('models the Southeast Asian gap-fillers and the Nam Tiến southward expansion', () => {
+    // Funan -> Chenla -> Khmer Empire, and Sukhothai -> Ayutthaya resolve.
+    for (const id of ['funan', 'chenla', 'sukhothai', 'lan-xang', 'malacca-sultanate']) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+    expect(covers('sukhothai', ce(1300), 99.82, 17.02)).toBe(true); // Sukhothai city
+    expect(covers('ayutthaya', ce(1370), 100.56, 14.35)).toBe(true); // Ayutthaya city
+    expect(covers('lan-xang', ce(1550), 102.13, 19.89)).toBe(true); // Luang Prabang
+    expect(covers('malacca-sultanate', ce(1480), 102.25, 2.19)).toBe(true); // Malacca city
+
+    // Khmer Empire: founding core smaller than its Jayavarman VII height.
+    expect(covers('khmer-empire', ce(900), 99.8, 17.0)).toBe(false);
+    expect(covers('khmer-empire', ce(1200), 99.8, 17.0)).toBe(true);
+
+    // Nam Tiến: Đại Việt's border creeps south from the Red River delta to
+    // Huế (1306) to Qui Nhon (1500, after Champa's Vijaya falls) while
+    // Champa correspondingly shrinks to, then loses, that same ground.
+    expect(covers('dai-viet', ce(1010), 107.6, 16.47)).toBe(false); // Huế
+    expect(covers('dai-viet', ce(1306), 107.6, 16.47)).toBe(true);
+    expect(covers('champa', ce(1000), 109.22, 13.78)).toBe(true); // Qui Nhon (Vijaya)
+    expect(covers('champa', ce(1500), 109.22, 13.78)).toBe(false);
+    expect(covers('dai-viet', ce(1500), 109.22, 13.78)).toBe(true);
+    expect(covers('champa', ce(1700), 108.99, 11.57)).toBe(true); // last rump at Phan Rang
+
+    // Majapahit: East Java core throughout, Sumatra only claimed at its height.
+    expect(covers('majapahit', ce(1293), 112.75, -7.26)).toBe(true); // Surabaya
+    expect(covers('majapahit', ce(1293), 101, -1)).toBe(false);
+    expect(covers('majapahit', ce(1360), 101, -1)).toBe(true);
+
+    // Pagan contracts to its Irrawaddy core under Mongol pressure (1280).
+    expect(ENTITY_BY_ID.get('pagan-kingdom')!.snapshots.length).toBeGreaterThanOrEqual(2);
+  });
+
   it('covers the top ~50 economies and top ~50 countries by area', () => {
     // Natural Earth names referenced by contemporary (2026) modern-state snapshots.
     const covered = new Set<string>();

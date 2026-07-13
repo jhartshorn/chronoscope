@@ -142,11 +142,14 @@ export const MEDIEVAL_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#b0864a',
     labelImportance: 3,
+    predecessorIds: ['chenla'],
     description:
-      'A Southeast Asian empire centred on Angkor, whose temple-cities and vast hydraulic works dominated the lower Mekong before its decline in the 15th century.',
+      'A Southeast Asian empire centred on Angkor, whose temple-cities and vast hydraulic works dominated the lower Mekong before Ayutthaya sacked Angkor in 1431 and the court withdrew east towards Phnom Penh.',
     sources: [src('Coe 2003, Angkor and the Khmer Civilization')],
     snapshots: [
-      snap(ce(1150).year, poly([[100, 10], [104, 10], [108, 13], [106, 16], [102, 17], [99, 15], [100, 10]]), 'low', 'Angkorian heartland across the lower Mekong, approximate.'),
+      snap(ce(900).year, poly([[102, 11], [105, 11], [107, 13], [105.5, 15], [102.5, 14.5], [101.5, 12.5], [102, 11]]), 'low', 'Jayavarman II’s founding realm around Angkor and the Tonlé Sap, approximate.'),
+      snap(ce(1200).year, poly([[97, 10], [101, 9.5], [105, 10], [108, 13], [107, 17], [103, 19], [99, 17], [97, 14], [97, 10]]), 'low', 'Maximum reach under Jayavarman VII, extending into the Chao Phraya basin and up the Mekong, approximate.'),
+      snap(ce(1400).year, poly([[102, 10.5], [105, 10.5], [107, 13], [106, 15.5], [102.5, 15], [101.5, 12.5], [102, 10.5]]), 'low', 'Contracting under growing pressure from Ayutthaya to the west, shortly before the 1431 sack of Angkor.'),
     ],
   },
 ];
