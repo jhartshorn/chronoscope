@@ -592,13 +592,39 @@ export const ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     successorIds: ['spanish-empire'],
     description:
-      'The Aztec Triple Alliance (Tenochtitlan, Texcoco and Tlacopan) dominated central Mexico through tribute and conquest until the Spanish conquest of 1519–1521. The extent shown is the tributary sphere, which was a patchwork of subject provinces rather than a contiguous state.',
+      'The Aztec Triple Alliance (Tenochtitlan, Texcoco and Tlacopan) formed in 1428 after overthrowing the dominant city-state Azcapotzalco, then dominated central Mexico through tribute and conquest — reaching both coasts under Moctezuma I and its greatest extent under Ahuitzotl — until the Spanish and Tlaxcalan conquest of 1519–1521. The extent shown is the tributary sphere, a patchwork of subject provinces rather than a contiguous state; independent Tlaxcala, surrounded but never conquered, is shown as a hole, and Tarascan Michoacán to the west was likewise never subdued.',
     sources: [
       src('Townsend 2009, The Aztecs (3rd ed.)'),
       src('Smith 2012, The Aztecs (3rd ed.)'),
     ],
     snapshots: [
-      snap(ce(1500).year, poly([[-102, 16], [-99, 15], [-96, 16], [-97, 18.5], [-99, 20.5], [-101, 20], [-102, 18], [-102, 16]]), 'medium', 'Tributary sphere in central Mexico, approximate.'),
+      snap(ce(1428).year, poly([
+        [-99.4, 19.0], [-99.4, 19.7], [-98.7, 19.7], [-98.6, 19.2], [-99.0, 18.9], [-99.4, 19.0],
+      ]), 'medium', 'The founding Triple Alliance: the Basin of Mexico around the lakes, after the defeat of Azcapotzalco.'),
+      snap(ce(1469).year, poly([
+        [-99.6, 17.0], [-99.0, 16.8], [-97.5, 17.0], [-96.3, 18.2], [-96.0, 19.5],
+        [-97.0, 21.3], [-98.3, 21.8], [-99.3, 20.5], [-99.6, 19.5], [-99.6, 17.0],
+      ]), 'medium', 'Moctezuma I’s conquests reach both the Gulf coast (Totonac lands, Huasteca) and toward the Pacific by his death (1469).'),
+      snap(ce(1502).year, poly([
+        [-99.9, 17.5], [-99.6, 19.5], [-99.3, 20.7], [-98.0, 22.0], [-96.8, 21.0],
+        [-96.0, 19.3], [-95.0, 17.5], [-93.5, 16.0], [-92.2, 15.0], [-94.0, 15.3],
+        [-96.5, 15.7], [-98.0, 16.5], [-99.9, 17.5],
+      ], [
+        [-98.5, 19.1], [-98.0, 19.15], [-97.95, 19.5], [-98.4, 19.55], [-98.5, 19.1],
+      ]), 'medium', 'Ahuitzotl’s reign (1486–1502) brings the empire to its greatest extent, reaching Xoconochco (Soconusco) on the Guatemalan border; independent Tlaxcala (hole) remains encircled but unconquered.'),
+      snap(ce(1519).year, poly([
+        [-99.9, 17.5], [-99.6, 19.5], [-99.3, 20.7], [-98.0, 22.0], [-96.8, 21.0],
+        [-96.0, 19.3], [-95.0, 17.5], [-93.5, 16.0], [-92.2, 15.0], [-94.0, 15.3],
+        [-96.5, 15.7], [-98.0, 16.5], [-99.9, 17.5],
+      ], [
+        [-98.5, 19.1], [-98.0, 19.15], [-97.95, 19.5], [-98.4, 19.55], [-98.5, 19.1],
+      ]), 'high', 'Stable at its Ahuitzotl-era extent when Cortés lands (1519).'),
+      snap(ce(1520).year, poly([
+        [-99.5, 18.8], [-99.0, 18.7], [-98.2, 19.0], [-98.0, 19.6], [-98.5, 20.2], [-99.3, 20.0], [-99.6, 19.3], [-99.5, 18.8],
+      ]), 'high', 'Effective control collapses to the Basin of Mexico as subject provinces defect to Cortés’s Tlaxcalan-led coalition after the "Noche Triste" (June 1520).'),
+      snap(ce(1521).year, poly([
+        [-99.25, 19.35], [-99.05, 19.35], [-99.0, 19.5], [-99.2, 19.55], [-99.25, 19.35],
+      ]), 'high', 'Reduced to besieged Tenochtitlan itself before the city falls (13 August 1521).'),
     ],
   },
   {

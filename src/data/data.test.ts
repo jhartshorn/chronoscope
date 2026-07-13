@@ -443,6 +443,23 @@ describe('dataset integrity', () => {
     expect(covers('sultanate-of-maguindanao', ce(1888), 125.6, 7.0)).toBe(false);
   });
 
+  it('models the Aztec Empire\'s rise, peak and conquest-era collapse', () => {
+    expect(ENTITY_BY_ID.get('aztec-empire')!.snapshots.length).toBeGreaterThanOrEqual(4);
+    // Cempoala (Gulf coast) and Xoconochco (far south) only from their
+    // respective conquests; Tlaxcala never (a hole even at the peak).
+    expect(covers('aztec-empire', ce(1428), -96.4, 19.5)).toBe(false); // Cempoala
+    expect(covers('aztec-empire', ce(1469), -96.4, 19.5)).toBe(true);
+    expect(covers('aztec-empire', ce(1469), -92.5, 15.1)).toBe(false); // Xoconochco
+    expect(covers('aztec-empire', ce(1502), -92.5, 15.1)).toBe(true);
+    expect(covers('aztec-empire', ce(1502), -98.24, 19.32)).toBe(false); // Tlaxcala, encircled but free
+    expect(covers('aztec-empire', ce(1519), -98.24, 19.32)).toBe(false);
+    // Collapse: Xoconochco lost as control shrinks back to the Basin of
+    // Mexico after the Noche Triste, and Tenochtitlan itself falls last.
+    expect(covers('aztec-empire', ce(1520), -92.5, 15.1)).toBe(false);
+    expect(covers('aztec-empire', ce(1520), -99.13, 19.43)).toBe(true); // Tenochtitlan
+    expect(covers('aztec-empire', ce(1521), -99.13, 19.43)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
