@@ -310,11 +310,15 @@ export const ANTIQUITY_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#b08a4a',
     labelImportance: 3,
+    predecessorIds: ['indo-greek-kingdom'],
+    successorIds: ['sassanid-empire', 'gupta-empire'],
     description:
       'A Central and South Asian empire at the crossroads of the Silk Road, a great patron of Buddhism that linked Rome, Persia, India and China through trade.',
     sources: [src('Benjamin 2018, Empires of Ancient Eurasia')],
     snapshots: [
-      snap(ce(150).year, poly([[62, 40], [70, 40], [78, 36], [82, 28], [78, 24], [70, 26], [64, 32], [62, 40]]), 'low', 'Bactria to the northern Indian plains, approximate.'),
+      snap(ce(50).year, poly([[66, 37], [71, 39], [76, 36], [78, 32], [74, 30], [69, 31], [66, 34], [66, 37]]), 'low', 'The founding Kushan core in Bactria and Gandhara under Kujula Kadphises.'),
+      snap(ce(150).year, poly([[62, 40], [70, 40], [78, 36], [82, 28], [78, 24], [70, 26], [64, 32], [62, 40]]), 'low', 'Height under Kanishka the Great: Bactria to the northern Indian plains, approximate.'),
+      snap(ce(300).year, poly([[64, 38], [70, 39], [76, 35], [79, 29], [76, 26], [70, 27], [65, 32], [64, 38]]), 'low', 'Contracting under Sasanian pressure in the west (the Kushano-Sasanian vassal kingdom) while the eastern, Indian portion persists a little longer.'),
     ],
   },
 ];

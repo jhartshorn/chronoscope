@@ -589,6 +589,67 @@ describe('dataset integrity', () => {
     expect(ENTITY_BY_ID.get('kingdom-of-kush')!.snapshots.length).toBeGreaterThanOrEqual(3);
   });
 
+  it('fills the post-Maurya and Deccan gaps in South Asia', () => {
+    // Ashoka's conquest of Kalinga (261 BCE) is the defining Mauryan
+    // territorial change; the Shungas hold the Gangetic core after 185 BCE.
+    expect(covers('maurya-empire', bce(320), 85.8, 20.3)).toBe(false); // Kalinga
+    expect(covers('maurya-empire', bce(250), 85.8, 20.3)).toBe(true);
+    expect(covers('shunga-empire', bce(150), 85.1, 25.6)).toBe(true); // Pataliputra
+
+    // The post-Maurya north-west: Indo-Greeks at Taxila, then Western
+    // Kshatrapas (Sakas) at Ujjain, both previously unmapped.
+    expect(covers('indo-greek-kingdom', bce(150), 72.8, 33.7)).toBe(true); // Taxila
+    expect(covers('western-kshatrapas', ce(150), 75.8, 23.2)).toBe(true); // Ujjain
+    expect(covers('gupta-empire', ce(380), 75.8, 23.2)).toBe(false); // Ujjain, pre-conquest
+    expect(covers('gupta-empire', ce(420), 75.8, 23.2)).toBe(true); // after 415 CE
+
+    // The Deccan, previously blank between Maurya and Chola/Vijayanagara:
+    // Satavahana, then Chalukya, then Rashtrakuta hold the plateau in turn.
+    expect(covers('satavahana-empire', bce(100), 75.4, 19.5)).toBe(true); // Paithan
+    expect(covers('satavahana-empire', ce(150), 80.4, 16.6)).toBe(true); // Amaravati
+    expect(covers('chalukya-empire', ce(650), 75.7, 15.9)).toBe(true); // Badami
+    expect(covers('rashtrakuta-empire', ce(900), 77.1, 17.35)).toBe(true); // Manyakheta
+    for (const id of [
+      'shunga-empire', 'indo-greek-kingdom', 'western-kshatrapas', 'satavahana-empire',
+      'harsha-empire', 'pallava-empire', 'chalukya-empire', 'rashtrakuta-empire',
+    ]) {
+      expect(ENTITY_BY_ID.get(id), id).toBeDefined();
+    }
+
+    // Harsha's short-lived reunification bridges Gupta to Pala at Kannauj;
+    // Pallava bridges to Chola in the Tamil south.
+    expect(covers('harsha-empire', ce(640), 79.9, 27.05)).toBe(true); // Kannauj
+    expect(covers('pallava-empire', ce(650), 79.7, 12.8)).toBe(true); // Kanchipuram
+
+    // Anuradhapura grows from the northern dry zone to the whole island.
+    expect(covers('anuradhapura', bce(150), 80.6, 6.1)).toBe(false); // south coast
+    expect(covers('anuradhapura', ce(500), 80.6, 6.1)).toBe(true);
+
+    // Delhi Sultanate: Delhi always held; the Deccan only briefly, under
+    // the Tughlaqs' over-extension.
+    expect(covers('delhi-sultanate', ce(1236), 77.2, 28.6)).toBe(true); // Delhi
+    expect(covers('delhi-sultanate', ce(1236), 76.5, 15.3)).toBe(false); // Hampi
+    expect(covers('delhi-sultanate', ce(1330), 76.5, 15.3)).toBe(true);
+
+    // Vijayanagara survives Talikota (1565) only in the far south.
+    expect(covers('vijayanagara', ce(1570), 76.65, 12.3)).toBe(true); // Srirangapatna
+
+    // The Maratha Confederacy grows from the Western Ghats to central India.
+    expect(covers('maratha-confederacy', ce(1680), 73.9, 18.5)).toBe(true); // Pune
+    expect(covers('maratha-confederacy', ce(1680), 79.1, 21.1)).toBe(false); // Nagpur
+    expect(covers('maratha-confederacy', ce(1760), 79.1, 21.1)).toBe(true);
+
+    // The Mughal Empire collapses to a Delhi-Agra rump after Aurangzeb.
+    expect(covers('mughal-empire', ce(1700), 78.5, 17.4)).toBe(true); // Golconda
+    expect(covers('mughal-empire', ce(1760), 78.5, 17.4)).toBe(false);
+    expect(covers('mughal-empire', ce(1760), 77.2, 28.6)).toBe(true); // Delhi
+
+    // Indus Valley: Mohenjo-daro is occupied through the mature phase, then
+    // abandoned as the civilisation declines.
+    expect(covers('indus-valley', bce(2500), 68.14, 27.32)).toBe(true);
+    expect(covers('indus-valley', bce(1700), 68.14, 27.32)).toBe(false);
+  });
+
   it('covers the top ~50 economies and top ~50 countries by area', () => {
     // Natural Earth names referenced by contemporary (2026) modern-state snapshots.
     const covered = new Set<string>();

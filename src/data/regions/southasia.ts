@@ -21,6 +21,59 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
     ],
   },
   {
+    id: 'pallava-empire',
+    name: 'Pallava Dynasty',
+    category: 'kingdom',
+    start: ce(275),
+    end: ce(897),
+    confidence: 'low',
+    colour: '#c9843a',
+    labelImportance: 2,
+    successorIds: ['chola-empire'],
+    description:
+      'A Tamil dynasty ruling from Kanchipuram, patrons of early Dravidian stone temple architecture (the shore temples of Mahabalipuram) and a persistent rival of the Chalukyas to the north, until the rising Cholas absorbed the dynasty.',
+    sources: [src('Sastri 1955, A History of South India')],
+    snapshots: [
+      snap(ce(650).year, poly([[77, 10], [79, 13], [80.5, 14.5], [80, 12], [78.5, 10], [77, 10]]), 'low', 'Height under Narasimhavarman I: the Tamil coast around Kanchipuram, approximate.'),
+    ],
+  },
+  {
+    id: 'chalukya-empire',
+    name: 'Chalukya Empire',
+    alternativeNames: ['Badami Chalukyas', 'Western Chalukyas'],
+    category: 'empire',
+    start: ce(543),
+    end: ce(753),
+    confidence: 'low',
+    colour: '#9a6a3a',
+    labelImportance: 2,
+    successorIds: ['rashtrakuta-empire'],
+    description:
+      'A Deccan dynasty ruling from Badami/Vatapi, at its height under Pulakeshin II a great power that checked the northern emperor Harsha’s southward ambitions at the Narmada — the Deccan’s dominant power for two centuries, until its own general Dantidurga founded the Rashtrakuta dynasty.',
+    sources: [src('Kulke & Rothermund 2004, A History of India')],
+    snapshots: [
+      snap(ce(650).year, poly([[73, 14], [77, 20], [81, 19], [82, 16], [79, 13], [75, 12], [73, 14]]), 'low', 'Height under Pulakeshin II: the Deccan plateau, approximate.'),
+    ],
+  },
+  {
+    id: 'rashtrakuta-empire',
+    name: 'Rashtrakuta Empire',
+    category: 'empire',
+    start: ce(753),
+    end: ce(982),
+    confidence: 'low',
+    colour: '#8a5a3a',
+    labelImportance: 3,
+    predecessorIds: ['chalukya-empire'],
+    successorIds: ['vijayanagara'],
+    description:
+      'The dominant Deccan power for over two centuries, whose armies raided as far as Kannauj in the north; the Arab traveller Al-Masudi ranked its rulers among the four greatest kings of the world. Its rock-cut Kailasa temple at Ellora was carved from a single basalt outcrop.',
+    sources: [src('Kulke & Rothermund 2004, A History of India')],
+    snapshots: [
+      snap(ce(900).year, poly([[72, 15], [76, 22], [81, 23], [84, 19], [81, 14], [76, 12], [73, 13], [72, 15]]), 'low', 'Height under Krishna III: the Deccan and reaching briefly into the north, approximate.'),
+    ],
+  },
+  {
     id: 'pala-empire',
     name: 'Pala Empire',
     category: 'empire',
@@ -29,11 +82,13 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#a87a4a',
     labelImportance: 2,
+    predecessorIds: ['harsha-empire'],
     description:
       'A Buddhist dynasty of eastern India (Bengal and Bihar) that was a major patron of learning, sustaining the great monastic university of Nalanda and spreading Buddhism to Tibet and Southeast Asia.',
     sources: [src('Sanyal 2010, in A Comprehensive History of India')],
     snapshots: [
-      snap(ce(850).year, poly([[84, 22], [88, 24], [92, 26], [90, 27], [86, 26], [83, 24], [84, 22]]), 'low', 'Bengal and Bihar, approximate.'),
+      snap(ce(790).year, poly([[83, 23], [86, 24.5], [89, 26], [87.5, 26.5], [84.5, 25], [83, 23]]), 'low', 'The founding core of Bengal and Bihar under Gopala.'),
+      snap(ce(850).year, poly([[84, 22], [88, 24], [92, 26], [90, 27], [86, 26], [83, 24], [84, 22]]), 'low', 'Height under Devapala, extending across much of the eastern Gangetic plain.'),
     ],
   },
   {
@@ -45,11 +100,13 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#c99a3a',
     labelImportance: 3,
+    predecessorIds: ['pallava-empire'],
     description:
       'A Tamil dynasty of southern India that became a great maritime power, its navy projecting influence across the Bay of Bengal to Southeast Asia, and a patron of magnificent Dravidian temple architecture.',
     sources: [src('Sastri 1955, The CōĻas')],
     snapshots: [
-      snap(ce(1050).year, poly([[75, 8], [78, 8], [81, 12], [82, 16], [80, 18], [77, 15], [75, 11], [75, 8]]), 'medium', 'Chola heartland in Tamil south India; overseas reach not drawn.'),
+      snap(ce(900).year, poly([[77, 9], [79, 9], [80, 11], [79.5, 13], [78, 12], [77, 10], [77, 9]]), 'medium', 'The early Chola heartland around Thanjavur, before the great 10th-century expansion.'),
+      snap(ce(1050).year, poly([[75, 8], [78, 8], [81, 12], [82, 16], [80, 18], [77, 15], [75, 11], [75, 8]]), 'medium', 'Height under Rajaraja I and Rajendra I: Tamil south India and Sri Lanka’s north; the naval reach across the Bay of Bengal is not drawn.'),
     ],
   },
   {
@@ -62,11 +119,13 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'low',
     colour: '#5a9a7a',
     labelImportance: 2,
+    successorIds: ['chola-empire'],
     description:
-      'The long-lived first Sinhalese kingdom of Sri Lanka, centred on the sacred city of Anuradhapura, a great centre of Theravada Buddhism with monumental stupas and sophisticated irrigation.',
+      'The long-lived first Sinhalese kingdom of Sri Lanka, centred on the sacred city of Anuradhapura, a great centre of Theravada Buddhism with monumental stupas and sophisticated irrigation, until Chola conquest ended it in 1017.',
     sources: [src('De Silva 1981, A History of Sri Lanka')],
     snapshots: [
-      snap(ce(500).year, poly([[79.7, 6], [81.9, 6.3], [81.8, 9.2], [80, 9.8], [79.7, 8], [79.7, 6]]), 'low', 'Island of Sri Lanka, approximate.'),
+      snap(bce(150).year, poly([[79.9, 6.2], [81.6, 6.5], [81.5, 8.8], [80.2, 9], [79.9, 7.5], [79.9, 6.2]]), 'low', 'The early kingdom in the island’s northern dry zone, approximate.'),
+      snap(ce(500).year, poly([[79.8, 5.8], [81.9, 6.1], [81.8, 9.2], [80, 9.8], [79.7, 8], [79.8, 5.8]]), 'low', 'The whole island of Sri Lanka, approximate.'),
     ],
   },
   {
@@ -83,7 +142,9 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
       'A succession of Muslim dynasties ruling much of the Indian subcontinent from Delhi, which repelled the Mongols, spread Indo-Islamic culture and architecture, and preceded the Mughals.',
     sources: [src('Jackson 1999, The Delhi Sultanate: A Political and Military History')],
     snapshots: [
-      snap(ce(1330).year, poly([[68, 22], [73, 30], [80, 30], [86, 26], [88, 22], [82, 14], [76, 14], [70, 18], [68, 22]]), 'medium', 'Near-maximum extent under the Tughlaqs, approximate.'),
+      snap(ce(1236).year, poly([[73, 25], [77, 30], [80, 30], [82, 27], [79, 24], [76, 24], [73, 25]]), 'medium', 'The founding Mamluk (Slave) dynasty core around Delhi and the upper Gangetic plain.'),
+      snap(ce(1330).year, poly([[68, 22], [73, 30], [80, 30], [86, 26], [88, 22], [82, 14], [76, 14], [70, 18], [68, 22]]), 'medium', 'Near-maximum extent under the Tughlaqs, who briefly pushed raids to the far south.'),
+      snap(ce(1450).year, poly([[70, 24], [74, 30], [80, 30], [82, 27], [80, 24], [77, 22], [73, 22], [70, 24]]), 'medium', 'Reduced to the Delhi-Agra core under the Sayyid and early Lodi dynasties, after Timur’s catastrophic 1398 sack of Delhi and the loss of the Deccan and Bengal.'),
     ],
   },
   {
@@ -95,11 +156,14 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
     confidence: 'medium',
     colour: '#c9a24a',
     labelImportance: 3,
+    predecessorIds: ['rashtrakuta-empire'],
     description:
-      'A powerful south Indian Hindu empire that dominated the Deccan and the far south, its wealthy capital (modern Hampi) a marvel described by foreign travellers, a bulwark against the northern sultanates.',
+      'A powerful south Indian Hindu empire that dominated the Deccan and the far south, its wealthy capital (modern Hampi) a marvel described by foreign travellers, a bulwark against the northern sultanates until the catastrophic defeat at Talikota (1565).',
     sources: [src('Stein 1989, The New Cambridge History of India: Vijayanagara')],
     snapshots: [
-      snap(ce(1520).year, poly([[74, 8], [78, 9], [82, 13], [82, 17], [78, 18], [74, 16], [73, 12], [74, 8]]), 'medium', 'South Indian Deccan and peninsula, approximate.'),
+      snap(ce(1350).year, poly([[75, 12], [78, 13], [80, 15], [78, 16], [75.5, 15], [74.5, 13], [75, 12]]), 'medium', 'The founding core around the new capital, Vijayanagara (Hampi).'),
+      snap(ce(1520).year, poly([[74, 8], [78, 9], [82, 13], [82, 17], [78, 18], [74, 16], [73, 12], [74, 8]]), 'medium', 'Height under Krishnadevaraya: the whole Deccan and peninsula south of the Krishna river.'),
+      snap(ce(1570).year, poly([[75, 8], [78, 9], [81, 12], [80, 15], [77, 15], [74, 13], [74, 9], [75, 8]]), 'medium', 'After the catastrophic defeat at Talikota (1565), the capital is sacked and the empire reduced to the far south.'),
     ],
   },
   {
@@ -118,7 +182,8 @@ export const SOUTH_ASIA_ENTITIES: HistoricalEntity[] = [
       'A Hindu power founded by Shivaji that broke Mughal dominance and, as a confederacy of chiefs, controlled much of the subcontinent in the 18th century before defeat by the British.',
     sources: [src('Gordon 1993, The New Cambridge History of India: The Marathas')],
     snapshots: [
-      snap(ce(1760).year, poly([[70, 15], [76, 20], [82, 24], [86, 25], [84, 20], [80, 15], [74, 13], [70, 15]]), 'medium', 'Maratha dominance across central India, approximate.'),
+      snap(ce(1680).year, poly([[72, 17.5], [74, 20], [78, 20], [77, 17], [74, 15], [72, 17.5]]), 'medium', 'Shivaji’s founding kingdom in the Western Ghats, approximate.'),
+      snap(ce(1760).year, poly([[70, 15], [76, 20], [82, 24], [86, 25], [84, 20], [80, 15], [74, 13], [70, 15]]), 'medium', 'Height after the Maratha Confederacy’s raids reach Bengal and Delhi, shortly before the disastrous Third Battle of Panipat (1761).'),
     ],
   },
   {

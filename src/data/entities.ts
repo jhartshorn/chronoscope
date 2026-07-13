@@ -381,7 +381,9 @@ export const ENTITIES: HistoricalEntity[] = [
       src('Wright 2010, The Ancient Indus'),
     ],
     snapshots: [
-      snap(bce(2500).year, poly([[66, 24], [68, 27], [71, 29], [74, 31], [77, 30], [76, 27], [74, 24], [72, 21], [70, 22], [67, 23], [66, 24]]), 'medium', 'Mature Harappan extent across the Indus basin and Gujarat, approximate.'),
+      snap(bce(2800).year, poly([[66.5, 25.5], [68, 28.5], [71, 30], [73, 29], [71.5, 26.5], [69, 24.5], [67, 24.5], [66.5, 25.5]]), 'medium', 'Early Harappan phase along the Indus and its tributaries, before the great urban expansion.'),
+      snap(bce(2500).year, poly([[65.5, 24], [67.5, 28], [71, 30.5], [74, 31], [77, 30], [76, 27], [74, 24], [72, 21], [70, 22], [67, 23], [65.5, 24]]), 'medium', 'Mature Harappan extent across the Indus basin and Gujarat, approximate.'),
+      snap(bce(1700).year, poly([[66.5, 25], [68.5, 27.5], [72, 28.5], [75, 28], [74, 25], [71, 23], [68, 23], [66.5, 25]]), 'low', 'Post-urban decline: the great cities are abandoned as the Ghaggar-Hakra river system dries up, and settlement fragments into smaller rural communities.'),
     ],
   },
   {
