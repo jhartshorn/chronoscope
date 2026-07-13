@@ -945,6 +945,20 @@ describe('dataset integrity', () => {
     expect(covers('kingdom-of-jerusalem', ce(1192), 35.09, 32.93)).toBe(true);
   });
 
+  it('traces the Safavid Empire from Chaldiran to Abbas I\'s peak and the 1722 Afghan collapse', () => {
+    expect(ENTITY_BY_ID.get('safavid')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // Isfahan, the capital: held from 1514 through Abbas I's reign, lost only in the 1722 collapse.
+    expect(covers('safavid', ce(1514), 51.67, 32.65)).toBe(true);
+    expect(covers('safavid', ce(1629), 51.67, 32.65)).toBe(true);
+    expect(covers('safavid', ce(1722), 51.67, 32.65)).toBe(false);
+    // Baghdad: retaken by Abbas I (1623), permanently ceded to the Ottomans at Zuhab (1639).
+    expect(covers('safavid', ce(1629), 44.43, 33.3)).toBe(true);
+    expect(covers('safavid', ce(1639), 44.43, 33.3)).toBe(false);
+    // Herat: contested with the Uzbeks until Abbas I's peak, held by 1629.
+    expect(covers('safavid', ce(1514), 62.2, 34.35)).toBe(false);
+    expect(covers('safavid', ce(1629), 62.2, 34.35)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

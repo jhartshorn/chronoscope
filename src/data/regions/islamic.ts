@@ -153,10 +153,17 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
     predecessorIds: ['timurid'],
     successorIds: ['iran'],
     description:
-      'The empire that made Twelver Shia Islam the religion of Iran and, alongside the Ottomans and Mughals, formed one of the three great early-modern Islamic “gunpowder empires”; its capital Isfahan was a jewel of Persianate art.',
-    sources: [src('Newman 2006, Safavid Iran: Rebirth of a Persian Empire')],
+      'The empire that made Twelver Shia Islam the religion of Iran and, alongside the Ottomans and Mughals, formed one of the three great early-modern Islamic “gunpowder empires”; its capital Isfahan was a jewel of Persianate art. Founded by Ismail I in Azerbaijan (1501), it was checked but not broken by the Ottoman victory at Chaldiran (1514), reached its greatest extent under Abbas I (r. 1587–1629) with the recapture of Baghdad and Khorasan and the expulsion of the Portuguese from Hormuz, then ceded Iraq permanently to the Ottomans at the 1639 Treaty of Zuhab. An Afghan (Hotak) rebel army toppled the dynasty with the fall of Isfahan in 1722, and Nader Shah formally ended it in 1736.',
+    sources: [
+      src('Newman 2006, Safavid Iran: Rebirth of a Persian Empire'),
+      src('Savory 1980, Iran Under the Safavids'),
+    ],
     snapshots: [
-      snap(ce(1600).year, poly([[44, 29], [52, 38], [60, 40], [66, 36], [64, 27], [56, 24], [48, 25], [44, 27], [44, 29]]), 'high', 'Safavid Iran, approximate.'),
+      snap(ce(1501).year, poly([[44, 36], [48, 40], [52, 39], [50, 35], [46, 33], [44, 34], [44, 36]]), 'medium', 'Ismail I founds the dynasty at Tabriz (1501): the Azerbaijani core, before the conquest of the Iranian plateau.'),
+      snap(ce(1514).year, poly([[44, 32], [46, 37], [50, 39], [56, 38], [59, 35], [59, 29], [52, 25], [46, 27], [44, 30], [44, 32]]), 'high', 'After the Ottoman victory at Chaldiran (1514): the Iranian plateau is secured, but Khorasan in the east remains contested with the Uzbeks.'),
+      snap(ce(1629).year, poly([[38, 34], [40, 37], [44, 38], [48, 41], [54, 40], [60, 38], [66, 37], [68, 33], [66, 28], [60, 25], [52, 24], [46, 25], [40, 28], [38, 31], [38, 34]]), 'high', 'Peak extent at Abbas I\'s death (1629): Baghdad retaken from the Ottomans (1623), Khorasan and Kandahar from the Uzbeks and Mughals, and the Portuguese expelled from Hormuz (1622).'),
+      snap(ce(1639).year, poly([[45.5, 32], [47, 37], [50, 39], [56, 38], [62, 37], [66, 36], [68, 33], [66, 28], [60, 25], [52, 24], [46, 25], [45.5, 28], [45.5, 32]]), 'high', 'The Treaty of Zuhab (1639) fixes the Ottoman–Safavid border, permanently ceding Baghdad and Iraq.'),
+      snap(ce(1722).year, poly([[48, 36], [52, 38], [56, 37], [54, 35], [50, 34], [48, 36]]), 'high', 'An invading Hotak Afghan army takes Isfahan (1722): effective Safavid rule collapses to a rump in the north under the fugitive Tahmasp II, before Nader Shah formally ends the dynasty in 1736.'),
     ],
   },
   {
