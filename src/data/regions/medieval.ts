@@ -13,9 +13,9 @@ export const MEDIEVAL_ENTITIES: HistoricalEntity[] = [
     colour: '#8a7a5a',
     labelImportance: 2,
     predecessorIds: ['roman-empire'],
-    successorIds: ['umayyad-caliphate'],
+    successorIds: ['umayyad-caliphate', 'kingdom-of-asturias'],
     description:
-      'A Germanic successor kingdom to Roman rule in Iberia and southern Gaul, ended by the Umayyad conquest of 711.',
+      'A Germanic successor kingdom to Roman rule in Iberia and southern Gaul, ended by the Umayyad conquest of 711 — though a remnant of its nobility regrouped in the Cantabrian mountains as the Kingdom of Asturias.',
     sources: [src('Collins 2004, Visigothic Spain 409–711')],
     snapshots: [
       snap(ce(600).year, poly([[-9, 37], [-8, 43], [-2, 44], [3, 43], [1, 39], [-6, 36], [-9, 37]]), 'low', 'Iberian Visigothic kingdom, approximate.'),

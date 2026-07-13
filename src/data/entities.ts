@@ -907,7 +907,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#c98a4a',
     labelImportance: 4,
-    predecessorIds: ['spanish-empire'],
+    predecessorIds: ['spanish-empire', 'kingdom-of-castile', 'kingdom-of-aragon', 'kingdom-of-navarre'],
     description:
       'Spain, unified under the Catholic Monarchs and the completion of the Reconquista in 1492 — the same year its overseas empire began. The 1490 snapshot approximates the Iberian realm at unification; the contemporary boundary is from Natural Earth.',
     sources: [

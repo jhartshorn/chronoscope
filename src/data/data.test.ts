@@ -311,6 +311,35 @@ describe('dataset integrity', () => {
     expect(covers('lordship-of-ireland', ce(1440), -6.26, 53.35)).toBe(true); // Dublin
   });
 
+  it('models the Iberian Reconquista kingdoms', () => {
+    // Castile: Toledo only after 1085; Seville only after 1248; Granada never
+    // (held by al-Andalus until 1492, when Castile hands off to Spain).
+    expect(covers('kingdom-of-castile', ce(1035), -4.02, 39.86)).toBe(false); // Toledo
+    expect(covers('kingdom-of-castile', ce(1085), -4.02, 39.86)).toBe(true);
+    expect(covers('kingdom-of-castile', ce(1230), -5.98, 37.39)).toBe(false); // Seville
+    expect(covers('kingdom-of-castile', ce(1248), -5.98, 37.39)).toBe(true);
+    expect(covers('kingdom-of-castile', ce(1300), -3.6, 37.18)).toBe(false); // Granada, always excluded
+    expect(covers('kingdom-of-castile', ce(1479), -3.6, 37.18)).toBe(false);
+
+    // León: Badajoz only after Alfonso IX's 1230 conquest of Extremadura.
+    expect(covers('kingdom-of-leon', ce(1157), -6.97, 38.88)).toBe(false); // Badajoz
+    expect(covers('kingdom-of-leon', ce(1230), -6.97, 38.88)).toBe(true);
+
+    // Aragon: Barcelona only after the 1137 union; Valencia only after 1238.
+    expect(covers('kingdom-of-aragon', ce(1118), 2.17, 41.38)).toBe(false); // Barcelona
+    expect(covers('kingdom-of-aragon', ce(1137), 2.17, 41.38)).toBe(true);
+    expect(covers('kingdom-of-aragon', ce(1137), -0.38, 39.47)).toBe(false); // Valencia
+    expect(covers('kingdom-of-aragon', ce(1238), -0.38, 39.47)).toBe(true);
+
+    // Navarre: Burgos (Castile) only at the brief 1035 Sancho III peak, not
+    // before or after; the Basque coast (Bilbao) is lost for good in 1200.
+    expect(covers('kingdom-of-navarre', ce(1000), -3.7, 42.34)).toBe(false); // Burgos
+    expect(covers('kingdom-of-navarre', ce(1035), -3.7, 42.34)).toBe(true);
+    expect(covers('kingdom-of-navarre', ce(1076), -1.64, 42.82)).toBe(true); // Pamplona, always
+    expect(covers('kingdom-of-navarre', ce(1076), -2.93, 43.26)).toBe(true); // Bilbao
+    expect(covers('kingdom-of-navarre', ce(1200), -2.93, 43.26)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
