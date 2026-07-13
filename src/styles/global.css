@@ -550,6 +550,11 @@ button.chip:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
 }
+/* Lit up whenever a period focus is active, even while the panel is collapsed. */
+.controls-toggle.active {
+  border-color: var(--focus);
+  color: var(--focus);
+}
 .play-btn {
   flex: none;
   background: var(--accent);
@@ -651,6 +656,43 @@ button.chip:hover {
   height: 15px;
 }
 
+/* Collapsible period-focus control: jump to and zoom into a named era. */
+.period-focus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
+  transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.28s ease;
+}
+.period-focus.open {
+  max-height: 60px;
+  opacity: 1;
+  margin-top: 10px;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .period-focus {
+    transition: none;
+  }
+}
+.period-focus-label {
+  font-size: 12px;
+  opacity: 0.85;
+}
+.period-focus select {
+  height: 32px;
+  padding: 0 8px;
+  font-size: 12.5px;
+  border-radius: 6px;
+  border: 1px solid var(--panel-border);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--panel-fg);
+}
+
 /* slider track */
 .slider {
   position: relative;
@@ -666,6 +708,10 @@ button.chip:hover {
   height: 6px;
   background: linear-gradient(90deg, rgba(201, 138, 63, 0.35), rgba(201, 138, 63, 0.7));
   border-radius: 3px;
+}
+/* Visual cue: the whole bar is windowed onto a single era. */
+.slider.focused .slider-track {
+  box-shadow: 0 0 0 2px var(--focus), 0 0 10px 1px rgba(255, 207, 122, 0.5);
 }
 .slider-fill {
   position: absolute;
@@ -732,6 +778,18 @@ button.chip:hover {
   font-weight: 600;
   white-space: nowrap;
   animation: pulse 1s infinite alternate;
+}
+.focus-flag {
+  display: inline-block;
+  margin: 10px 6px 0;
+  background: transparent;
+  color: var(--focus);
+  border: 1px solid var(--focus);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 @keyframes pulse {
   to {
@@ -913,6 +971,9 @@ button.chip:hover {
   }
   .speed-group {
     flex-wrap: wrap;
+    justify-content: center;
+  }
+  .period-focus {
     justify-content: center;
   }
 }

@@ -3,9 +3,10 @@ import { timeStore } from '../animation/timeStore';
 import type { PlaybackEngine } from '../animation/playback';
 import { PLAYBACK_SPEEDS } from '../animation/playback';
 import { usePlaybackState, useSliderPosition } from '../hooks';
-import { generateTicks } from '../history/timescale';
-import { formatDate } from '../history/date';
+import { FULL_RANGE, generateTicks, periodTickRange } from '../history/timescale';
+import { formatDate, formatRange, hd } from '../history/date';
 import { dateToSliderPosition } from '../history/timescale';
+import { PERIODS, periodEndYear } from '../history/periods';
 import { EVENTS } from '../data';
 import type { HistoricalDate } from '../types';
 
@@ -37,6 +38,10 @@ export function Timeline({ engine }: Props) {
   const [controlsOpen, setControlsOpen] = useState(
     () => typeof window === 'undefined' || window.innerWidth > 720,
   );
+  // Period-focus control: hidden behind a toggle, closed by default.
+  const [periodControlOpen, setPeriodControlOpen] = useState(false);
+  const [focusedPeriodId, setFocusedPeriodId] = useState<string | null>(null);
+  const focusedPeriod = focusedPeriodId ? PERIODS.find((p) => p.id === focusedPeriodId) ?? null : null;
 
   useEffect(() => {
     const el = trackRef.current;
@@ -47,26 +52,50 @@ export function Timeline({ engine }: Props) {
     return () => ro.disconnect();
   }, []);
 
-  const ticks = useMemo(() => generateTicks(width), [width]);
+  // When focused, the whole bar windows onto [period start, period end]
+  // instead of the full timeline — ticks, handle, fill and markers all read
+  // through this range rather than the raw global slider position.
+  const range = useMemo(
+    () => (focusedPeriod ? periodTickRange(focusedPeriod.startYear, periodEndYear(focusedPeriod)) : FULL_RANGE),
+    [focusedPeriod],
+  );
+
+  const ticks = useMemo(() => generateTicks(width, 90, range), [width, range]);
 
   // Major-event markers on the slider (importance >= 4).
   const eventMarkers = useMemo(
     () =>
-      EVENTS.filter((e) => e.importance >= 4).map((e) => ({
-        id: e.id,
-        pos: dateToSliderPosition(e.date),
-      })),
-    [],
+      EVENTS.filter((e) => e.importance >= 4)
+        .map((e) => ({ id: e.id, pos: range.toView(dateToSliderPosition(e.date)) }))
+        .filter((m) => m.pos >= 0 && m.pos <= 1),
+    [range],
   );
+
+  const displayPosition = Math.min(1, Math.max(0, range.toView(position)));
 
   const setFromClientX = useCallback((clientX: number) => {
     const el = trackRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const p = (clientX - rect.left) / rect.width;
-    timeStore.setPosition(p);
+    timeStore.setPosition(range.toGlobal(Math.min(1, Math.max(0, p))));
     engine.notifyScrubbed();
-  }, [engine]);
+  }, [engine, range]);
+
+  const selectPeriod = useCallback(
+    (id: string) => {
+      if (!id) {
+        setFocusedPeriodId(null);
+        return;
+      }
+      const period = PERIODS.find((p) => p.id === id);
+      if (!period) return;
+      setFocusedPeriodId(id);
+      timeStore.setPosition(dateToSliderPosition(hd(period.startYear)));
+      engine.notifyScrubbed();
+    },
+    [engine],
+  );
 
   const onPointerDown = (e: React.PointerEvent) => {
     // Never let a scrub start a browser text/element selection (which would
@@ -84,9 +113,11 @@ export function Timeline({ engine }: Props) {
     (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
   };
 
-  // Keyboard controls on the slider itself.
+  // Keyboard controls on the slider itself. Step size is relative to the
+  // *visible* bar (range.scale === 1 for the full timeline), so arrow keys
+  // feel the same whether or not a period is focused.
   const onKeyDown = (e: React.KeyboardEvent) => {
-    const step = e.shiftKey ? 0.02 : 0.005;
+    const step = (e.shiftKey ? 0.02 : 0.005) * range.scale;
     switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
@@ -100,12 +131,12 @@ export function Timeline({ engine }: Props) {
         break;
       case 'Home':
         e.preventDefault();
-        timeStore.setPosition(0);
+        timeStore.setPosition(range.toGlobal(0));
         engine.notifyScrubbed();
         break;
       case 'End':
         e.preventDefault();
-        timeStore.setPosition(1);
+        timeStore.setPosition(range.toGlobal(1));
         engine.notifyScrubbed();
         break;
     }
@@ -113,6 +144,7 @@ export function Timeline({ engine }: Props) {
 
   // Collapsed controls must not be keyboard-focusable.
   const ctlTab = controlsOpen ? undefined : -1;
+  const periodTab = periodControlOpen ? undefined : -1;
 
   return (
     <section className="timeline" aria-label="Timeline controls">
@@ -126,6 +158,17 @@ export function Timeline({ engine }: Props) {
           aria-label={controlsOpen ? 'Hide speed and loop controls' : 'Show speed and loop controls'}
         >
           <span aria-hidden="true">⚙</span>
+        </button>
+
+        <button
+          className={`controls-toggle${periodControlOpen ? ' open' : ''}${focusedPeriod ? ' active' : ''}`}
+          onClick={() => setPeriodControlOpen((o) => !o)}
+          aria-expanded={periodControlOpen}
+          aria-controls="period-focus-control"
+          title={periodControlOpen ? 'Hide period focus' : 'Focus a time period'}
+          aria-label={periodControlOpen ? 'Hide period focus control' : 'Show period focus control'}
+        >
+          <span aria-hidden="true">⌖</span>
         </button>
 
         <button
@@ -199,7 +242,54 @@ export function Timeline({ engine }: Props) {
         </div>
       </div>
 
-      <div className="slider">
+      <div
+        id="period-focus-control"
+        className={`period-focus${periodControlOpen ? ' open' : ''}`}
+        role="group"
+        aria-label="Focus a time period"
+        aria-hidden={!periodControlOpen}
+      >
+        <label className="period-focus-label" htmlFor="period-select">
+          Focus era
+        </label>
+        <select
+          id="period-select"
+          value={focusedPeriodId ?? ''}
+          onChange={(e) => selectPeriod(e.target.value)}
+          tabIndex={periodTab}
+        >
+          <option value="">Full timeline</option>
+          {PERIODS.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.label}
+            </option>
+          ))}
+        </select>
+        {focusedPeriod && (
+          <button
+            className="icon-btn"
+            style={{ width: 32, height: 32, fontSize: 14 }}
+            onClick={() => selectPeriod('')}
+            title="Show the full timeline"
+            aria-label="Clear period focus"
+            tabIndex={periodTab}
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {/* Redundant with the open "Focus era" select, which already shows the
+          selection — only surface the chip while that panel is collapsed. In
+          normal document flow (not floated over the slider) so it can never
+          overlap the playback-controls row above it, open or closed. */}
+      {focusedPeriod && !periodControlOpen && (
+        <div className="focus-flag" aria-live="polite">
+          Focused: {focusedPeriod.label} ({formatRange(hd(focusedPeriod.startYear), hd(periodEndYear(focusedPeriod)))})
+        </div>
+      )}
+
+      <div className={`slider${focusedPeriod ? ' focused' : ''}`}>
         {playback.dwelling && <div className="dwell-flag">Pausing at a major event…</div>}
         <div
           className="slider-track"
@@ -208,7 +298,7 @@ export function Timeline({ engine }: Props) {
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
         />
-        <div className="slider-fill" style={{ width: `${position * 100}%` }} />
+        <div className="slider-fill" style={{ width: `${displayPosition * 100}%` }} />
 
         {eventMarkers.map((m) => (
           <div
@@ -233,13 +323,13 @@ export function Timeline({ engine }: Props) {
 
         <div
           className="slider-handle"
-          style={{ left: `${position * 100}%` }}
+          style={{ left: `${displayPosition * 100}%` }}
           role="slider"
           tabIndex={0}
           aria-label="Historical date"
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-valuenow={Math.round(position * 100)}
+          aria-valuenow={Math.round(displayPosition * 100)}
           aria-valuetext={formatDate(date)}
           onKeyDown={onKeyDown}
           onPointerDown={onPointerDown}
