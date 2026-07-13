@@ -233,6 +233,45 @@ describe('dataset integrity', () => {
     expect(covers('british-empire', ce(1805), -75, 40)).toBe(false);
   });
 
+  it('models the rise and fall of the Iberian, British and French colonial empires', () => {
+    // Portuguese Empire: Brazil held from the Estado da Índia era, lost outright in 1822;
+    // Goa held from 1515 until India's 1961 annexation; Macau the last territory, to 1999.
+    expect(covers('portuguese-empire', ce(1600), -45, -10)).toBe(true); // coastal Brazil
+    expect(covers('portuguese-empire', ce(1822), -45, -10)).toBe(false); // Brazilian independence
+    expect(covers('portuguese-empire', ce(1515), 73.5, 15.45)).toBe(true); // Goa, just seized
+    expect(covers('portuguese-empire', ce(1912), 73.5, 15.45)).toBe(true); // Goa, still Portuguese
+    expect(covers('portuguese-empire', ce(1961), 73.5, 15.45)).toBe(false); // annexed by India, Dec 1961
+    expect(covers('portuguese-empire', ce(1975), 113.48, 22.15)).toBe(true); // Macau, the last holding
+    expect(ENTITY_BY_ID.get('portuguese-empire')!.snapshots.length).toBeGreaterThanOrEqual(9);
+
+    // French colonial empire: Louisiana held until the 1763 Treaty of Paris; Algeria held
+    // 1830-1962; Indochina held until the 1954 Geneva Accords.
+    expect(covers('french-colonial-empire', ce(1750), -93, 40)).toBe(true); // Louisiana/New France
+    expect(covers('french-colonial-empire', ce(1763), -93, 40)).toBe(false); // ceded to Britain/Spain
+    expect(covers('french-colonial-empire', ce(1885), 3, 34)).toBe(true); // Algeria
+    expect(covers('french-colonial-empire', ce(1962), 3, 34)).toBe(false); // Algerian independence
+    expect(covers('french-colonial-empire', ce(1920), 104, 14)).toBe(true); // Indochina
+    expect(covers('french-colonial-empire', ce(1954), 104, 14)).toBe(false); // Dien Bien Phu
+    expect(ENTITY_BY_ID.get('french-colonial-empire')!.snapshots.length).toBeGreaterThanOrEqual(9);
+
+    // Spanish Empire: mainland Spanish America collapses in the 1810s-20s wars of
+    // independence, while the Philippines is held throughout until 1898.
+    expect(covers('spanish-empire', ce(1790), -99, 19)).toBe(true); // New Spain (Mexico)
+    expect(covers('spanish-empire', ce(1826), -99, 19)).toBe(false); // Mexican independence, 1821
+    expect(covers('spanish-empire', ce(1600), 121.5, 13)).toBe(true); // Philippines, just conquered
+    expect(covers('spanish-empire', ce(1826), 121.5, 13)).toBe(true); // Philippines, still Spanish
+    expect(covers('spanish-empire', ce(1895), 121.5, 13)).toBe(true); // Philippines, eve of 1898 war
+    expect(ENTITY_BY_ID.get('spanish-empire')!.snapshots.length).toBeGreaterThanOrEqual(6);
+
+    // British Empire: the loss of the thirteen colonies (1783) versus continued expansion
+    // in Bengal, and Hong Kong as the last major possession before the 1997 handover.
+    expect(covers('british-empire', ce(1783), -75, 40)).toBe(false); // lost with independence
+    expect(covers('british-empire', ce(1783), 84, 24)).toBe(true); // Bengal, East India Company
+    expect(covers('british-empire', ce(1950), 114.1, 22.3)).toBe(false); // Hong Kong not yet drawn
+    expect(covers('british-empire', ce(1970), 114.1, 22.3)).toBe(true); // Hong Kong, held to 1997
+    expect(ENTITY_BY_ID.get('british-empire')!.snapshots.length).toBeGreaterThanOrEqual(8);
+  });
+
   it('models fine-grained territorial change in the British Isles', () => {
     // Roman Britain: London from the start; Edinburgh only during the brief
     // Antonine advance, not under Hadrian's frontier.

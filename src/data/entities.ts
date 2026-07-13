@@ -753,8 +753,11 @@ export const ENTITIES: HistoricalEntity[] = [
     colour: '#c98f3a',
     labelImportance: 4,
     description:
-      'The overseas empire of the Spanish crown, from the 1492 landfall in the Caribbean to its 18th-century height across the Americas. It grew by conquest — the Caribbean first, then the Aztec (1519–21) and Inca (1532–33) realms — so the earlier snapshots are far smaller. Possessions are highly schematic and exclude many islands.',
-    sources: [src('Elliott 2006, Empires of the Atlantic World')],
+      'The overseas empire of the Spanish crown, from the 1492 landfall in the Caribbean to its 18th-century height across the Americas and the Philippines. It grew by conquest — the Caribbean first, then the Aztec (1519–21) and Inca (1532–33) realms, then the Pacific crossing to Manila (1565–71) — before the Latin American wars of independence (1810s–20s) reduced it almost overnight to a handful of Caribbean and Pacific islands, finally lost in the 1898 Spanish–American War. Possessions are highly schematic and exclude many islands.',
+    sources: [
+      src('Elliott 2006, Empires of the Atlantic World'),
+      src('Kamen 2003, Empire: How Spain Became a World Power, 1492–1763'),
+    ],
     snapshots: [
       snap(ce(1500).year, poly([[-78, 23], [-68, 22], [-64, 17], [-66, 11], [-75, 9], [-83, 15], [-85, 19], [-78, 23]]), 'low', 'Caribbean beachhead (Hispaniola and nearby islands), c. 1500.'),
       snap(ce(1550).year, mpoly(
@@ -762,9 +765,22 @@ export const ENTITIES: HistoricalEntity[] = [
         [[-81, 0], [-73, -8], [-70, -16], [-70, -24], [-76, -16], [-81, -4], [-81, 0]],
         [[-78, 23], [-68, 22], [-64, 17], [-66, 11], [-75, 9], [-83, 15], [-85, 19], [-78, 23]],
       ), 'low', 'After the conquests of the Aztec and Inca realms: Mexico, Central America and Andean Peru, c. 1550.'),
+      snap(ce(1600).year, mpoly(
+        [[-118, 40], [-106, 34], [-98, 26], [-90, 15], [-84, 9], [-79, 8], [-70, 10], [-65, 0], [-70, -16], [-72, -34], [-78, -20], [-88, 10], [-98, 16], [-108, 24], [-118, 32], [-118, 40]],
+        [[120, 18.5], [122.2, 18.8], [124.5, 12], [123, 8], [120.5, 9.5], [119, 13], [120, 18.5]],
+      ), 'low', 'By 1600, Spanish America now reaches from New Spain’s northern frontier to Chile and the Río de la Plata, and Legazpi’s conquest of the Philippines (Manila founded 1571) opens the trans-Pacific Manila galleon trade.'),
       snap(ce(1790).year, mpoly(
         [[-118, 40], [-106, 38], [-98, 30], [-92, 18], [-84, 10], [-78, 8], [-70, 12], [-62, 10], [-58, 0], [-70, -18], [-72, -40], [-74, -30], [-80, -10], [-88, 12], [-98, 16], [-108, 24], [-118, 32], [-118, 40]],
-      ), 'low', 'Spanish America at its 18th-century height, c. 1790; boundaries with the unconquered interior are notional.'),
+        [[120, 18.5], [122.2, 18.8], [124.5, 12], [123, 8], [120.5, 9.5], [119, 13], [120, 18.5]],
+      ), 'low', 'Spanish America and the Philippines at their 18th-century height, c. 1790; boundaries with the unconquered interior are notional.'),
+      snap(ce(1826).year, mpoly(
+        [[-78, 23], [-68, 22], [-64, 17], [-66, 11], [-75, 9], [-83, 15], [-85, 19], [-78, 23]],
+        [[120, 18.5], [122.2, 18.8], [124.5, 12], [123, 8], [120.5, 9.5], [119, 13], [120, 18.5]],
+      ), 'high', 'The Latin American wars of independence collapse the mainland empire almost overnight — Mexico (1821) to Bolívar and San Martín’s victories culminating at Ayacucho (1824) and Sucre’s 1825–26 mopping-up. Only Cuba, Puerto Rico and the Philippines remain of a once-continental empire.'),
+      snap(ce(1895).year, mpoly(
+        [[-78, 23], [-68, 22], [-64, 17], [-66, 11], [-75, 9], [-83, 15], [-85, 19], [-78, 23]],
+        [[120, 18.5], [122.2, 18.8], [124.5, 12], [123, 8], [120.5, 9.5], [119, 13], [120, 18.5]],
+      ), 'high', 'On the eve of the Spanish–American War (1898): Cuba, Puerto Rico and the Philippines are the last vestiges of the empire, all lost within the year, ending four centuries of Spanish overseas rule.'),
     ],
   },
   {
@@ -788,6 +804,10 @@ export const ENTITIES: HistoricalEntity[] = [
         [[-82, 30], [-70, 44], [-56, 50], [-78, 55], [-95, 50], [-90, 40], [-84, 32], [-82, 30]],
         [[78, 20], [90, 22], [92, 26], [86, 26], [80, 22], [78, 20]],
       ), 'low', 'After the Seven Years’ War (1763): British North America now includes Canada, and the East India Company holds Bengal.'),
+      snap(ce(1783).year, mpoly(
+        [[-64, 44], [-56, 50], [-78, 56], [-96, 50], [-84, 45], [-70, 45], [-64, 44]],
+        [[78, 20], [91, 22], [93, 27], [87, 27], [80, 22], [78, 20]],
+      ), 'high', 'The Treaty of Paris (1783) recognises American independence: the thirteen colonies are gone, leaving Canada and Newfoundland as the remaining North American holdings, while the East India Company continues to expand its control of Bengal.'),
       snap(ce(1805).year, mpoly(
         [[68, 8], [82, 8], [90, 22], [88, 27], [78, 30], [72, 24], [68, 16], [68, 8]],
         [[113, -12], [130, -11], [142, -11], [153, -28], [146, -39], [129, -32], [115, -35], [113, -22], [113, -12]],
@@ -814,6 +834,12 @@ export const ENTITIES: HistoricalEntity[] = [
         [[-141, 49], [-95, 49], [-64, 52], [-90, 62], [-141, 60], [-141, 49]],
         [[15, -35], [33, -26], [30, -1], [37, 5], [33, 12], [24, 12], [14, 5], [10, -6], [15, -22], [15, -35]],
       ), 'low', 'After 1947, India and Pakistan are independent; the empire’s centre of gravity shifts to the African territories and the old dominions, before the wave of decolonisation.'),
+      snap(ce(1970).year, mpoly(
+        [[166, -34], [179, -37], [179, -47], [167, -46], [166, -40], [166, -34]],
+        [[-141, 49], [-95, 49], [-64, 52], [-90, 62], [-141, 60], [-141, 49]],
+        [[113.8, 22.1], [114.4, 22.15], [114.5, 22.55], [113.9, 22.5], [113.8, 22.1]],
+        [[-5.45, 36.05], [-5.2, 36.05], [-5.2, 36.2], [-5.45, 36.2], [-5.45, 36.05]],
+      ), 'medium', 'After the great wave of African and Caribbean independence (1957–68), almost nothing remains of the territorial empire outside the old white-settler dominions, Hong Kong (leased New Territories to 1997) and scattered small colonies like Gibraltar.'),
     ],
   },
 
