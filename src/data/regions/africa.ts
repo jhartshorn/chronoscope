@@ -1,5 +1,5 @@
 import type { HistoricalEntity } from '../../types';
-import { bce, ce, poly, snap, src } from '../helpers';
+import { bce, ce, mpoly, poly, snap, src } from '../helpers';
 
 /** African states and civilisations beyond Egypt and Mali. */
 export const AFRICA_ENTITIES: HistoricalEntity[] = [
@@ -34,10 +34,19 @@ export const AFRICA_ENTITIES: HistoricalEntity[] = [
     colour: '#a86a3f',
     labelImportance: 3,
     description:
-      'A trading empire of the Ethiopian highlands and Red Sea, one of the first states to adopt Christianity, minting its own coinage and controlling commerce between Rome, Arabia and India.',
+      'A trading empire of the Ethiopian highlands and Red Sea, one of the first states to adopt Christianity (under Ezana, c. 330s), minting its own coinage and controlling commerce between Rome, Arabia and India. Kaleb’s conquest of the South Arabian kingdom of Himyar (c. 525) marked its territorial peak; the rise of Islam from the 630s cut off its Red Sea trade dominance, and it contracted into the highlands before its still-debated final collapse.',
     sources: [src('Munro-Hay 1991, Aksum: An African Civilisation of Late Antiquity')],
     snapshots: [
-      snap(ce(350).year, poly([[36, 12], [40, 15.5], [42, 14], [40, 10], [37, 10], [36, 12]]), 'low', 'Aksumite highlands and Red Sea coast, approximate.'),
+      snap(ce(100).year, poly([[38.0, 13.5], [39.0, 13.7], [39.2, 14.7], [38.2, 14.5], [38.0, 13.5]]), 'low', 'Early core in the Tigray highlands around the city of Aksum.'),
+      snap(ce(270).year, poly([[37.0, 12.5], [39.8, 13.0], [40.0, 15.8], [38.5, 16.0], [36.5, 14.0], [37.0, 12.5]]), 'low', 'Growth to the Red Sea coast and the port of Adulis; Endubis mints Aksum’s first coinage.'),
+      snap(ce(350).year, poly([[36, 12], [40, 15.5], [42, 14], [40, 10], [37, 10], [36, 12]]), 'medium', 'Ezana’s reign: conquest of Kushite Meroë and conversion to Christianity, approximate.'),
+      snap(ce(525).year, mpoly(
+        [[36, 12], [40, 15.5], [42, 14], [40, 10], [37, 10], [36, 12]],
+        [[42.5, 12.5], [45.5, 13.0], [46.0, 16.5], [43.0, 17.0], [42.0, 14.5], [42.5, 12.5]],
+      ), 'medium', 'Kaleb’s conquest of Himyar in South Arabia (c. 525) marks Aksum’s territorial peak, straddling the Red Sea.'),
+      snap(ce(600).year, poly([[36, 12], [40, 15.5], [42, 14], [40, 10], [37, 10], [36, 12]]), 'medium', 'South Arabia lost to Sasanian Persian intervention (c. 570); back to the African core.'),
+      snap(ce(750).year, poly([[37.5, 12.0], [39.5, 12.5], [39.8, 15.0], [37.8, 15.3], [36.8, 13.0], [37.5, 12.0]]), 'medium', 'Islamic control of Red Sea trade routes from the 630s isolates Aksum, forcing a retreat into the highlands.'),
+      snap(ce(900).year, poly([[38.0, 13.0], [39.0, 13.2], [39.2, 14.5], [38.2, 14.3], [38.0, 13.0]]), 'low', 'A much-reduced highland rump shortly before its final, still-debated collapse.'),
     ],
   },
   {

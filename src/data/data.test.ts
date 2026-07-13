@@ -642,6 +642,18 @@ describe('dataset integrity', () => {
     expect(covers('maori', ce(1900), 169.5, -45.3)).toBe(false);
   });
 
+  it('raises resolution on the Kingdom of Aksum', () => {
+    expect(ENTITY_BY_ID.get('aksum')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // South Arabia (Himyar/Yemen) only at the 525 CE peak under Kaleb.
+    expect(covers('aksum', ce(350), 44.19, 15.35)).toBe(false); // Sana'a
+    expect(covers('aksum', ce(525), 44.19, 15.35)).toBe(true);
+    expect(covers('aksum', ce(600), 44.19, 15.35)).toBe(false);
+    // Adulis (Red Sea port) lost once Islamic trade dominance isolates
+    // Aksum in the highlands.
+    expect(covers('aksum', ce(600), 40.0, 15.3)).toBe(true); // Adulis
+    expect(covers('aksum', ce(750), 40.0, 15.3)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
