@@ -1043,7 +1043,7 @@ export const ENTITIES: HistoricalEntity[] = [
     confidence: 'high',
     colour: '#6a6a8a',
     labelImportance: 4,
-    predecessorIds: ['holy-roman-empire', 'brandenburg'],
+    predecessorIds: ['holy-roman-empire', 'kingdom-of-prussia'],
     description:
       'The German nation-state, unified in 1871 under Prussia: the Empire with Alsace-Lorraine and the eastern provinces to 1918, the truncated Weimar Republic after Versailles, division into the Federal Republic (shown here) and the Soviet-bloc GDR from 1949, and reunification on 3 October 1990. The contemporary boundary is from Natural Earth.',
     sources: [

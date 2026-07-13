@@ -870,6 +870,32 @@ describe('dataset integrity', () => {
     expect(covers('mexico', ce(1854), -110.97, 32.22)).toBe(false);
   });
 
+  it('models the Kingdom of Prussia\'s territorial evolution (Silesia, Poland, Tilsit, Vienna, 1866)', () => {
+    expect(ENTITY_BY_ID.get('kingdom-of-prussia')!.snapshots.length).toBeGreaterThanOrEqual(6);
+    // Berlin: core territory throughout.
+    expect(covers('kingdom-of-prussia', ce(1701), 13.4, 52.5)).toBe(true);
+    // Breslau (Silesia): not Prussian until the First Silesian War.
+    expect(covers('kingdom-of-prussia', ce(1701), 17.0, 51.1)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1742), 17.0, 51.1)).toBe(true);
+    // Bromberg (Netze District): joined only by the First Partition of Poland.
+    expect(covers('kingdom-of-prussia', ce(1742), 18.0, 53.12)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1772), 18.0, 53.12)).toBe(true);
+    // Warsaw: gained in the Third Partition (1795), lost at Tilsit (1807) to the Duchy of Warsaw.
+    expect(covers('kingdom-of-prussia', ce(1772), 21.0, 52.23)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1795), 21.0, 52.23)).toBe(true);
+    expect(covers('kingdom-of-prussia', ce(1807), 21.0, 52.23)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1807), 13.4, 52.5)).toBe(true); // Berlin survives Tilsit
+    // Cologne (Rhineland): gained only at the 1815 Congress of Vienna.
+    expect(covers('kingdom-of-prussia', ce(1807), 6.96, 50.94)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1815), 6.96, 50.94)).toBe(true);
+    // Poznań (Grand Duchy of Posen): regained at Vienna, having been lost at Tilsit.
+    expect(covers('kingdom-of-prussia', ce(1807), 16.93, 52.4)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1815), 16.93, 52.4)).toBe(true);
+    // Hanover: annexed only after the 1866 Austro-Prussian War.
+    expect(covers('kingdom-of-prussia', ce(1815), 9.73, 52.37)).toBe(false);
+    expect(covers('kingdom-of-prussia', ce(1866), 9.73, 52.37)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
