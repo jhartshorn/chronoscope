@@ -460,6 +460,21 @@ describe('dataset integrity', () => {
     expect(covers('aztec-empire', ce(1521), -99.13, 19.43)).toBe(true);
   });
 
+  it('models the Inca Empire\'s explosive rise and civil-war-era collapse', () => {
+    expect(ENTITY_BY_ID.get('inca-empire')!.snapshots.length).toBeGreaterThanOrEqual(4);
+    // Chan Chan (Chimú capital) only from the 1471 conquest; Quito only
+    // from Huayna Capac's incorporation by 1525.
+    expect(covers('inca-empire', ce(1463), -79.03, -8.11)).toBe(false); // Chan Chan
+    expect(covers('inca-empire', ce(1471), -79.03, -8.11)).toBe(true);
+    expect(covers('inca-empire', ce(1471), -78.5, -0.23)).toBe(false); // Quito
+    expect(covers('inca-empire', ce(1525), -78.5, -0.23)).toBe(true);
+    // Collapse: by the 1533 fall of Cusco, the empire has shrunk to the
+    // capital itself.
+    expect(covers('inca-empire', ce(1532), -78.5, -0.23)).toBe(false);
+    expect(covers('inca-empire', ce(1533), -71.98, -13.53)).toBe(true); // Cusco
+    expect(covers('inca-empire', ce(1533), -79.03, -8.11)).toBe(false); // Chan Chan, lost
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

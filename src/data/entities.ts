@@ -639,13 +639,45 @@ export const ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     successorIds: ['spanish-empire'],
     description:
-      'Tawantinsuyu, the largest empire of pre-Columbian America, ran along the Andes from modern Colombia to central Chile, bound together by a vast road network and administered from Cusco. It fell to Francisco Pizarro’s expedition in the 1530s.',
+      'Tawantinsuyu, the largest empire of pre-Columbian America, grew explosively from a single Andean valley under Pachacuti (from 1438) to run the length of the Andes from modern Ecuador to central Chile, bound together by a vast road network and administered from Cusco. Huayna Capac’s death (probably of a European-borne epidemic that outran the conquistadors themselves) touched off a civil war between his sons Huáscar and Atahualpa that Francisco Pizarro’s expedition exploited to topple the weakened empire in 1532–33; a rump Neo-Inca State held out at Vilcabamba until 1572.',
     sources: [
       src('D’Altroy 2014, The Incas (2nd ed.)'),
       src('Rowe 1946, Handbook of South American Indians, Vol. 2'),
+      src('Hemming 1970, The Conquest of the Incas'),
     ],
     snapshots: [
-      snap(ce(1525).year, poly([[-79, 1], [-77, -4], [-72, -13], [-70, -18], [-70, -24], [-67, -27], [-65, -25], [-68, -16], [-73, -9], [-77, -2], [-79, 1]]), 'medium', 'Greatest extent along the Andes, approximate.'),
+      snap(ce(1438).year, poly([
+        [-72.5, -12.8], [-71.5, -12.8], [-71.0, -13.5], [-71.5, -14.2], [-72.5, -14.0], [-72.5, -12.8],
+      ]), 'medium', 'Pachacuti’s founding realm: the Cusco valley, just after routing the invading Chanka.'),
+      snap(ce(1463).year, poly([
+        [-77.0, -9.0], [-75.0, -10.5], [-73.0, -12.0], [-71.5, -12.8], [-70.0, -14.5],
+        [-69.0, -16.5], [-70.5, -17.5], [-72.5, -16.0], [-74.5, -13.5], [-76.5, -10.5], [-77.0, -9.0],
+      ]), 'medium', 'Pachacuti’s rapid conquests reach Lake Titicaca and the central highlands.'),
+      snap(ce(1471).year, poly([
+        [-79.5, -6.0], [-78.5, -4.0], [-77.0, -9.0], [-75.0, -10.5], [-73.0, -12.0], [-71.5, -12.8],
+        [-70.0, -14.5], [-69.0, -16.5], [-70.5, -17.5], [-72.5, -16.0], [-74.5, -13.5], [-77.0, -9.5], [-79.4, -8.4], [-79.5, -6.0],
+      ]), 'medium', 'Topa Inca’s conquest of the Chimú Empire (c. 1470) adds the whole north Peruvian coast.'),
+      snap(ce(1493).year, poly([
+        [-80.4, -3.5], [-78.3, -0.5], [-77.5, -4.5], [-75.5, -9.0], [-74.0, -11.0], [-72.0, -13.0],
+        [-70.0, -15.0], [-68.0, -17.0], [-65.5, -22.0], [-65.0, -27.0], [-68.5, -30.0], [-70.5, -33.5],
+        [-72.0, -35.5], [-73.0, -30.0], [-72.5, -24.0], [-71.0, -18.5], [-72.5, -16.0], [-75.0, -11.5],
+        [-78.5, -7.0], [-79.8, -5.0], [-80.4, -3.5],
+      ]), 'medium', 'By Topa Inca’s death (1493): south to the Maule River in Chile, north toward Quito.'),
+      snap(ce(1525).year, poly([
+        [-80.5, -2.0], [-78.0, 0.8], [-77.0, -3.5], [-75.5, -9.0], [-74.0, -11.0], [-72.0, -13.0],
+        [-70.0, -15.0], [-68.0, -17.0], [-65.5, -22.0], [-65.0, -27.0], [-68.5, -30.0], [-70.5, -33.5],
+        [-72.0, -35.5], [-73.0, -30.0], [-72.5, -24.0], [-71.0, -18.5], [-72.5, -16.0], [-75.0, -11.5],
+        [-78.5, -7.0], [-80.0, -4.0], [-80.5, -2.0],
+      ]), 'high', 'Huayna Capac’s death (1525): the empire’s greatest extent, Quito fully incorporated as a secondary capital.'),
+      snap(ce(1532).year, poly([
+        [-79.5, -2.0], [-78.0, 0.2], [-77.2, -3.5], [-75.5, -9.0], [-74.0, -11.0], [-72.0, -13.0],
+        [-70.0, -15.0], [-68.0, -17.0], [-66.0, -21.5], [-66.0, -26.0], [-69.0, -29.0], [-71.0, -32.0],
+        [-71.5, -30.0], [-72.5, -24.0], [-71.0, -18.5], [-72.5, -16.0], [-75.0, -11.5], [-78.0, -7.0],
+        [-79.5, -4.0], [-79.5, -2.0],
+      ]), 'high', 'The Huáscar–Atahualpa civil war (1527–32) frays the frontiers just as Pizarro lands at Tumbes.'),
+      snap(ce(1533).year, poly([
+        [-72.5, -13.0], [-71.6, -13.0], [-71.6, -13.9], [-72.3, -14.0], [-72.5, -13.0],
+      ]), 'high', 'Reduced to Cusco itself, taken by Pizarro in November 1533.'),
     ],
   },
   {
