@@ -69,6 +69,9 @@ export function Timeline({ engine }: Props) {
   }, [engine]);
 
   const onPointerDown = (e: React.PointerEvent) => {
+    // Never let a scrub start a browser text/element selection (which would
+    // highlight the whole map canvas if the drag strays off the slider).
+    e.preventDefault();
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
     setDragging(true);
     setFromClientX(e.clientX);

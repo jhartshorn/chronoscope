@@ -226,7 +226,7 @@ export default function App() {
         </button>
       </div>
 
-      <Legend />
+      <Legend renderer={renderer} />
 
       {showVisibleList && (
         <VisibleList

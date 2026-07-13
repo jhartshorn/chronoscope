@@ -1,6 +1,6 @@
 import { geoArea, geoContains, geoGraticule10, geoPath } from 'd3-geo';
 import type { Geometry, MultiPolygon, Polygon } from 'geojson';
-import type { ActiveEntity, ActiveEvent, HistoricalEntity, HistoricalEvent } from '../types';
+import type { ActiveEntity, ActiveEvent, EntityCategory, HistoricalEntity, HistoricalEvent } from '../types';
 import { ActiveSetCache } from '../history/engine';
 import type { TimeStore } from '../animation/timeStore';
 import { MapViewState } from './view';
@@ -71,6 +71,12 @@ export class MapRenderer {
   private lastHoverTest = 0;
   private selectedEntityId: string | null = null;
 
+  // Layer visibility: entity categories hidden by the user, plus the event
+  // markers toggle. Filtering happens where the active set is queried, so
+  // hit-testing, labels and the visible list all follow automatically.
+  private hiddenCategories: ReadonlySet<EntityCategory> = new Set();
+  private eventsHidden = false;
+
   private pointers = new Map<number, { x: number; y: number }>();
   private dragging = false;
   private dragMoved = 0;
@@ -125,6 +131,12 @@ export class MapRenderer {
 
   setSelectedEntity(id: string | null) {
     this.selectedEntityId = id;
+    this.markDirty();
+  }
+
+  setLayerVisibility(hiddenCategories: ReadonlySet<EntityCategory>, eventsHidden: boolean) {
+    this.hiddenCategories = hiddenCategories;
+    this.eventsHidden = eventsHidden;
     this.markDirty();
   }
 
@@ -441,7 +453,14 @@ export class MapRenderer {
     // mask: hand-authored polygons may slop over the sea, but coastlines
     // stay crisp and match the basemap exactly.
     const date = this.store.getDate();
-    const active = this.cache.query(date);
+    const all = this.cache.query(date);
+    const active = {
+      entities:
+        this.hiddenCategories.size === 0
+          ? all.entities
+          : all.entities.filter((a) => !this.hiddenCategories.has(a.entity.category)),
+      events: this.eventsHidden ? [] : all.events,
+    };
     this.lastActive = active;
     ctx.save();
     ctx.clip(this.pathFor(land));

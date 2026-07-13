@@ -45,7 +45,9 @@ button {
 .top-bar,
 .legend,
 .zoom-controls,
-.visible-list {
+.visible-list,
+main,
+.map-canvas {
   -webkit-user-select: none;
   user-select: none;
 }
@@ -289,6 +291,36 @@ button {
   font-size: 11px;
   padding: 0;
   margin-top: 6px;
+}
+.legend button.collapse + button.collapse {
+  margin-left: 14px;
+}
+.legend-layers {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--panel-border);
+}
+.legend-layers h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.75;
+  font-weight: 600;
+}
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 3px 0;
+  cursor: pointer;
+}
+.layer-row input {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin: 0;
 }
 
 /* -------------------------------------------------------------- panels */
