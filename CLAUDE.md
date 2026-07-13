@@ -31,6 +31,7 @@ Three strictly separated layers (see `docs/ARCHITECTURE.md` for the full picture
 
 ## Adding historical data
 
+- **For any dataset-improvement task** (covering a period/region better, adding civilisations/peoples/empires/events, or raising the spatial/temporal resolution of existing entities), follow the `improve-data` skill (`.claude/skills/improve-data/SKILL.md`) — it covers the survey → research → author → validate workflow, sourcing rules, and gotchas. The `verify` skill (`.claude/skills/verify/SKILL.md`) covers visually checking the result in the running app.
 - Edit/add files in `src/data/regions/` (or `src/data/events.ts`); nothing in `src/map` needs to change. New region module = one import + spread in `src/data/index.ts`.
 - Always use the authoring helpers in `src/data/helpers.ts` (`bce`, `ce`, `poly`, `snap`, `src`) — `poly` normalises polygon winding, and d3-geo treats rings spherically, so a mis-wound ring fills the entire planet.
 - Modern states should use `{ naturalEarthCountry: 'Name' }` snapshots so coastlines match the basemap.
