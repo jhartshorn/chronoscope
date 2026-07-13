@@ -50,7 +50,9 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
       'A Yoruba city-state of south-western Nigeria, a major urban, religious and artistic centre renowned for its naturalistic brass and terracotta heads, and a wellspring of Yoruba culture.',
     sources: [src('Drewal & Schildkrout 2009, Dynasty and Divinity: Ife Art in Ancient Nigeria')],
     snapshots: [
-      snap(ce(1200).year, poly([[4, 7], [5.4, 7.1], [5.5, 8], [4.2, 8.1], [4, 7.5], [4, 7]]), 'low', 'Yoruba heartland around Ife, approximate.'),
+      snap(ce(1000).year, poly([[4.3, 7.3], [4.9, 7.35], [4.95, 7.7], [4.35, 7.65], [4.3, 7.3]]), 'low', 'Early founding settlement at Ife.'),
+      snap(ce(1200).year, poly([[4, 7], [5.4, 7.1], [5.5, 8], [4.2, 8.1], [4, 7.5], [4, 7]]), 'low', 'Peak political and religious influence across the Yoruba heartland, approximate.'),
+      snap(ce(1350).year, poly([[4.2, 7.15], [5.1, 7.2], [5.15, 7.7], [4.3, 7.75], [4.2, 7.15]]), 'low', 'Political power recedes toward Oyo and Benin, though Ife retains its religious primacy.'),
     ],
   },
   {
@@ -66,7 +68,10 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
       'A powerful Edo kingdom of southern Nigeria, famed for its walled capital and its magnificent brass and ivory art (the Benin Bronzes), destroyed and looted by a British expedition in 1897.',
     sources: [src('Bondarenko 2019, in The Oxford Encyclopedia of African History')],
     snapshots: [
-      snap(ce(1500).year, poly([[4.5, 5.5], [7, 5.5], [7.5, 7.5], [6, 8], [4.5, 7], [4.5, 5.5]]), 'medium', 'Edo kingdom of Benin, approximate.'),
+      snap(ce(1180).year, poly([[5.3, 6.2], [5.9, 6.2], [6.0, 6.6], [5.4, 6.6], [5.3, 6.2]]), 'low', 'Founding core around Benin City.'),
+      snap(ce(1300).year, poly([[5.0, 5.8], [6.3, 5.8], [6.5, 6.8], [5.5, 7.2], [5.0, 6.5], [5.0, 5.8]]), 'low', 'Gradual growth under the early Obas.'),
+      snap(ce(1500).year, poly([[4.5, 5.5], [7, 5.5], [7.5, 7.5], [6, 8], [4.5, 7], [4.5, 5.5]]), 'medium', 'Peak extent after Ewuare the Great’s expansion (r. c. 1440–73) transforms Benin into an empire.'),
+      snap(ce(1897).year, poly([[4.5, 5.5], [7, 5.5], [7.5, 7.5], [6, 8], [4.5, 7], [4.5, 5.5]]), 'high', 'Still at its historic extent when the British Punitive Expedition destroys and loots Benin City.'),
     ],
   },
   {
@@ -79,10 +84,15 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     colour: '#c9a23a',
     labelImportance: 3,
     description:
-      'A Yoruba empire of what is now south-western Nigeria and Benin, which grew powerful on cavalry and Atlantic trade before 19th-century collapse.',
+      'A Yoruba empire of what is now south-western Nigeria and Benin, which grew powerful on cavalry and Atlantic trade. A Nupe/Borgu invasion destroyed its capital, Oyo-Ile, forcing decades of exile (c. 1535–1610) before it rebuilt and expanded to its 18th-century peak; civil wars from the 1817 Afonja revolt led to Oyo-Ile’s final abandonment and the empire’s collapse.',
     sources: [src('Law 1977, The Oyo Empire c. 1600–c. 1836')],
     snapshots: [
-      snap(ce(1700).year, poly([[2.5, 6.5], [6, 6.5], [6.5, 9.5], [4, 10], [2.5, 8.5], [2.5, 6.5]]), 'low', 'Yoruba Oyo across the interior of the Bight of Benin, approximate.'),
+      snap(ce(1400).year, poly([[3.8, 8.8], [4.3, 8.8], [4.35, 9.2], [3.85, 9.2], [3.8, 8.8]]), 'low', 'Founding core at Oyo-Ile.'),
+      snap(ce(1535).year, poly([[3.0, 8.7], [3.4, 8.7], [3.45, 9.0], [3.05, 9.0], [3.0, 8.7]]), 'medium', 'A Nupe/Borgu invasion destroys Oyo-Ile; the court flees into exile at Igboho.'),
+      snap(ce(1610).year, poly([[3.2, 7.8], [4.5, 7.8], [4.7, 8.8], [3.5, 9.3], [3.0, 8.5], [3.2, 7.8]]), 'medium', 'Oyo-Ile is reoccupied and rebuilt, beginning the empire’s recovery.'),
+      snap(ce(1700).year, poly([[2.5, 6.5], [6, 6.5], [6.5, 9.5], [4, 10], [2.5, 8.5], [2.5, 6.5]]), 'medium', 'Peak extent across the interior of the Bight of Benin, approximate.'),
+      snap(ce(1800).year, poly([[2.8, 6.7], [5.8, 6.7], [6.3, 9.3], [4.0, 9.8], [2.8, 8.5], [2.8, 6.7]]), 'medium', 'Still vast, but the 1817 Afonja revolt at Ilorin begins the empire’s fragmentation.'),
+      snap(ce(1836).year, poly([[3.5, 7.5], [4.2, 7.5], [4.3, 8.0], [3.6, 8.0], [3.5, 7.5]]), 'high', 'Oyo-Ile is abandoned for good; the capital relocates south to Ago d’Oyo as the old empire collapses into the Yoruba civil wars.'),
     ],
   },
   {
@@ -145,7 +155,11 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
       'A wealthy and highly organised Akan empire of the West African forest (modern Ghana), built on gold and trade, which resisted the British in a series of wars before annexation.',
     sources: [src('Wilks 1975, Asante in the Nineteenth Century')],
     snapshots: [
-      snap(ce(1820).year, poly([[-3.5, 5.5], [-0.5, 5.5], [0, 9], [-2, 10], [-4, 8], [-3.5, 5.5]]), 'medium', 'Akan forest empire of the Gold Coast interior, approximate.'),
+      snap(ce(1701).year, poly([[-1.8, 6.3], [-1.2, 6.3], [-1.1, 7.0], [-1.9, 7.0], [-1.8, 6.3]]), 'medium', 'Osei Tutu’s founding core around Kumasi, after defeating Denkyira at Feyiase (1701).'),
+      snap(ce(1750).year, poly([[-2.8, 5.8], [-1.0, 5.8], [-0.5, 7.5], [-1.5, 8.5], [-3.0, 7.5], [-2.8, 5.8]]), 'medium', 'Expansion across the Akan forest region.'),
+      snap(ce(1820).year, poly([[-3.5, 5.5], [-0.5, 5.5], [0, 9], [-2, 10], [-4, 8], [-3.5, 5.5]]), 'medium', 'Peak extent across the Gold Coast interior, approximate.'),
+      snap(ce(1874).year, poly([[-3.0, 5.7], [-1.0, 5.7], [-0.7, 8.0], [-2.2, 8.8], [-3.5, 7.5], [-3.0, 5.7]]), 'high', 'Contracts after a British force sacks Kumasi in the Third Anglo-Ashanti War.'),
+      snap(ce(1901).year, poly([[-1.9, 6.2], [-1.2, 6.2], [-1.1, 7.0], [-1.9, 7.0], [-1.9, 6.2]]), 'high', 'Reduced to Kumasi itself before Britain annexes Asante outright after the War of the Golden Stool (1900).'),
     ],
   },
   {
@@ -158,10 +172,14 @@ export const AFRICA2_ENTITIES: HistoricalEntity[] = [
     colour: '#8a9a4a',
     labelImportance: 3,
     description:
-      'A large Central African kingdom near the mouth of the Congo River whose kings adopted Christianity and traded with Portugal, before being ground down by the Atlantic slave trade and civil war.',
+      'A large Central African kingdom near the mouth of the Congo River whose kings adopted Christianity and traded with Portugal after 1483, before being ground down by the Atlantic slave trade and civil war. The catastrophic defeat at Mbwila (1665), in which King António I was killed, shattered central authority; the Antonian movement of the prophetess Kimpa Vita tried and failed to reunify the kingdom in the 1700s.',
     sources: [src('Thornton 2020, A History of West Central Africa to 1850')],
     snapshots: [
-      snap(ce(1550).year, poly([[12, -4], [16, -4.5], [17, -7], [15, -8.5], [12.5, -7], [12, -5.5], [12, -4]]), 'medium', 'Lower Congo region, approximate.'),
+      snap(ce(1390).year, poly([[14.0, -5.5], [14.6, -5.5], [14.65, -6.0], [14.05, -6.0], [14.0, -5.5]]), 'low', 'Founding core around Mbanza Kongo.'),
+      snap(ce(1500).year, poly([[12, -4], [16, -4.5], [17, -7], [15, -8.5], [12.5, -7], [12, -5.5], [12, -4]]), 'medium', 'Peak extent after Portuguese contact (1483) and the Christian conversion of Afonso I, approximate.'),
+      snap(ce(1665).year, poly([[12.5, -4.5], [15.5, -5.0], [16.0, -6.5], [14.5, -7.5], [12.8, -6.5], [12.5, -4.5]]), 'high', 'The catastrophic defeat at Mbwila (1665) kills the king and shatters central authority.'),
+      snap(ce(1710).year, poly([[13.0, -4.7], [15.0, -5.0], [15.3, -6.0], [14.2, -6.8], [13.2, -6.0], [13.0, -4.7]]), 'medium', 'Continued civil war and fragmentation despite the Antonian movement’s attempt at reunification.'),
+      snap(ce(1857).year, poly([[14.0, -5.3], [14.7, -5.3], [14.75, -5.9], [14.05, -5.9], [14.0, -5.3]]), 'medium', 'Reduced to a titular core around Mbanza Kongo before its final dissolution.'),
     ],
   },
   {

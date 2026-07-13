@@ -654,6 +654,28 @@ describe('dataset integrity', () => {
     expect(covers('aksum', ce(750), 40.0, 15.3)).toBe(false);
   });
 
+  it('raises resolution on Ife, Benin, Oyo, Asante and Kongo', () => {
+    // Oyo: Oyo-Ile itself is lost during the 1535-1610 Nupe/Borgu exile,
+    // then reoccupied, then abandoned for good in the final 1836 collapse.
+    expect(covers('oyo', ce(1400), 4.0, 9.0)).toBe(true); // Oyo-Ile
+    expect(covers('oyo', ce(1535), 4.0, 9.0)).toBe(false);
+    expect(covers('oyo', ce(1610), 4.0, 9.0)).toBe(true);
+    expect(covers('oyo', ce(1836), 4.0, 9.0)).toBe(false);
+
+    // Asante: Kumasi (the capital) is held throughout, but the wider
+    // 1820-era peak contracts after the 1874 sack of Kumasi.
+    expect(covers('asante', ce(1820), -1.5, 6.6)).toBe(true); // Kumasi, always
+    expect(covers('asante', ce(1750), -0.8, 8.0)).toBe(false); // northern reach
+    expect(covers('asante', ce(1820), -0.8, 8.0)).toBe(true);
+    expect(covers('asante', ce(1901), -0.8, 8.0)).toBe(false);
+
+    // Kongo: the wider kingdom contracts sharply after the 1665 Mbwila
+    // disaster, though the Mbanza Kongo core survives to the end.
+    expect(covers('kongo', ce(1500), 16.5, -6.5)).toBe(true); // eastern reach
+    expect(covers('kongo', ce(1710), 16.5, -6.5)).toBe(false);
+    expect(covers('kongo', ce(1857), 14.3, -5.6)).toBe(true); // Mbanza Kongo core
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
