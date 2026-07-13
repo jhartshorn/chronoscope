@@ -475,6 +475,21 @@ describe('dataset integrity', () => {
     expect(covers('inca-empire', ce(1533), -79.03, -8.11)).toBe(false); // Chan Chan, lost
   });
 
+  it('spans the Maya civilisation\'s Preclassic rise, collapse and Postclassic survival', () => {
+    expect(ENTITY_BY_ID.get('maya')!.snapshots.length).toBeGreaterThanOrEqual(6);
+    // Copán (south-eastern edge) only while the southern lowlands are
+    // occupied; gone after the Terminal Classic collapse.
+    expect(covers('maya', bce(300), -89.14, 14.84)).toBe(false); // Copán
+    expect(covers('maya', ce(600), -89.14, 14.84)).toBe(true);
+    expect(covers('maya', ce(900), -89.14, 14.84)).toBe(false);
+    // Chichén Itzá (northern Yucatán) survives the collapse throughout.
+    expect(covers('maya', ce(800), -88.57, 20.68)).toBe(true);
+    expect(covers('maya', ce(900), -88.57, 20.68)).toBe(true);
+    // The Itza capital Tayasal is the very last holdout, gone from the map
+    // only at the entity's 1697 end.
+    expect(covers('maya', ce(1524), -89.88, 16.93)).toBe(true); // Tayasal
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

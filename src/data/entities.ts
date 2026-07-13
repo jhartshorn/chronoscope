@@ -549,18 +549,48 @@ export const ENTITIES: HistoricalEntity[] = [
     name: 'Maya civilisation',
     category: 'civilisation',
     start: bce(2000),
-    end: ce(1524),
+    end: ce(1697),
     confidence: 'medium',
     colour: '#3f8f6d',
     labelImportance: 4,
     description:
-      'The Maya civilisation of Mesoamerica: a network of city-states (Tikal, Calakmul, Palenque, Copán) across the Yucatán and adjacent highlands, peaking in the Classic period.',
+      'The Maya civilisation of Mesoamerica: a network of rival city-states, never a unified empire, spanning nearly 3,700 years from early Preclassic villages to the last independent Maya kingdom. El Mirador dominated the Late Preclassic before its decline; Tikal and Calakmul’s Classic-period rivalry gave way to the still poorly-understood 9th-century "Maya collapse", when the southern lowland cities were largely abandoned while the north (Chichén Itzá, then the Mayapán League) and the Guatemalan highlands carried Maya civilisation on. The Itza kingdom at Tayasal, deep in the Petén jungle, held out until 1697 — a century and a half after Cortés and Alvarado conquered the rest.',
     sources: [
       src('Coe & Houston 2015, The Maya (9th ed.)'),
       src('Martin & Grube 2008, Chronicle of the Maya Kings and Queens'),
     ],
     snapshots: [
-      snap(ce(700).year, poly([[-92.5, 14], [-88, 13.5], [-86.5, 16], [-87.5, 18.5], [-90, 21.5], [-91, 20], [-92, 17.5], [-92.5, 14]]), 'medium', 'Classic-period Maya area (not a unified state).'),
+      snap(bce(1000).year, poly([
+        [-91.0, 16.0], [-89.5, 16.0], [-88.5, 17.5], [-89.0, 19.0], [-90.5, 19.5], [-91.5, 18.0], [-91.0, 16.0],
+      ]), 'low', 'Early Preclassic village settlement in the Petén and Yucatán lowlands, approximate.'),
+      snap(bce(300).year, poly([
+        [-92.5, 15.5], [-90.5, 15.3], [-88.8, 16.2], [-87.5, 17.0], [-88.0, 19.0],
+        [-89.5, 20.5], [-91.0, 20.0], [-92.0, 18.0], [-92.5, 15.5],
+      ]), 'low', 'The Late Preclassic "kingdom of the snake" centred on El Mirador, then perhaps the Americas’ largest city.'),
+      snap(ce(250).year, poly([
+        [-92.5, 14.0], [-90.0, 13.5], [-87.5, 14.5], [-86.0, 16.5], [-87.0, 19.0],
+        [-88.5, 20.8], [-90.5, 21.3], [-92.0, 20.0], [-92.5, 17.0], [-92.5, 14.0],
+      ]), 'medium', 'Early Classic period: El Mirador has declined and Tikal is rising, spurred by contact with distant Teotihuacan.'),
+      snap(ce(600).year, poly([
+        [-92.8, 13.8], [-89.5, 13.2], [-87.0, 14.0], [-85.8, 16.5], [-87.0, 19.2],
+        [-88.5, 21.0], [-90.7, 21.5], [-92.3, 20.2], [-92.8, 17.0], [-92.8, 13.8],
+      ]), 'medium', 'Mid-Classic: the Tikal–Calakmul rivalry (the "Maya wars") dominates the lowlands; Copán and Palenque flourish at the edges.'),
+      snap(ce(800).year, poly([
+        [-93.0, 13.5], [-89.0, 13.0], [-86.8, 13.8], [-85.5, 16.7], [-86.8, 19.3],
+        [-88.3, 21.1], [-90.8, 21.6], [-92.5, 20.3], [-93.0, 17.0], [-93.0, 13.5],
+      ]), 'medium', 'Late Classic peak population and territorial spread, shortly before the collapse begins.'),
+      snap(ce(900).year, poly([
+        [-91.5, 18.0], [-90.5, 21.6], [-88.3, 21.1], [-87.0, 19.3], [-88.0, 17.0], [-89.5, 16.3], [-91.0, 16.5], [-91.5, 18.0],
+      ]), 'medium', 'The Terminal Classic "Maya collapse": southern lowland cities (Tikal, Calakmul, Copán, Palenque) are largely abandoned within decades; population and building concentrate in Yucatán.'),
+      snap(ce(1200).year, poly([
+        [-92.0, 14.3], [-90.5, 21.6], [-88.3, 21.1], [-87.0, 19.3], [-88.0, 17.0], [-89.9, 16.5], [-91.5, 15.0], [-92.0, 14.3],
+      ]), 'medium', 'Postclassic recovery: Chichén Itzá and then the Mayapán League dominate Yucatán, while independent kingdoms (K’iche’, Kaqchikel) thrive in the Guatemalan highlands.'),
+      snap(ce(1524).year, poly([
+        [-91.5, 18.0], [-90.5, 21.6], [-88.3, 21.1], [-87.0, 19.3], [-88.0, 17.0], [-89.5, 16.3], [-91.0, 16.5], [-91.5, 18.0],
+      ]), 'high', 'Pedro de Alvarado conquers the K’iche’ highland kingdoms (1524); independent Maya survive only in Yucatán and the Petén jungle.'),
+      snap(ce(1697).year, poly([
+        [-90.2, 16.7], [-89.6, 16.7], [-89.5, 17.2], [-90.1, 17.2], [-90.2, 16.7],
+      ]), 'high', 'The Itza kingdom at Tayasal on Lake Petén Itzá — the last independent Maya polity — falls to Martín de Ursúa in 1697.'),
     ],
   },
   {
