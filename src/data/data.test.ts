@@ -857,6 +857,19 @@ describe('dataset integrity', () => {
     expect(covers('gran-colombia', ce(1819), -74.08, 4.71)).toBe(true); // Bogotá, from the start
   });
 
+  it('models Mexico\'s territorial losses (Texas, the Mexican Cession, Gadsden)', () => {
+    expect(ENTITY_BY_ID.get('mexico')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // San Antonio (Texas) lost in 1836.
+    expect(covers('mexico', ce(1821), -98.49, 29.42)).toBe(true);
+    expect(covers('mexico', ce(1836), -98.49, 29.42)).toBe(false);
+    // San Francisco (Alta California) lost in the 1848 Mexican Cession.
+    expect(covers('mexico', ce(1836), -122.4, 37.77)).toBe(true);
+    expect(covers('mexico', ce(1848), -122.4, 37.77)).toBe(false);
+    // Tucson (Gadsden Purchase strip) lost only in 1854.
+    expect(covers('mexico', ce(1848), -110.97, 32.22)).toBe(true);
+    expect(covers('mexico', ce(1854), -110.97, 32.22)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

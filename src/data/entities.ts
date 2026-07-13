@@ -1115,12 +1115,34 @@ export const ENTITIES: HistoricalEntity[] = [
     labelImportance: 3,
     predecessorIds: ['spanish-empire'],
     description:
-      'The United Mexican States, independent from Spain in 1821 on lands that were home to the Aztec and Maya civilisations. The contemporary boundary is from Natural Earth.',
+      'The United Mexican States, independent from Spain in 1821 on lands that were home to the Aztec and Maya civilisations. Its vast northern territories — Texas, California, and the Southwest — were lost within a generation: Texas seceded in 1836, and the 1846–48 war with the United States, ended by the Treaty of Guadalupe Hidalgo, ceded roughly half the country, with the 1854 Gadsden Purchase drawing the final border.',
     sources: [
       src('Meyer & Sherman 1995, The Course of Mexican History'),
       src('Natural Earth (public domain) for the modern boundary'),
     ],
-    snapshots: [snap(ce(2026).year, { naturalEarthCountry: 'Mexico' }, 'high', 'Contemporary Mexico (Natural Earth); 1821 extent was far larger.')],
+    snapshots: [
+      snap(ce(1821).year, poly([
+        [-124.5, 42.0], [-114.0, 42.0], [-109.0, 41.0], [-103.0, 37.0], [-94.0, 33.9],
+        [-93.5, 29.7], [-97.1, 26.0], [-90.5, 17.8], [-92.2, 14.5], [-97.0, 15.9],
+        [-105.5, 20.5], [-110.0, 23.5], [-113.0, 29.0], [-117.1, 32.5], [-122.5, 36.5], [-124.0, 40.5], [-124.5, 42.0],
+      ]), 'medium', 'Independence (1821): the full northern extent, including Texas and Alta California, approximate.'),
+      snap(ce(1836).year, poly([
+        [-124.5, 42.0], [-114.0, 42.0], [-109.0, 41.0], [-103.0, 37.0], [-103.0, 32.0],
+        [-106.5, 29.8], [-99.5, 26.5], [-97.1, 26.0], [-90.5, 17.8], [-92.2, 14.5], [-97.0, 15.9],
+        [-105.5, 20.5], [-110.0, 23.5], [-113.0, 29.0], [-117.1, 32.5], [-122.5, 36.5], [-124.0, 40.5], [-124.5, 42.0],
+      ]), 'high', 'The Texan Revolution (1836) severs Texas.'),
+      snap(ce(1848).year, poly([
+        [-117.1, 32.5], [-114.7, 32.5], [-111.0, 32.8], [-108.2, 32.0], [-106.5, 31.8],
+        [-103.0, 29.0], [-99.5, 26.5], [-97.1, 26.0], [-90.5, 17.8], [-92.2, 14.5], [-97.0, 15.9],
+        [-105.5, 20.5], [-110.0, 23.5], [-113.0, 29.0], [-117.1, 32.5],
+      ]), 'high', 'The Treaty of Guadalupe Hidalgo (1848) cedes California, Nevada, Utah and most of Arizona and New Mexico to the United States — the Mexican Cession, roughly halving the country.'),
+      snap(ce(1854).year, poly([
+        [-114.8, 32.5], [-111.0, 31.33], [-108.2, 31.33], [-106.5, 31.8], [-103.0, 29.0],
+        [-99.5, 26.5], [-97.1, 26.0], [-90.5, 17.8], [-92.2, 14.5], [-97.0, 15.9],
+        [-105.5, 20.5], [-110.0, 23.5], [-113.0, 29.0], [-114.8, 32.5],
+      ]), 'high', 'The Gadsden Purchase (1854) sells the final southern strip of Arizona and New Mexico, fixing the modern border.'),
+      snap(ce(2026).year, { naturalEarthCountry: 'Mexico' }, 'high', 'Contemporary Mexico (Natural Earth).'),
+    ],
   },
   {
     id: 'china-prc',
