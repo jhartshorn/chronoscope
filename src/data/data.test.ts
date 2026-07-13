@@ -703,6 +703,33 @@ describe('dataset integrity', () => {
     expect(covers('gokturk', ce(682), 102.5, 47.5)).toBe(true);
   });
 
+  it('raises resolution on the Rashidun, Fatimid, Ayyubid and Mamluk states', () => {
+    // Rashidun: the "swift" conquest — Damascus only from 636, Egypt/Iran
+    // only from 642.
+    expect(covers('rashidun-caliphate', ce(632), 36.3, 33.5)).toBe(false); // Damascus
+    expect(covers('rashidun-caliphate', ce(636), 36.3, 33.5)).toBe(true);
+    expect(covers('rashidun-caliphate', ce(636), 31.2, 30.0)).toBe(false); // Cairo/Egypt
+    expect(covers('rashidun-caliphate', ce(642), 31.2, 30.0)).toBe(true);
+
+    // Fatimid: Cairo/Egypt only from the 969 conquest; the Levant lost
+    // again after the First Crusade.
+    expect(covers('fatimid-caliphate', ce(909), 31.2, 30.0)).toBe(false);
+    expect(covers('fatimid-caliphate', ce(969), 31.2, 30.0)).toBe(true);
+    expect(covers('fatimid-caliphate', ce(1000), 35.2, 31.8)).toBe(true); // Jerusalem
+    expect(covers('fatimid-caliphate', ce(1100), 35.2, 31.8)).toBe(false);
+
+    // Ayyubid: Jerusalem only from Hattin (1187); Egypt lost in the 1250
+    // Mamluk coup.
+    expect(covers('ayyubid', ce(1171), 35.2, 31.8)).toBe(false); // Jerusalem
+    expect(covers('ayyubid', ce(1187), 35.2, 31.8)).toBe(true);
+    expect(covers('ayyubid', ce(1200), 31.2, 30.0)).toBe(true); // Egypt
+    expect(covers('ayyubid', ce(1250), 31.2, 30.0)).toBe(false);
+
+    // Mamluk: Damascus only from the 1260 Ain Jalut victory onward.
+    expect(covers('mamluk-sultanate', ce(1250), 36.3, 33.5)).toBe(false);
+    expect(covers('mamluk-sultanate', ce(1260), 36.3, 33.5)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

@@ -17,7 +17,10 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
       'The first caliphate, of the “rightly-guided” caliphs who succeeded Muhammad, whose swift conquests took Arabia, the Levant, Egypt and the Sasanian empire within a generation — the foundation of Islamic imperial history.',
     sources: [src('Kennedy 2007, The Great Arab Conquests')],
     snapshots: [
-      snap(ce(655).year, poly([[30, 30], [40, 36], [52, 38], [62, 32], [58, 22], [45, 12], [36, 14], [32, 22], [30, 30]]), 'medium', 'Arabia, the Levant, Egypt and Iran by c. 655, approximate.'),
+      snap(ce(632).year, poly([[36, 15], [45, 15], [50, 20], [48, 28], [40, 30], [35, 25], [34, 18], [36, 15]]), 'medium', 'Abu Bakr reunifies Arabia in the Ridda Wars after Muhammad’s death.'),
+      snap(ce(636).year, poly([[32, 31], [37, 35.5], [45, 35], [50, 33], [52, 30], [48, 20], [40, 15], [36, 15], [34, 20], [32, 31]]), 'medium', 'Victories at Yarmouk (over Byzantium) and al-Qadisiyyah (over the Sasanians) open Syria and Iraq.'),
+      snap(ce(642).year, poly([[30, 30], [33, 34], [40, 37], [48, 38], [55, 35], [60, 30], [62, 25], [55, 15], [45, 12], [36, 14], [30, 22], [30, 30]]), 'medium', 'Egypt falls to Amr ibn al-As; the Sasanian heartland is overrun after Nahavand.'),
+      snap(ce(655).year, poly([[30, 30], [40, 36], [52, 38], [62, 32], [58, 22], [45, 12], [36, 14], [32, 22], [30, 30]]), 'high', 'The Sasanian Empire fully absorbed: Arabia, the Levant, Egypt and Iran, approximate.'),
     ],
   },
   {
@@ -33,7 +36,11 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
       'An Ismaili Shia caliphate that rose in North Africa, conquered Egypt and founded Cairo (and its al-Azhar mosque-university), ruling the Nile, the Levant and the Hejaz at its height.',
     sources: [src('Brett 2017, The Fatimid Empire')],
     snapshots: [
-      snap(ce(1000).year, poly([[0, 30], [10, 34], [20, 32], [32, 31], [36, 33], [40, 22], [34, 20], [24, 30], [10, 30], [0, 30]]), 'medium', 'North Africa, Egypt and the Levant, approximate.'),
+      snap(ce(909).year, poly([[8, 32], [12, 33], [12, 37], [8, 37], [7, 34], [8, 32]]), 'low', 'Founding core in Ifriqiya (Tunisia).'),
+      snap(ce(969).year, poly([[8, 30], [14, 32], [20, 31], [32, 31], [35, 30], [32, 22], [20, 25], [10, 30], [8, 30]]), 'medium', 'Jawhar’s conquest of Egypt and founding of Cairo (969).'),
+      snap(ce(1000).year, poly([[0, 30], [10, 34], [20, 32], [32, 31], [36, 33], [40, 22], [34, 20], [24, 30], [10, 30], [0, 30]]), 'medium', 'Peak extent across North Africa, Egypt and the Levant, approximate.'),
+      snap(ce(1100).year, poly([[0, 30], [10, 34], [20, 32], [30, 31], [32, 30], [32, 22], [24, 30], [10, 30], [0, 30]]), 'medium', 'The Levant is lost to the First Crusade (Jerusalem falls in 1099) and Seljuk pressure.'),
+      snap(ce(1171).year, poly([[24, 22], [30, 31], [33, 31], [34, 25], [30, 22], [24, 22]]), 'high', 'Reduced to Egypt alone as Saladin ends the dynasty, folding it into his new Ayyubid sultanate.'),
     ],
   },
   {
@@ -51,7 +58,11 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
       'The dynasty founded by Saladin, which reunited Egypt and Syria, retook Jerusalem from the Crusaders and dominated the eastern Mediterranean and the Red Sea.',
     sources: [src('Humphreys 1977, From Saladin to the Mongols')],
     snapshots: [
-      snap(ce(1200).year, poly([[24, 24], [30, 31], [36, 34], [40, 36], [44, 30], [42, 15], [34, 20], [28, 22], [24, 24]]), 'medium', 'Egypt, Syria and western Arabia under the Ayyubids, approximate.'),
+      snap(ce(1171).year, poly([[28, 22], [32, 31], [34, 32], [33, 25], [30, 22], [28, 22]]), 'medium', 'Saladin ends Fatimid rule and takes Egypt for himself, still nominally a Zengid vassal.'),
+      snap(ce(1187).year, poly([[24, 26], [30, 32], [36, 35], [40, 36], [42, 32], [38, 25], [32, 22], [26, 24], [24, 26]]), 'high', 'Victory at Hattin and the recapture of Jerusalem (1187) bring the whole Levant under Ayyubid rule.'),
+      snap(ce(1200).year, poly([[24, 24], [30, 31], [36, 34], [40, 36], [44, 30], [42, 15], [34, 20], [28, 22], [24, 24]]), 'medium', 'Peak extent: Egypt, Syria and western Arabia, approximate.'),
+      snap(ce(1250).year, poly([[34, 32], [38, 36], [41, 35], [40, 31], [36, 29], [34, 32]]), 'high', 'A Mamluk coup ends Ayyubid rule in Egypt; only a Syrian remnant survives.'),
+      snap(ce(1260).year, poly([[36, 35], [38, 36.5], [39, 35.5], [37.5, 34.5], [36, 35]]), 'medium', 'A last Aleppo-area sliver, shortly before the Mongol invasion and Mamluk absorption of 1260.'),
     ],
   },
   {
@@ -69,7 +80,10 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
       'A sultanate of freed slave-soldiers ruling Egypt and Syria, which halted the Mongols at Ain Jalut, ended the Crusader states and guarded the Islamic holy cities until the Ottoman conquest of 1517.',
     sources: [src('Petry (ed.) 1998, The Cambridge History of Egypt, Vol. 1')],
     snapshots: [
-      snap(ce(1350).year, poly([[24, 22], [30, 31], [36, 34], [40, 32], [42, 20], [36, 17], [28, 20], [24, 22]]), 'medium', 'Egypt, the Levant and the Hejaz, approximate.'),
+      snap(ce(1250).year, poly([[28, 22], [32, 31], [34, 32], [33, 25], [30, 22], [28, 22]]), 'medium', 'The Mamluk coup founds the sultanate in Egypt alone.'),
+      snap(ce(1260).year, poly([[24, 22], [30, 31], [36, 34], [39, 35], [40, 30], [36, 17], [28, 20], [24, 22]]), 'high', 'Victory over the Mongols at Ain Jalut (1260) adds the remaining Ayyubid Syria.'),
+      snap(ce(1350).year, poly([[24, 22], [30, 31], [36, 34], [40, 32], [42, 20], [36, 17], [28, 20], [24, 22]]), 'medium', 'Stable peak across Egypt, the Levant and the Hejaz, approximate.'),
+      snap(ce(1517).year, poly([[24, 22], [30, 31], [36, 34], [40, 32], [42, 20], [36, 17], [28, 20], [24, 22]]), 'high', 'Still at its historic extent on the eve of Selim I’s Ottoman conquest.'),
     ],
   },
   {
