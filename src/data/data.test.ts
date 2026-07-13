@@ -730,6 +730,19 @@ describe('dataset integrity', () => {
     expect(covers('mamluk-sultanate', ce(1260), 36.3, 33.5)).toBe(true);
   });
 
+  it('raises resolution on the Seljuk Empire', () => {
+    expect(ENTITY_BY_ID.get('seljuk-empire')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // Baghdad only from Tughril's 1055 entry; Manzikert/Anatolia only from
+    // the 1071 victory; both lost again once Sanjar's death fragments the
+    // empire in 1157.
+    expect(covers('seljuk-empire', ce(1037), 44.36, 33.31)).toBe(false); // Baghdad
+    expect(covers('seljuk-empire', ce(1055), 44.36, 33.31)).toBe(true);
+    expect(covers('seljuk-empire', ce(1055), 42.55, 38.75)).toBe(false); // Manzikert
+    expect(covers('seljuk-empire', ce(1071), 42.55, 38.75)).toBe(true);
+    expect(covers('seljuk-empire', ce(1090), 44.36, 33.31)).toBe(true);
+    expect(covers('seljuk-empire', ce(1157), 44.36, 33.31)).toBe(false);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',

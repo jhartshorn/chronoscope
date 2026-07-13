@@ -97,10 +97,15 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     successorIds: ['ottoman-empire'],
     description:
-      'A Turco-Persian empire that swept from Central Asia across Iran to Anatolia, defeating Byzantium at Manzikert (1071) and opening Anatolia to Turkish settlement — a turning point for the later Ottoman world.',
+      'A Turco-Persian empire that swept from Central Asia across Iran to Anatolia, defeating Byzantium at Manzikert (1071) and opening Anatolia to Turkish settlement — a turning point for the later Ottoman world. Sultan Sanjar’s death (1157) let the "Great Seljuk" centre fragment into regional sultanates (Anatolian Rum, Syria, Kerman) long before the Khwarezmian Empire ended the line outright in 1194.',
     sources: [src('Peacock 2015, The Great Seljuk Empire')],
     snapshots: [
-      snap(ce(1090).year, poly([[28, 38], [40, 40], [52, 40], [62, 38], [66, 32], [56, 28], [44, 30], [34, 34], [28, 36], [28, 38]]), 'medium', 'Anatolia, the Levant, Iran and Central Asia, approximate.'),
+      snap(ce(1037).year, poly([[56, 35], [62, 35], [63, 38], [57, 39], [55, 37], [56, 35]]), 'medium', 'Tughril Beg’s founding realm in Khorasan.'),
+      snap(ce(1055).year, poly([[40, 34], [48, 35.5], [56, 36], [63, 38], [62, 30], [54, 26], [46, 28], [40, 34]]), 'medium', 'Tughril enters Baghdad (1055) as protector of the Abbasid caliph, adding Iraq and western Iran.'),
+      snap(ce(1071).year, poly([[30, 36], [36, 40], [44, 41], [54, 38], [62, 38], [66, 32], [58, 26], [48, 26], [40, 30], [34, 33], [30, 36]]), 'high', 'Victory over Byzantium at Manzikert (1071) opens Anatolia to Turkish settlement.'),
+      snap(ce(1090).year, poly([[28, 38], [40, 40], [52, 40], [62, 38], [66, 32], [56, 28], [44, 30], [34, 34], [28, 36], [28, 38]]), 'medium', 'Malik-Shah’s reign at its height: Anatolia, the Levant, Iran and Central Asia, approximate.'),
+      snap(ce(1157).year, poly([[55, 33], [62, 33], [64, 37], [58, 39], [54, 36], [55, 33]]), 'medium', 'Sultan Sanjar’s death lets the empire fragment into regional sultanates, leaving only a Khorasan rump of the "Great Seljuk" line.'),
+      snap(ce(1194).year, poly([[57, 34], [61, 34], [62, 37], [58, 37.5], [57, 34]]), 'medium', 'A final sliver before the Khwarezmian Empire kills the last Great Seljuk sultan, Toghrul III.'),
     ],
   },
   {
