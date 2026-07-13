@@ -215,10 +215,15 @@ export const ISLAMIC_ENTITIES: HistoricalEntity[] = [
     labelImportance: 4,
     predecessorIds: ['mongol-empire'],
     description:
-      'The north-western khanate of the Mongol Empire, which dominated the western steppe and held the Russian principalities as tributaries for over two centuries.',
+      'The north-western khanate of the Mongol Empire, which dominated the western steppe and held the Russian principalities as tributaries for over two centuries. Timur’s devastating 1395 invasion destroyed its capital Sarai; the "Great Troubles" civil wars and the loss of Kazan (1438), Crimea (1441) and Astrakhan (c. 1466) as independent khanates reduced it to a rump "Great Horde" that the Crimean Khanate finally destroyed in 1502.',
     sources: [src('Halperin 1985, Russia and the Golden Horde')],
     snapshots: [
-      snap(ce(1300).year, poly([[30, 46], [45, 50], [60, 52], [75, 50], [72, 44], [58, 42], [42, 42], [32, 44], [30, 46]]), 'medium', 'Western Eurasian steppe, approximate.'),
+      snap(ce(1242).year, poly([[42, 45], [52, 46], [58, 49], [50, 52], [42, 50], [40, 47], [42, 45]]), 'medium', 'Batu Khan’s founding realm on the lower Volga, after returning from the Mongol invasion of Europe.'),
+      snap(ce(1300).year, poly([[30, 46], [45, 50], [60, 52], [75, 50], [72, 44], [58, 42], [42, 42], [32, 44], [30, 46]]), 'medium', 'Peak extent across the western Eurasian steppe, approximate.'),
+      snap(ce(1359).year, poly([[28, 45], [42, 49], [58, 51], [68, 48], [62, 43], [48, 42], [35, 43], [28, 45]]), 'medium', 'The "Great Troubles" civil wars (1359–81) fracture central authority even as the khanate’s nominal extent holds.'),
+      snap(ce(1395).year, poly([[35, 46], [45, 49], [52, 50], [50, 45], [42, 43], [36, 44], [35, 46]]), 'high', 'Timur’s invasion destroys Sarai and the eastern and Caucasus territories are lost.'),
+      snap(ce(1440).year, poly([[42, 47], [47, 49], [51, 47.5], [47, 45], [43, 45.5], [42, 47]]), 'high', 'Kazan (1438) and soon Crimea break away as independent khanates, leaving only the "Great Horde" rump between the Volga and the Don.'),
+      snap(ce(1502).year, poly([[44, 47], [48, 47.5], [49.5, 46], [45.5, 45.5], [44, 47]]), 'high', 'A last sliver before the Crimean Khanate destroys the Great Horde outright.'),
     ],
   },
 ];

@@ -743,6 +743,17 @@ describe('dataset integrity', () => {
     expect(covers('seljuk-empire', ce(1157), 44.36, 33.31)).toBe(false);
   });
 
+  it('raises resolution on the Golden Horde', () => {
+    expect(ENTITY_BY_ID.get('golden-horde')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    // The far-eastern Kazakh steppe reach is part of the 1300 peak but lost
+    // after Timur's 1395 devastation.
+    expect(covers('golden-horde', ce(1242), 65.0, 47.0)).toBe(false);
+    expect(covers('golden-horde', ce(1300), 65.0, 47.0)).toBe(true);
+    expect(covers('golden-horde', ce(1395), 65.0, 47.0)).toBe(false);
+    // Astrakhan (lower Volga) is core throughout, even the final 1502 sliver.
+    expect(covers('golden-horde', ce(1502), 48.04, 46.35)).toBe(true);
+  });
+
   it('gives the ten key empires’ modern successors fine-grained snapshots', () => {
     const KEY_SUCCESSORS = [
       'united-kingdom', 'italy', 'greece', 'turkey', 'iran', 'china-prc', 'saudi-arabia', 'mongolia',
