@@ -1414,6 +1414,28 @@ describe('dataset integrity', () => {
     expect(covers('croatia', ce(2000), 15.98, 45.81)).toBe(true);
   });
 
+  it('models dispersed peoples as migration/diaspora arcs, not static homelands', () => {
+    // Romani: NW Indian origin c. 1000, Balkan/Carpathian concentration today.
+    expect(ENTITY_BY_ID.get('romani')!.snapshots.length).toBeGreaterThanOrEqual(5);
+    expect(covers('romani', ce(1000), 73, 27)).toBe(true); // Rajasthan
+    expect(covers('romani', ce(1000), 25, 44)).toBe(false);
+    expect(covers('romani', ce(2000), 25, 44)).toBe(true); // Romania
+    expect(covers('romani', ce(2000), 73, 27)).toBe(false);
+    // Jewish people: Judaea in antiquity, then the successive diaspora centres.
+    expect(ENTITY_BY_ID.get('jewish-people')!.snapshots.length).toBeGreaterThanOrEqual(7);
+    expect(covers('jewish-people', bce(800), 35.2, 31.8)).toBe(true); // Jerusalem
+    expect(covers('jewish-people', ce(500), 44, 33)).toBe(true); // Babylonia
+    expect(covers('jewish-people', ce(500), 35.2, 31.8)).toBe(false); // not Judaea
+    expect(covers('jewish-people', ce(1900), 27, 53)).toBe(true); // Pale of Settlement
+    expect(covers('jewish-people', ce(1900), 35.2, 31.8)).toBe(false);
+    expect(covers('jewish-people', ce(2020), 34.78, 32.08)).toBe(true); // Tel Aviv
+    // Palestinians: historic Palestine until 1948, then Gaza/West Bank/Galilee.
+    expect(ENTITY_BY_ID.get('palestinian-people')!.snapshots.length).toBeGreaterThanOrEqual(3);
+    expect(covers('palestinian-people', ce(1900), 35.26, 32.22)).toBe(true); // Nablus
+    expect(covers('palestinian-people', ce(1990), 35.26, 32.22)).toBe(true); // still Nablus
+    expect(covers('palestinian-people', ce(1990), 34.79, 31.25)).toBe(false); // not Beersheba
+  });
+
   it('predecessor/successor ids resolve to real entities', () => {
     const ids = new Set(ENTITIES.map((e) => e.id));
     for (const e of ENTITIES) {

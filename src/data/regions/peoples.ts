@@ -115,10 +115,51 @@ export const PEOPLES_ENTITIES: HistoricalEntity[] = [
     colour: '#8a7ab0',
     labelImportance: 2,
     description:
-      'An ethnoreligious people originating in the ancient Levant. Shown at the Judaean homeland; from antiquity the Jewish people lived largely in a wide diaspora across the Near East, North Africa, Europe and later the Americas — a dispersion no single polygon can represent.',
-    sources: [src('Goodman 2017, A History of Judaism')],
+      'An ethnoreligious people originating in the ancient Levant. After the Roman-era revolts most Jews lived in diaspora, so the shape follows the successive major centres of Jewish life — Judaea; Galilee and Talmudic Babylonia; medieval Sepharad and Ashkenaz; Ottoman cities and Poland–Lithuania; the Pale of Settlement; and modern Israel — while communities always extended far beyond any polygon.',
+    sources: [src('Goodman 2017, A History of Judaism'), src('Ben-Sasson (ed.) 1976, A History of the Jewish People')],
     snapshots: [
-      snap(ce(1).year, poly([[34.3, 29.5], [35.9, 31], [36, 33.5], [35, 33.5], [34.4, 31.5], [34.3, 29.5]]), 'low', 'Judaean homeland; the historical diaspora was far wider.'),
+      snap(bce(800).year, poly([[34.3, 29.5], [35.9, 31], [36, 33.5], [35, 33.5], [34.4, 31.5], [34.3, 29.5]]), 'low', 'The Iron Age homeland: the kingdoms of Israel and Judah in the southern Levant.'),
+      snap(ce(70).year, poly([[34.3, 29.5], [35.9, 31], [36, 33.5], [35, 33.5], [34.4, 31.5], [34.3, 29.5]]), 'low', 'Judaea on the eve of the First Jewish–Roman War; large communities already lived across the eastern Mediterranean and Mesopotamia.'),
+      snap(ce(500).year, mpoly(
+        [[35, 32], [35.9, 32.3], [36, 33.3], [35.2, 33.2], [34.9, 32.5], [35, 32]],
+        [[42.5, 31], [46, 33], [45.5, 35], [42.5, 34], [42, 32], [42.5, 31]],
+      ), 'low', 'After the defeats of 70 and 135 CE the centres of Jewish life were Galilee (the Mishnah) and Talmudic Babylonia (the academies of Sura and Pumbedita).'),
+      snap(ce(1100).year, mpoly(
+        [[-8, 36.5], [-4, 36], [-1, 38], [-3, 40], [-6, 41], [-9, 39], [-8, 36.5]],
+        [[6, 49], [8.5, 49], [9, 51], [7, 52], [5.5, 50.5], [6, 49]],
+      ), 'low', 'The medieval centres: Sepharad (Iberia under al-Andalus and the Christian kingdoms) and Ashkenaz (the Rhineland); the Babylonian centre waned after c. 1000.'),
+      snap(ce(1600).year, mpoly(
+        [[21, 38], [27, 38], [30, 40], [27, 42], [22, 41], [21, 38]],
+        [[17, 50], [24, 50], [27, 52], [25, 55], [19, 54], [17, 52], [17, 50]],
+      ), 'low', 'After the 1492 expulsion from Spain: Sephardi centres in Ottoman cities (Salonika, Istanbul) and the great Ashkenazi settlement of Poland–Lithuania.'),
+      snap(ce(1900).year, poly([[23, 51], [27, 49], [31, 47], [35, 48], [32, 52], [30, 56], [26, 57], [23, 55], [23, 51]]), 'low', 'The Pale of Settlement in the Russian Empire, the largest Jewish population in the world (over five million) before the great emigrations and the Holocaust.'),
+      snap(ce(2010).year, { naturalEarthCountry: 'Israel' }, 'low', 'Today the largest communities are in Israel and the United States; the American and wider diaspora is too dispersed to draw.'),
+    ],
+  },
+  {
+    id: 'palestinian-people',
+    name: 'Palestinian people',
+    alternativeNames: ['Palestinians'],
+    category: 'people',
+    start: ce(700),
+    end: ce(2026),
+    confidence: 'low',
+    colour: '#6a9a7a',
+    labelImportance: 2,
+    description:
+      'The Arabic-speaking people of Palestine. The region’s population became predominantly Arabic-speaking in the centuries after the 7th-century conquests, descending largely from its long-settled inhabitants; a distinctly Palestinian national identity crystallised in the late Ottoman and Mandate periods. Since the 1948 war (the Nakba) roughly half the Palestinian people have lived as refugees and their descendants beyond historic Palestine — a diaspora no polygon can show.',
+    sources: [
+      src('Khalidi 1997, Palestinian Identity: The Construction of Modern National Consciousness'),
+      src('Doumani 1995, Rediscovering Palestine: Merchants and Peasants in Jabal Nablus'),
+    ],
+    snapshots: [
+      snap(ce(1000).year, poly([[34.2, 31.2], [34.9, 29.5], [35.6, 30.4], [35.7, 32.2], [35.9, 33.2], [35.1, 33.2], [34.6, 32], [34.2, 31.2]]), 'low', 'Palestine under the caliphates (the districts of Jund Filastin and Jund al-Urdunn), its population gradually becoming predominantly Arabic-speaking.'),
+      snap(ce(1900).year, poly([[34.2, 31.2], [34.9, 29.5], [35.6, 30.4], [35.7, 32.2], [35.9, 33.2], [35.1, 33.2], [34.6, 32], [34.2, 31.2]]), 'low', 'Late Ottoman Palestine, with an overwhelmingly Arabic-speaking population.'),
+      snap(ce(1960).year, mpoly(
+        [[34.05, 31.35], [34.2, 31.2], [34.55, 31.55], [34.35, 31.65], [34.05, 31.35]],
+        [[34.95, 31.4], [35.6, 31.5], [35.55, 32.4], [35.1, 32.5], [34.95, 31.9], [34.95, 31.4]],
+        [[35.1, 32.5], [35.8, 32.7], [35.6, 33.1], [35.2, 33.1], [35.1, 32.5]],
+      ), 'low', 'After 1948: Gaza, the West Bank and the Palestinian communities of the Galilee; more than half the Palestinian people live beyond these areas, chiefly in Jordan, Lebanon and Syria.'),
     ],
   },
   {
@@ -167,10 +208,14 @@ export const PEOPLES_ENTITIES: HistoricalEntity[] = [
     colour: '#9a7a5a',
     labelImportance: 1,
     description:
-      'A dispersed people originating in the Indian subcontinent who migrated to and across Europe from the medieval period, living as many distinct communities rather than a single territorial nation. Shown as a diffuse European presence.',
-    sources: [src('Fraser 1992, The Gypsies')],
+      'A dispersed people speaking Romani, an Indo-Aryan language, who left north-western India around the end of the first millennium and migrated through Persia and Byzantine Anatolia into Europe, living everywhere as a minority and nowhere as a territorial nation. The shape traces the migration and then marks where communities are most numerous — not a territory, and never a majority population.',
+    sources: [src('Fraser 1992, The Gypsies'), src('Matras 2015, The Romani Gypsies')],
     snapshots: [
-      snap(ce(1500).year, poly([[0, 42], [10, 45], [22, 48], [30, 46], [26, 42], [16, 40], [6, 40], [0, 42]]), 'low', 'A diffuse presence across Europe; not a bounded territory.'),
+      snap(ce(1000).year, poly([[66, 24], [70, 29], [74, 32], [78, 31], [77, 26], [72, 23], [68, 22], [66, 24]]), 'low', 'North-western Indian subcontinent, the homeland indicated by the Romani language; departure around the end of the first millennium.'),
+      snap(ce(1200).year, poly([[40, 37], [46, 39], [53, 38], [60, 34], [58, 30], [50, 29], [44, 33], [40, 37]]), 'low', 'Transit through Persia, Armenia and the eastern Byzantine borderlands, recorded in the loanword layers of Romani.'),
+      snap(ce(1350).year, poly([[21, 36], [26, 38], [32, 38], [38, 38], [41, 40], [36, 41], [28, 41], [23, 40], [21, 38], [21, 36]]), 'low', 'Byzantine Anatolia and Greece; Romani communities are attested in the Peloponnese, Corfu and Crete in the 14th century.'),
+      snap(ce(1500).year, poly([[16, 39], [21, 38], [27, 40], [29, 44], [27, 48], [21, 49], [15, 47], [14, 43], [16, 39]]), 'low', 'The Balkans and Carpathian basin after the Ottoman advance; smaller groups reached western Europe from the early 15th century.'),
+      snap(ce(2000).year, poly([[16, 40], [21, 39], [27, 41], [29, 44], [27, 48], [22, 49], [17, 48], [15, 44], [16, 40]]), 'low', 'The largest present-day communities: the Balkans and Carpathian basin (Romania, Bulgaria, Hungary, Slovakia, Serbia, North Macedonia). Romani live as minorities across all of Europe and beyond.'),
     ],
   },
 ];
