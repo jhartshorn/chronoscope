@@ -87,6 +87,17 @@ Don't duplicate. Before adding anything:
 - Wire up `predecessorIds` / `successorIds` so political lineages are clickable
   chains, and split coverage of one place across modules deliberately (say so
   in the module doc comment, as `ireland.ts` does for 1801/1922 handoffs).
+- **A `people` entity displayed into (or near) the present must have snapshots
+  that track where that people actually was at each date** — a formative-
+  homeland polygon left on screen for millennia reads as a claim about who
+  predominates there *now*. For dispersed or diaspora peoples (see `romani`
+  and `jewish-people` in `peoples.ts`), draw the migration arc or the
+  successive major population centres, and state in the description and
+  snapshot notes that the shape marks where communities are concentrated, not
+  a territory or a majority. Where two peoples have historically shared the
+  same ground (e.g. the southern Levant), show both — layer overlap is
+  intended — rather than letting one people's polygon stand alone over a
+  contested region.
 
 ## 4. Raising temporal resolution
 
