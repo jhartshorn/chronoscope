@@ -72,8 +72,9 @@ A single `MapRenderer` class drawing to a Canvas 2D context:
   selection/size change). Projected geometry is cached as `Path2D` keyed by
   `(geometry, view.version)`, so timeline playback with a static camera costs only
   fills/strokes — no re‑projection per frame. Territory fills are clipped to the
-  coastline; diffuse ranges get soft haloed borders, polities get crisp dashed‑by‑
-  confidence borders, low‑confidence areas get a hatch pattern. Crossfade blends
+  coastline; only high‑confidence polities get a crisp boundary line — medium‑ and
+  low‑confidence extents (and diffuse ranges) are borderless with a feathered fill
+  edge that widens as confidence drops. Crossfade blends
   topologically incompatible snapshots by opacity. Event markers are clustered in
   screen space.
 - **`labels.ts`** — centroid‑anchored labels sized by on‑screen footprint and

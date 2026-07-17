@@ -157,7 +157,7 @@ animation quality, projection support, performance and licence. MapLibre centres
 web‑Mercator vector tiles and would fight an Equal Earth, deep‑time use case;
 deck.gl is excellent but heavyweight for a hand‑authored dataset of this size.
 A direct Canvas renderer gives complete control over crossfading incompatible
-historical geometries, atlas‑style curved labels, hatched uncertainty fills, and
+historical geometries, atlas‑style curved labels, feathered uncertainty edges, and
 coastline‑clipped territory fills — while staying easy to read and extend. The
 renderer is deliberately isolated behind the engine’s data types so it can be
 swapped for a WebGL implementation later without touching the history model.
@@ -198,4 +198,4 @@ true vertex morphing, and label placement is good but not typeset‑atlas perfec
 - Dates use the astronomical convention internally (year 0 = 1 BCE) but **never
   display a year zero**.
 - Prehistoric “ranges” are envelopes of inferred presence, not territories, and are
-  rendered as such (soft, hatched, low‑confidence).
+  rendered as such (soft‑edged, borderless, low‑confidence).

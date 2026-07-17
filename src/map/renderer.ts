@@ -1,6 +1,6 @@
 import { geoArea, geoContains, geoGraticule10, geoPath } from 'd3-geo';
 import type { Geometry, MultiPolygon, Polygon } from 'geojson';
-import type { ActiveEntity, ActiveEvent, EntityCategory, HistoricalEntity, HistoricalEvent } from '../types';
+import type { ActiveEntity, ActiveEvent, Confidence, EntityCategory, HistoricalEntity, HistoricalEvent } from '../types';
 import { ActiveSetCache } from '../history/engine';
 import type { TimeStore } from '../animation/timeStore';
 import { MapViewState } from './view';
@@ -9,7 +9,7 @@ import { placeLabels, type LabelInput } from './labels';
 import {
   CATEGORY_COLOURS,
   CATEGORY_FILL_OPACITY,
-  confidenceDash,
+  CONFIDENCE_EDGE,
   darken,
   DIFFUSE_CATEGORIES,
   EVENT_CATEGORY_COLOURS,
@@ -65,7 +65,6 @@ export class MapRenderer {
   private cache: ActiveSetCache;
   private pathCache = new WeakMap<object, CachedPath>();
   private areaCache = new WeakMap<object, number>();
-  private hatchCache = new Map<string, CanvasPattern>();
 
   private hover: HoverInfo = null;
   private lastHoverTest = 0;
@@ -387,27 +386,6 @@ export class MapRenderer {
     return path;
   }
 
-  private hatchPattern(colour: string): CanvasPattern | null {
-    let p = this.hatchCache.get(colour) ?? null;
-    if (p) return p;
-    const c = document.createElement('canvas');
-    c.width = 8;
-    c.height = 8;
-    const g = c.getContext('2d');
-    if (!g) return null;
-    g.strokeStyle = hexToRgba(darken(colour, 0.25), 0.55);
-    g.lineWidth = 1.2;
-    g.beginPath();
-    g.moveTo(-2, 6);
-    g.lineTo(6, -2);
-    g.moveTo(2, 10);
-    g.lineTo(10, 2);
-    g.stroke();
-    p = this.ctx?.createPattern(c, 'repeat') ?? null;
-    if (p) this.hatchCache.set(colour, p);
-    return p;
-  }
-
   private draw() {
     const ctx = this.ctx!;
     const { width, height, k } = this.view;
@@ -476,7 +454,7 @@ export class MapRenderer {
     const labelInputs: LabelInput[] = [];
     for (const a of ordered) {
       const colour = a.entity.colour ?? CATEGORY_COLOURS[a.entity.category];
-      const parts: { geom: Polygon | MultiPolygon; weight: number; conf: string }[] = [];
+      const parts: { geom: Polygon | MultiPolygon; weight: number; conf: Confidence }[] = [];
       if (a.fromSnapshot === a.toSnapshot || a.blend <= 0.001) {
         parts.push({
           geom: resolveGeometry(a.fromSnapshot.geometry),
@@ -503,30 +481,44 @@ export class MapRenderer {
       for (const part of parts) {
         const p = this.pathFor(part.geom);
         const alpha = a.alpha * part.weight;
-        ctx.fillStyle = hexToRgba(colour, baseOpacity * alpha * (isHovered || isSelected ? 1.25 : 1));
+        const fillAlpha = baseOpacity * alpha * (isHovered || isSelected ? 1.25 : 1);
+        ctx.fillStyle = hexToRgba(colour, fillAlpha);
         ctx.fill(p);
-        if (part.conf === 'low') {
-          const pat = this.hatchPattern(colour);
-          if (pat) {
-            ctx.save();
-            ctx.globalAlpha = 0.5 * alpha;
-            ctx.fillStyle = pat;
-            ctx.fill(p);
-            ctx.restore();
+
+        const edge = CONFIDENCE_EDGE[part.conf];
+        // Diffuse ranges never get a boundary line and feather at least as
+        // much as medium confidence would.
+        const feather =
+          Math.max(edge.feather, diffuse ? CONFIDENCE_EDGE.medium.feather : 0) *
+          Math.min(2, 0.75 + k * 0.25);
+        if (feather > 0) {
+          // Feathered edge: halo strokes clipped to the polygon's exterior,
+          // stepping the fill opacity down to zero. The interior stays flat
+          // because none of the halo lands inside the shape.
+          ctx.save();
+          const outside = new Path2D();
+          outside.rect(-1e5, -1e5, 2e5, 2e5);
+          outside.addPath(p);
+          ctx.clip(outside, 'evenodd');
+          const steps: [width: number, opacity: number][] = [
+            [feather * 0.7, 0.75],
+            [feather * 1.4, 0.4],
+            [feather * 2, 0.18],
+          ];
+          for (const [width, opacity] of steps) {
+            ctx.strokeStyle = hexToRgba(colour, fillAlpha * opacity);
+            ctx.lineWidth = width;
+            ctx.stroke(p);
           }
+          ctx.restore();
         }
-        // Borders: soft halo for diffuse ranges, crisp line for polities.
-        ctx.save();
-        ctx.setLineDash(confidenceDash(part.conf as never, k));
-        if (diffuse) {
-          ctx.strokeStyle = hexToRgba(colour, 0.35 * alpha);
-          ctx.lineWidth = 2.5;
-        } else {
+        // Selection/hover outlines are a UI affordance, so they stay even
+        // where confidence hides the boundary line.
+        if (!diffuse && (edge.boundary || isSelected || isHovered)) {
           ctx.strokeStyle = hexToRgba(darken(colour, 0.35), Math.min(0.9, 0.55 + k * 0.06) * alpha);
           ctx.lineWidth = Math.min(2.4, 0.7 + k * 0.12) * (isSelected ? 2 : isHovered ? 1.5 : 1);
+          ctx.stroke(p);
         }
-        ctx.stroke(p);
-        ctx.restore();
       }
 
       labelInputs.push({

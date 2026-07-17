@@ -51,23 +51,22 @@ export function Legend({ renderer }: Props) {
           <div className="legend-row">
             <span
               className="legend-swatch"
-              style={{
-                background:
-                  'repeating-linear-gradient(45deg, #8a6d3b, #8a6d3b 2px, transparent 2px, transparent 4px)',
-              }}
+              style={{ background: '#8a6d3b', border: '1px solid #4a3a22' }}
             />
-            <span>Low confidence / disputed</span>
+            <span>Well-documented extent</span>
           </div>
           <div className="legend-row">
             <span
               className="legend-swatch"
-              style={{ background: 'transparent', border: '1px dashed #d6c49c' }}
+              style={{
+                background: 'radial-gradient(closest-side, #8a6d3b 40%, transparent)',
+              }}
             />
-            <span>Uncertain boundary (dashed)</span>
+            <span>Uncertain extent (soft edge)</span>
           </div>
           <div className="legend-note">
-            Soft, low-opacity fills mark diffuse prehistoric ranges; crisp borders mark
-            documented polities. All extents are approximate.
+            Crisp boundary lines mark well-documented extents; the softer a
+            territory&apos;s edge, the less certain it is. All extents are approximate.
           </div>
 
           {layersOpen && (

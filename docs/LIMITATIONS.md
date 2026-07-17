@@ -26,8 +26,8 @@ or honest trade‑offs, not defects to hide.
 - **Editorial dating.** Start/end years for fuzzy entities (peoples, cultures,
   “civilisations”) are editorial simplifications of gradual processes.
 - **Prehistoric ranges are schematic.** Hominin and culture ranges are smoothed
-  envelopes of inferred presence from scattered finds, deliberately drawn soft and
-  hatched. They should never be read as boundaries.
+  envelopes of inferred presence from scattered finds, deliberately drawn soft‑edged
+  and borderless. They should never be read as boundaries.
 - **Eurocentric density.** The sample skews toward well‑documented Mediterranean and
   Eurasian polities simply because they are easiest to source concisely; this is a
   property of the sample, not a historical judgement.
@@ -35,7 +35,7 @@ or honest trade‑offs, not defects to hide.
 ## Technical limitations
 
 - **Crossfade, not true morphing.** Topologically incompatible snapshots are blended
-  by opacity (with hatch/halo cues), not by vertex morphing. This is stable and
+  by opacity (with feathered‑edge cues), not by vertex morphing. This is stable and
   legible but does not animate a border *sliding*. Compatible geometries could be
   vertex‑interpolated in a future pass.
 - **Label placement is greedy, not optimal.** Labels are sized, rotated to a
@@ -63,6 +63,6 @@ or honest trade‑offs, not defects to hide.
 - The map itself is a canvas; the accessible path is the **visible‑entities list**
   (☰), keyboard controls, ARIA‑labelled controls and live‑region date announcements.
   Screen‑reader users get a textual model of what’s visible, but not a spatial one.
-- Colour is always paired with a non‑colour cue (hatch, dash, italic/caps, list), but
+- Colour is always paired with a non‑colour cue (edge sharpness, italic/caps, list), but
   the sheer number of muted territory colours at once can still be hard to
   distinguish for some users at a glance.

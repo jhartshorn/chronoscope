@@ -46,12 +46,11 @@ Uncertainty is built into the visual language, not hidden:
 - **Diffuse peoples, cultures and hominin species** use soft, low‑opacity fills with
   blurred (haloed) edges instead of crisp borders — they are ranges of inferred
   presence, not territories.
-- **Documented polities** use clearer fills and thin borders that sharpen as you
-  zoom in.
-- **Low‑confidence areas** are additionally **hatched** — a signal that does not rely
-  on colour, for accessibility.
-- **Uncertain boundaries** use dashed strokes, with different dash patterns for
-  medium vs low confidence.
+- **Well‑documented (high‑confidence) polities** use clearer fills and thin, crisp
+  boundary lines that sharpen as you zoom in.
+- **Uncertain extents** drop the boundary line entirely and feather the fill edge —
+  slightly for medium confidence, heavily for low — a signal that does not rely on
+  colour, for accessibility.
 - **Approximate event locations** are drawn with a dashed ring and labelled
   “(approximate)” in the panel.
 - Every entity and snapshot carries an explicit `confidence` rating, shown in the

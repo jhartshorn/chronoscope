@@ -108,9 +108,14 @@ export function darken(hex: string, amount: number): string {
   return `#${f(0)}${f(2)}${f(4)}`;
 }
 
-/** Border dash patterns double as the non-colour uncertainty signal. */
-export function confidenceDash(confidence: Confidence, zoom: number): number[] {
-  if (confidence === 'high') return [];
-  if (confidence === 'medium') return [6 * Math.min(zoom, 2), 4 * Math.min(zoom, 2)];
-  return [2, 5];
-}
+/**
+ * Edge treatment is the uncertainty signal: only high-confidence geometry
+ * gets a crisp boundary line; medium and low confidence drop the line and
+ * feather the fill outward instead — the wider the feather (screen px at
+ * zoom 1), the less certain the extent.
+ */
+export const CONFIDENCE_EDGE: Record<Confidence, { boundary: boolean; feather: number }> = {
+  high: { boundary: true, feather: 0 },
+  medium: { boundary: false, feather: 5 },
+  low: { boundary: false, feather: 14 },
+};

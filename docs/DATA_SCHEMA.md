@@ -77,8 +77,9 @@ interface TerritorySnapshot {
   (its fifteen republics) and the European Union at each stage of enlargement.
 - With ≥ 2 snapshots the renderer crossfades between them across the intervening
   dates, so territory changes animate smoothly rather than snapping.
-- `confidence: 'low'` adds a hatch fill; `medium`/`low` also change the border dash
-  pattern — a non‑colour uncertainty signal.
+- `confidence` drives the edge treatment — a non‑colour uncertainty signal: only
+  `high` gets a crisp boundary line; `medium` drops the line and feathers the fill
+  edge slightly; `low` feathers it heavily.
 
 ### SourceReference
 
